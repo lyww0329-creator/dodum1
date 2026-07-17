@@ -6237,32 +6237,55 @@ function languagesView(active = '영어') {
 
     const MOBILE_BOTTOM_MENU_ITEMS = {
       grade: [
-        ['초등', 'grade/초등'],
-        ['중등', 'grade/중등'],
-        ['고등', 'grade/고등'],
-        ['성인/N수생', 'grade/성인%2FN수생']
+        ['초등', 'grade/' + encodeURIComponent('초등')],
+        ['중등', 'grade/' + encodeURIComponent('중등')],
+        ['고등', 'grade/' + encodeURIComponent('고등')],
+        ['성인/N수생', 'grade/' + encodeURIComponent('성인/N수생')]
       ],
       subjects: [
-        ['국어', 'subject/국어'],
-        ['영어', 'subject/영어'],
-        ['수학', 'subject/수학'],
-        ['사회', 'subject/사회'],
-        ['과학', 'subject/과학']
+        ['국어', 'subject/' + encodeURIComponent('국어')],
+        ['영어', 'subject/' + encodeURIComponent('영어')],
+        ['수학', 'subject/' + encodeURIComponent('수학')],
+        ['사회', 'subject/' + encodeURIComponent('사회')],
+        ['과학', 'subject/' + encodeURIComponent('과학')]
       ],
       languages: [
-        ['영어회화', 'language/영어'],
-        ['일본어', 'language/일본어'],
-        ['중국어', 'language/중국어']
+        ['영어회화', 'language/' + encodeURIComponent('영어')],
+        ['일본어', 'language/' + encodeURIComponent('일본어')],
+        ['중국어', 'language/' + encodeURIComponent('중국어')]
       ]
     };
 
     let activeMobileBottomMenu = '';
 
+    function findVisibleBottomNavigation(startElement) {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      function isBottomNavCandidate(element) {
+        if (!element || element === document.body || element === document.documentElement) return false;
+        const style = window.getComputedStyle(element);
+        const rect = element.getBoundingClientRect();
+        const controls = element.querySelectorAll('button, a');
+
+        const anchored = style.position === 'fixed' || style.position === 'sticky';
+        const nearBottom = rect.bottom >= viewportHeight - 28 && rect.top < viewportHeight;
+        const visible = style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+
+        return anchored && nearBottom && visible && controls.length >= 3;
+      }
+
+      let current = startElement;
+      while (current && current !== document.body) {
+        if (isBottomNavCandidate(current)) return current;
+        current = current.parentElement;
+      }
+
+      const candidates = Array.from(document.querySelectorAll('nav, footer, div, ul'));
+      return candidates.find(isBottomNavCandidate) || null;
+    }
+
     function mobileBottomMenuIsVisible() {
-      const nav = document.querySelector('.mobile-bottom');
-      if (!nav) return false;
-      const style = window.getComputedStyle(nav);
-      return style.display !== 'none' && style.visibility !== 'hidden';
+      return Boolean(findVisibleBottomNavigation(null));
     }
 
     function ensureMobileBottomChooser() {
@@ -6319,9 +6342,6 @@ function languagesView(active = '영어') {
         .mobile-bottom-chooser button:active {
           transform: translateY(1px);
         }
-        @media (min-width: 769px) {
-          .mobile-bottom-chooser { display: none !important; }
-        }
       `;
       document.head.appendChild(style);
 
@@ -6363,6 +6383,12 @@ function languagesView(active = '영어') {
         subjects: '과목을 선택하세요',
         languages: '회화를 선택하세요'
       };
+
+      const bottomNav = findVisibleBottomNavigation(triggerButton);
+      if (bottomNav) {
+        const navRect = bottomNav.getBoundingClientRect();
+        chooser.style.bottom = `calc(${Math.ceil(navRect.height + 12)}px + env(safe-area-inset-bottom, 0px))`;
+      }
 
       chooser.dataset.menu = menuName;
       chooser.querySelector('.mobile-bottom-chooser-title').textContent = titleMap[menuName];
@@ -6519,14 +6545,23 @@ function languagesView(active = '영어') {
         return;
       }
 
-      const mobileBottomButton = target.closest('.mobile-bottom button[data-route]');
-      if (mobileBottomButton) {
-        const mobileRouteName = mobileBottomButton.dataset.route;
-        if (mobileRouteName === 'grade' || mobileRouteName === 'subjects' || mobileRouteName === 'languages') {
+      const clickedBottomNav = findVisibleBottomNavigation(target);
+      if (clickedBottomNav && !target.closest('#mobileBottomChooser')) {
+        const label = (target.textContent || '').replace(/\s+/g, '').trim();
+        const menuByLabel = {
+          '학년별': 'grade',
+          '과목별': 'subjects',
+          '회화': 'languages'
+        };
+        const menuName = menuByLabel[label];
+
+        if (menuName) {
           event.preventDefault();
-          toggleMobileBottomChooser(mobileRouteName, mobileBottomButton);
+          event.stopPropagation();
+          toggleMobileBottomChooser(menuName, target);
           return;
         }
+
         closeMobileBottomChooser();
       } else if (!target.closest('#mobileBottomChooser')) {
         closeMobileBottomChooser();
