@@ -6234,6 +6234,157 @@ function languagesView(active = '영어') {
       });
     }
 
+
+    const MOBILE_BOTTOM_MENU_ITEMS = {
+      grade: [
+        ['초등', 'grade/초등'],
+        ['중등', 'grade/중등'],
+        ['고등', 'grade/고등'],
+        ['성인/N수생', 'grade/성인%2FN수생']
+      ],
+      subjects: [
+        ['국어', 'subject/국어'],
+        ['영어', 'subject/영어'],
+        ['수학', 'subject/수학'],
+        ['사회', 'subject/사회'],
+        ['과학', 'subject/과학']
+      ],
+      languages: [
+        ['영어회화', 'language/영어'],
+        ['일본어', 'language/일본어'],
+        ['중국어', 'language/중국어']
+      ]
+    };
+
+    let activeMobileBottomMenu = '';
+
+    function mobileBottomMenuIsVisible() {
+      const nav = document.querySelector('.mobile-bottom');
+      if (!nav) return false;
+      const style = window.getComputedStyle(nav);
+      return style.display !== 'none' && style.visibility !== 'hidden';
+    }
+
+    function ensureMobileBottomChooser() {
+      let chooser = document.getElementById('mobileBottomChooser');
+      if (chooser) return chooser;
+
+      const style = document.createElement('style');
+      style.id = 'mobileBottomChooserStyle';
+      style.textContent = `
+        .mobile-bottom-chooser {
+          position: fixed;
+          left: 12px;
+          right: 12px;
+          bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+          z-index: 10020;
+          display: none;
+          max-width: 520px;
+          margin: 0 auto;
+          padding: 12px;
+          border: 1px solid rgba(20, 42, 74, .12);
+          border-radius: 18px;
+          background: rgba(255, 255, 255, .98);
+          box-shadow: 0 16px 40px rgba(18, 39, 68, .22);
+          backdrop-filter: blur(12px);
+        }
+        .mobile-bottom-chooser.show { display: block; }
+        .mobile-bottom-chooser-title {
+          margin: 0 0 10px;
+          color: #162a46;
+          font-size: 14px;
+          font-weight: 800;
+          text-align: center;
+        }
+        .mobile-bottom-chooser-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+        }
+        .mobile-bottom-chooser[data-menu="languages"] .mobile-bottom-chooser-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        .mobile-bottom-chooser button {
+          min-height: 44px;
+          padding: 9px 7px;
+          border: 1px solid rgba(31, 76, 124, .14);
+          border-radius: 12px;
+          background: #f7fafc;
+          color: #18324f;
+          font: inherit;
+          font-size: 13px;
+          font-weight: 800;
+          cursor: pointer;
+        }
+        .mobile-bottom-chooser button:active {
+          transform: translateY(1px);
+        }
+        @media (min-width: 769px) {
+          .mobile-bottom-chooser { display: none !important; }
+        }
+      `;
+      document.head.appendChild(style);
+
+      chooser = document.createElement('div');
+      chooser.id = 'mobileBottomChooser';
+      chooser.className = 'mobile-bottom-chooser';
+      chooser.setAttribute('aria-hidden', 'true');
+      chooser.innerHTML = `
+        <p class="mobile-bottom-chooser-title"></p>
+        <div class="mobile-bottom-chooser-grid"></div>
+      `;
+      document.body.appendChild(chooser);
+      return chooser;
+    }
+
+    function closeMobileBottomChooser() {
+      const chooser = document.getElementById('mobileBottomChooser');
+      if (!chooser) return;
+      chooser.classList.remove('show');
+      chooser.setAttribute('aria-hidden', 'true');
+      chooser.removeAttribute('data-menu');
+      activeMobileBottomMenu = '';
+    }
+
+    function toggleMobileBottomChooser(menuName, triggerButton) {
+      if (!mobileBottomMenuIsVisible()) return false;
+
+      const items = MOBILE_BOTTOM_MENU_ITEMS[menuName];
+      if (!items) return false;
+
+      const chooser = ensureMobileBottomChooser();
+      if (activeMobileBottomMenu === menuName && chooser.classList.contains('show')) {
+        closeMobileBottomChooser();
+        return true;
+      }
+
+      const titleMap = {
+        grade: '학년을 선택하세요',
+        subjects: '과목을 선택하세요',
+        languages: '회화를 선택하세요'
+      };
+
+      chooser.dataset.menu = menuName;
+      chooser.querySelector('.mobile-bottom-chooser-title').textContent = titleMap[menuName];
+      chooser.querySelector('.mobile-bottom-chooser-grid').innerHTML = items
+        .map(([label, route]) => `<button type="button" data-mobile-menu-route="${route}">${label}</button>`)
+        .join('');
+      chooser.classList.add('show');
+      chooser.setAttribute('aria-hidden', 'false');
+      activeMobileBottomMenu = menuName;
+
+      if (triggerButton) triggerButton.setAttribute('aria-expanded', 'true');
+      return true;
+    }
+
+    window.addEventListener('resize', () => {
+      if (!mobileBottomMenuIsVisible()) closeMobileBottomChooser();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeMobileBottomChooser();
+    });
+
     function openModal() {
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
@@ -6359,6 +6510,27 @@ function languagesView(active = '영어') {
     document.addEventListener('click', (event) => {
       const target = event.target.closest('button, a');
       if (!target) return;
+
+      if (target.matches('[data-mobile-menu-route]')) {
+        event.preventDefault();
+        const mobileRoute = target.dataset.mobileMenuRoute;
+        closeMobileBottomChooser();
+        setHash(mobileRoute);
+        return;
+      }
+
+      const mobileBottomButton = target.closest('.mobile-bottom button[data-route]');
+      if (mobileBottomButton) {
+        const mobileRouteName = mobileBottomButton.dataset.route;
+        if (mobileRouteName === 'grade' || mobileRouteName === 'subjects' || mobileRouteName === 'languages') {
+          event.preventDefault();
+          toggleMobileBottomChooser(mobileRouteName, mobileBottomButton);
+          return;
+        }
+        closeMobileBottomChooser();
+      } else if (!target.closest('#mobileBottomChooser')) {
+        closeMobileBottomChooser();
+      }
 
       if (target.matches('[data-open-modal]')) { openModal(); return; }
       if (target.matches('[data-phone-consult]')) { openPhoneConsult(); return; }
