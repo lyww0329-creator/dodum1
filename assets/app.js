@@ -6240,7 +6240,7 @@ function languagesView(active = '영어') {
         ['초등', 'grade/' + encodeURIComponent('초등')],
         ['중등', 'grade/' + encodeURIComponent('중등')],
         ['고등', 'grade/' + encodeURIComponent('고등')],
-        ['성인/N수생', 'grade/' + encodeURIComponent('성인/N수생')]
+        ['성인/N수생', '/성인-N수생과외/']
       ],
       subjects: [
         ['국어', 'subject/' + encodeURIComponent('국어')],
@@ -6541,7 +6541,12 @@ function languagesView(active = '영어') {
         event.preventDefault();
         const mobileRoute = target.dataset.mobileMenuRoute;
         closeMobileBottomChooser();
-        setHash(mobileRoute);
+
+        if (mobileRoute.startsWith('/')) {
+          window.location.href = mobileRoute;
+        } else {
+          setHash(mobileRoute);
+        }
         return;
       }
 
