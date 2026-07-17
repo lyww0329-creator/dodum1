@@ -3724,6 +3724,13 @@
     }
 
     function setHash(route) {
+      // 지역 첫 화면은 특정 시·도를 기본 선택하지 않고 전체 시·도 선택 화면으로 연다.
+      if (route === 'region') {
+        const root = window.__SITE_ROOT__ || './';
+        location.href = root + '#region';
+        return;
+      }
+
       const target = routeToStaticPath(route);
       if (target) location.href = target;
       else render(route);
