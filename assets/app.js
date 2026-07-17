@@ -3602,6 +3602,14 @@
       return new URLSearchParams(location.search).get(name) || '';
     }
 
+    function gradeValueForUrl(value = '') {
+      return value === '성인/N수생' ? '성인-N수생' : value;
+    }
+
+    function gradeValueFromUrl(value = '') {
+      return value === '성인-N수생' ? '성인/N수생' : value;
+    }
+
     function appendStaticQuery(path, params) {
       const q = new URLSearchParams();
       Object.entries(params || {}).forEach(([k,v]) => { if (v) q.set(k,v); });
@@ -3620,7 +3628,7 @@
       if (page === 'contact') {
         const p = parseContactPrefill(route);
         return appendStaticQuery(join(['상담신청']), {
-          학교급: p.gradeStage, 세부학년: p.gradeDetail, 과목: p.subject,
+          학교급: gradeValueForUrl(p.gradeStage), 세부학년: p.gradeDetail, 과목: p.subject,
           시도: p.province, 시군구: p.district, 읍면동: p.town
         });
       }
@@ -3645,7 +3653,11 @@
           const segs=[province]; if (district) segs.push(district); if (town) segs.push(town); segs.push(subjectName+'과외');
           return appendStaticQuery(join(segs), {학년:grade});
         }
-        if (grade) return join([grade, subjectName+'과외']);
+        if (grade) {
+          const gradeForUrl = gradeValueForUrl(grade);
+          if (grade === '성인/N수생') return appendStaticQuery(join([subjectName+'과외']), {학년: gradeForUrl});
+          return join([gradeForUrl, subjectName+'과외']);
+        }
         return join([subjectName+'과외']);
       }
       if (page === 'grade') {
@@ -3661,13 +3673,24 @@
           else if(!subject && SUBJECTS[token]) subject=token;
         }
         const grade=detail||group;
+        const gradeForUrl = gradeValueForUrl(grade);
         if(province){
           const segs=[province]; if(district) segs.push(district); if(town) segs.push(town);
-          segs.push(subject ? subject+'과외' : grade+'과외');
-          return appendStaticQuery(join(segs), subject ? {학년:grade} : {});
+          if (subject) {
+            segs.push(subject+'과외');
+            return appendStaticQuery(join(segs), {학년:gradeForUrl});
+          }
+          if (grade === '성인/N수생') {
+            return appendStaticQuery(join(segs), {학년:gradeForUrl});
+          }
+          segs.push(gradeForUrl+'과외');
+          return join(segs);
         }
-        if(subject) return join([grade,subject+'과외']);
-        return join([grade+'과외']);
+        if(subject) {
+          if (grade === '성인/N수생') return appendStaticQuery(join([subject+'과외']), {학년:gradeForUrl});
+          return join([gradeForUrl,subject+'과외']);
+        }
+        return join([gradeForUrl+'과외']);
       }
       if (page === 'region') {
         const p=parseRegionRoute(route);
@@ -3675,21 +3698,27 @@
         if(p.regionCity) segs.push(p.regionCity);
         if(p.regionDistrict) segs.push(p.regionDistrict);
         if(p.regionTown) segs.push(p.regionTown);
-        if(p.regionSubject) segs.push(p.regionSubject+'과외');
-        else if(p.regionGrade) segs.push(p.regionGrade+'과외');
-        return appendStaticQuery(join(segs), p.regionSubject && p.regionGrade ? {학년:p.regionGrade} : {});
+        if(p.regionSubject) {
+          segs.push(p.regionSubject+'과외');
+          return appendStaticQuery(join(segs), p.regionGrade ? {학년:gradeValueForUrl(p.regionGrade)} : {});
+        }
+        if(p.regionGrade === '성인/N수생') {
+          return appendStaticQuery(join(segs), {학년:gradeValueForUrl(p.regionGrade)});
+        }
+        if(p.regionGrade) segs.push(gradeValueForUrl(p.regionGrade)+'과외');
+        return join(segs);
       }
       return root;
     }
 
     function staticRouteFromLocation() {
       let route = window.__STATIC_ROUTE__ || 'home';
-      const grade = staticQueryValue('학년');
-      if (grade && route.startsWith('region/') && route.includes('__subject__')) route += '/__grade__/' + encodeURIComponent(grade);
+      const grade = gradeValueFromUrl(staticQueryValue('학년'));
+      if (grade && route.startsWith('region/') && !route.includes('__grade__')) route += '/__grade__/' + encodeURIComponent(grade);
       if (grade && route.startsWith('subject/')) route += '/__grade__/' + encodeURIComponent(grade);
       if (route === 'contact') {
         const q = new URLSearchParams(location.search);
-        route = buildContactRoute(q.get('학교급')||'', q.get('세부학년')||'', q.get('과목')||'', q.get('시도')||'', q.get('시군구')||'', q.get('읍면동')||'');
+        route = buildContactRoute(gradeValueFromUrl(q.get('학교급')||''), q.get('세부학년')||'', q.get('과목')||'', q.get('시도')||'', q.get('시군구')||'', q.get('읍면동')||'');
       }
       return route;
     }
@@ -6017,14 +6046,15 @@ function languagesView(active = '영어') {
         '초등': ['초1', '초2', '초3', '초4', '초5', '초6'],
         '중등': ['중1', '중2', '중3'],
         '고등': ['고1', '고2', '고3'],
-        '성인/N수생': ['성인', 'N수생'],
-        '성인': ['성인']
+        '성인/N수생': [],
+        '성인': []
       };
 
-      let gradeStage = prefill.gradeStage || '';
+      let gradeStage = gradeValueFromUrl(prefill.gradeStage || '');
       let gradeDetail = prefill.gradeDetail || '';
 
       if (gradeStage === '성인') gradeStage = '성인/N수생';
+      if (gradeStage === '성인/N수생') gradeDetail = '';
 
       if (!gradeStage && gradeDetail) {
         gradeStage = Object.keys(gradeStageMap).find(name => (gradeStageMap[name] || []).includes(gradeDetail)) || '';
@@ -6075,11 +6105,13 @@ function languagesView(active = '영어') {
                   </select>
                 </div>
                 <div class="field">
-                  <label for="gradeDetailSelect">세부 학년 *</label>
-                  <select id="gradeDetailSelect" name="grade" required ${detailOptions.length ? '' : 'disabled'}>
-                    ${detailOptions.length
-                      ? '<option value="">세부 학년 선택</option>' + detailOptions.map(item => `<option value="${escapeAttr(item)}"${selectedAttr(gradeDetail, item)}>${escapeText(item)}</option>`).join('')
-                      : '<option value="">먼저 학교급을 선택해주세요</option>'}
+                  <label for="gradeDetailSelect">세부 학년 <span id="gradeDetailRequiredMark">*</span></label>
+                  <select id="gradeDetailSelect" name="grade" ${detailOptions.length ? 'required' : 'disabled'}>
+                    ${gradeStage === '성인/N수생'
+                      ? '<option value="">성인/N수생은 세부 학년 선택 없음</option>'
+                      : detailOptions.length
+                        ? '<option value="">세부 학년 선택</option>' + detailOptions.map(item => `<option value="${escapeAttr(item)}"${selectedAttr(gradeDetail, item)}>${escapeText(item)}</option>`).join('')
+                        : '<option value="">먼저 학교급을 선택해주세요</option>'}
                   </select>
                 </div>
               </div>
@@ -6101,8 +6133,8 @@ function languagesView(active = '영어') {
               </div>
 
               <div class="field">
-                <label for="detailAddress">상세주소</label>
-                <input id="detailAddress" name="detailAddress" type="text" />
+                <label for="detailAddress">상세주소 *</label>
+                <input id="detailAddress" name="detailAddress" type="text" required />
               </div>
 
               <div class="field">
@@ -6507,13 +6539,25 @@ function languagesView(active = '영어') {
         '성인': ['성인']
       };
 
-      const options = detailMap[stage] || [];
+      const normalizedStage = gradeValueFromUrl(stage || '');
+      const options = detailMap[normalizedStage] || [];
+      const requiredMark = document.getElementById('gradeDetailRequiredMark');
+
+      if (normalizedStage === '성인/N수생') {
+        detailSelect.innerHTML = '<option value="">성인/N수생은 세부 학년 선택 없음</option>';
+        detailSelect.disabled = true;
+        detailSelect.required = false;
+        if (requiredMark) requiredMark.hidden = true;
+        return;
+      }
+
       detailSelect.innerHTML = options.length
         ? '<option value="">세부 학년 선택</option>' + options.map(item => '<option value="' + item + '">' + item + '</option>').join('')
         : '<option value="">먼저 학교급을 선택해주세요</option>';
 
       detailSelect.disabled = !options.length;
       detailSelect.required = !!options.length;
+      if (requiredMark) requiredMark.hidden = !options.length;
     }
 
     function handleContactSubmit(event) {
@@ -6708,19 +6752,19 @@ function languagesView(active = '영어') {
         const province = target.dataset.provinceName || '';
         const district = target.dataset.districtName || '';
         const town = target.dataset.townName || '';
-        setHash(buildSubjectRoute(target.dataset.gradeSubject, group, province, district, town));
+        setHash(buildSubjectRoute(target.dataset.gradeSubject, target.dataset.gradeName || group, province, district, town));
         return;
       }
       if (target.matches('[data-grade-province]')) {
-        setHash(buildRegionRoute(target.dataset.gradeProvince, '', '', target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
+        setHash(buildRegionRoute(target.dataset.gradeProvince, '', '', target.dataset.gradeName || target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
         return;
       }
       if (target.matches('[data-grade-district]')) {
-        setHash(buildRegionRoute(target.dataset.provinceName || '서울', target.dataset.gradeDistrict, '', target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
+        setHash(buildRegionRoute(target.dataset.provinceName || '서울', target.dataset.gradeDistrict, '', target.dataset.gradeName || target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
         return;
       }
       if (target.matches('[data-grade-town]')) {
-        setHash(buildRegionRoute(target.dataset.provinceName || '서울', target.dataset.districtName || '', target.dataset.gradeTown, target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
+        setHash(buildRegionRoute(target.dataset.provinceName || '서울', target.dataset.districtName || '', target.dataset.gradeTown, target.dataset.gradeName || target.dataset.gradeGroupName || '', target.dataset.gradeSubjectName || ''));
         return;
       }
     });
