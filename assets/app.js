@@ -4,7 +4,7 @@
     const NAVER_FORM_URL = ''; // 예: 'https://form.naver.com/...' 입력 시 자동 활성화
     // 아래 따옴표 안의 WEB3FORMS_ACCESS_KEY_여기에_붙여넣기 부분만
     // Web3Forms에서 새로 발급받은 Form Access Key로 교체하세요.
-    const WEB3FORMS_ACCESS_KEY = '2592d018-c83a-4403-b19d-e2ee3e1d7285';
+    const WEB3FORMS_ACCESS_KEY = 'WEB3FORMS_ACCESS_KEY_여기에_붙여넣기';
 
 
     const SUBJECTS = {
@@ -7101,7 +7101,7 @@ function languagesView(active = '영어') {
 
     async function handleContactSubmit(event) {
       event.preventDefault();
-      const form = event.currentTarget;
+      const form = event.target;
       const submitButton = form.querySelector('[data-contact-submit]');
       const status = form.querySelector('#formSubmitStatus');
 
