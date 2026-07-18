@@ -7047,7 +7047,13 @@ function languagesView(active = '영어') {
 
     document.addEventListener('click', (event) => {
       const target = event.target.closest('button, a');
-      if (!target) return;
+
+      if (!target) {
+        if (!event.target.closest('#mobileBottomChooser')) {
+          closeMobileBottomChooser();
+        }
+        return;
+      }
 
       if (target.matches('[data-mobile-menu-route]')) {
         event.preventDefault();
