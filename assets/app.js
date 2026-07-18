@@ -4,7 +4,7 @@
     const NAVER_FORM_URL = ''; // 예: 'https://form.naver.com/...' 입력 시 자동 활성화
     // 아래 따옴표 안의 WEB3FORMS_ACCESS_KEY_여기에_붙여넣기 부분만
     // Web3Forms에서 새로 발급받은 Form Access Key로 교체하세요.
-    const WEB3FORMS_ACCESS_KEY = '2592d018-c83a-4403-b19d-e2ee3e1d7285';
+    const WEB3FORMS_ACCESS_KEY = 'WEB3FORMS_ACCESS_KEY_여기에_붙여넣기';
 
 
     const SUBJECTS = {
@@ -6530,18 +6530,18 @@ function languagesView(active = '영어') {
               <div class="form-row">
                 <div class="field">
                   <label for="studentName">학생 이름 *</label>
-                  <input id="studentName" name="학생 이름" type="text" autocomplete="name" required />
+                  <input id="studentName" name="student_name" type="text" autocomplete="name" required />
                 </div>
                 <div class="field">
                   <label for="guardianPhone">상담받으실 연락처 *</label>
-                  <input id="guardianPhone" name="상담 연락처" type="tel" inputmode="tel" autocomplete="tel" required />
+                  <input id="guardianPhone" name="guardian_phone" type="tel" inputmode="tel" autocomplete="tel" required />
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="field">
                   <label for="gradeStageSelect">학교급 *</label>
-                  <select id="gradeStageSelect" name="학교급" required>
+                  <select id="gradeStageSelect" name="grade_stage" required>
                     <option value="">학교급 선택</option>
                     <option value="초등"${selectedAttr(gradeStage, '초등')}>초등</option>
                     <option value="중등"${selectedAttr(gradeStage, '중등')}>중등</option>
@@ -6551,7 +6551,7 @@ function languagesView(active = '영어') {
                 </div>
                 <div class="field">
                   <label for="gradeDetailSelect">세부 학년 <span id="gradeDetailRequiredMark">*</span></label>
-                  <select id="gradeDetailSelect" name="세부 학년" ${detailOptions.length ? 'required' : 'disabled'}>
+                  <select id="gradeDetailSelect" name="grade_detail" ${detailOptions.length ? 'required' : 'disabled'}>
                     ${gradeStage === '성인/N수생'
                       ? '<option value="">성인/N수생은 세부 학년 선택 없음</option>'
                       : detailOptions.length
@@ -6563,7 +6563,7 @@ function languagesView(active = '영어') {
 
               <div class="field">
                 <label for="subjectSelect">희망 과목 *</label>
-                <select id="subjectSelect" name="희망 과목" required>
+                <select id="subjectSelect" name="lesson_subject" required>
                   <option value="">과목을 선택해주세요</option>
                   ${['수학', '영어', '국어', '사회', '과학', '영어 회화', '일본어', '중국어', '상담 후 결정'].map(item => `<option value="${escapeAttr(item)}"${selectedAttr(subjectValue, item)}>${escapeText(item)}</option>`).join('')}
                 </select>
@@ -6572,24 +6572,24 @@ function languagesView(active = '영어') {
               <div class="field">
                 <label for="addressInput">주소 *</label>
                 <div class="address-row">
-                  <input id="addressInput" name="주소" type="text" placeholder="도로명 주소를 검색해 주세요" value="${escapeAttr(regionValue)}" required />
+                  <input id="addressInput" name="address" type="text" placeholder="도로명 주소를 검색해 주세요" value="${escapeAttr(regionValue)}" required />
                   <button type="button" data-address-search>주소 검색</button>
                 </div>
               </div>
 
               <div class="field">
                 <label for="detailAddress">상세주소 *</label>
-                <input id="detailAddress" name="상세주소" type="text" required />
+                <input id="detailAddress" name="detail_address" type="text" required />
               </div>
 
               <div class="field">
                 <label for="messageInput">문의사항 <span class="optional-label">(선택)</span></label>
-                <textarea id="messageInput" name="문의사항" placeholder="원하는 수업 방식, 상담 가능 시간 등을 적어주세요.">${escapeText(messageValue)}</textarea>
+                <textarea id="messageInput" name="inquiry_message" placeholder="원하는 수업 방식, 상담 가능 시간 등을 적어주세요.">${escapeText(messageValue)}</textarea>
               </div>
 
               <div class="privacy-consent">
                 <label for="privacyConsent">
-                  <input id="privacyConsent" name="개인정보 수집 동의" type="checkbox" required />
+                  <input id="privacyConsent" name="privacy_consent" type="checkbox" required />
                   <span>개인정보 수집 및 이용에 동의합니다. <span class="optional-label">(필수)</span></span>
                 </label>
                 <p>상담 신청 확인과 안내를 위해 학생 이름, 연락처, 학교급, 희망 과목, 주소, 문의 내용을 수집·이용합니다.</p>
@@ -7129,7 +7129,37 @@ function languagesView(active = '영어') {
       }
 
       try {
-        const formData = new FormData(form);
+        const studentName = form.querySelector('#studentName')?.value.trim() || '';
+        const guardianPhone = form.querySelector('#guardianPhone')?.value.trim() || '';
+        const gradeStage = form.querySelector('#gradeStage')?.value || '';
+        const grade = form.querySelector('#grade')?.value || '';
+        const lessonSubject = form.querySelector('#subject')?.value || '';
+        const address = form.querySelector('#address')?.value.trim() || '';
+        const detailAddress = form.querySelector('#detailAddress')?.value.trim() || '';
+        const inquiryMessage = form.querySelector('#message')?.value.trim() || '';
+
+        const formattedMessage = [
+          `학생 이름: ${studentName}`,
+          `상담받으실 연락처: ${guardianPhone}`,
+          `학교급: ${gradeStage}`,
+          `세부 학년: ${grade}`,
+          `희망 과목: ${lessonSubject}`,
+          `주소: ${address}`,
+          `상세주소: ${detailAddress || '-'}`,
+          '',
+          '문의사항',
+          inquiryMessage || '-'
+        ].join('\n');
+
+        const formData = new FormData();
+        formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+        formData.append('subject', '돋움과외 새 상담 신청');
+        formData.append('from_name', '돋움과외 홈페이지');
+        formData.append('name', studentName);
+        formData.append('phone', guardianPhone);
+        formData.append('message', formattedMessage);
+        formData.append('botcheck', '');
+
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData
