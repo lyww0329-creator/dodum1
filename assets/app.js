@@ -6756,6 +6756,69 @@ function languagesView(active = '영어') {
 
     ensureRegionMobileGridStyle();
 
+
+    function ensureLanguageHeaderFinalStyle() {
+      if (document.getElementById('languageHeaderFinalStyle')) return;
+
+      const style = document.createElement('style');
+      style.id = 'languageHeaderFinalStyle';
+      style.textContent = `
+        .language-page-view[data-language] .section-head {
+          width: 100% !important;
+          max-width: 760px !important;
+          margin: 0 auto 28px !important;
+          padding: 0 !important;
+          text-align: center !important;
+          display: block !important;
+        }
+
+        .language-page-view[data-language] .section-head h2 {
+          width: 100% !important;
+          margin-left: auto !important;
+          margin-right: auto !important;
+          text-align: center !important;
+        }
+
+        .language-page-view[data-language] .section-head .eyebrow {
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          min-height: 38px !important;
+          padding: 8px 17px !important;
+          margin: 0 auto 16px !important;
+          border-radius: 999px !important;
+          border: 1px solid var(--lang-line) !important;
+          background: var(--lang-soft-2) !important;
+          color: var(--lang-dark) !important;
+          box-shadow: 0 8px 20px var(--lang-shadow) !important;
+          font-size: 14px !important;
+          font-weight: 900 !important;
+          line-height: 1 !important;
+        }
+
+        .language-page-view[data-language="영어"] .section-head .eyebrow {
+          background: rgba(205, 229, 255, .82) !important;
+          border-color: rgba(60, 130, 205, .22) !important;
+          color: #174f83 !important;
+        }
+
+        .language-page-view[data-language="일본어"] .section-head .eyebrow {
+          background: rgba(255, 221, 229, .86) !important;
+          border-color: rgba(194, 88, 113, .20) !important;
+          color: #9b4058 !important;
+        }
+
+        .language-page-view[data-language="중국어"] .section-head .eyebrow {
+          background: rgba(255, 224, 185, .88) !important;
+          border-color: rgba(190, 111, 45, .20) !important;
+          color: #a5551e !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    ensureLanguageHeaderFinalStyle();
+
     let activeMobileBottomMenu = '';
 
     function findVisibleBottomNavigation(startElement) {
@@ -7044,6 +7107,18 @@ function languagesView(active = '영어') {
       form.reset();
       updateGradeDetailSelect('');
     }
+
+    document.addEventListener('pointerdown', (event) => {
+      const chooser = document.getElementById('mobileBottomChooser');
+      if (!chooser || chooser.hidden) return;
+
+      const clickedInsideChooser = event.target.closest('#mobileBottomChooser');
+      const clickedBottomMenu = event.target.closest('.mobile-bottom');
+
+      if (!clickedInsideChooser && !clickedBottomMenu) {
+        closeMobileBottomChooser();
+      }
+    }, true);
 
     document.addEventListener('click', (event) => {
       const target = event.target.closest('button, a');
