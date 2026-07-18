@@ -5600,3 +5600,33 @@
 
 
   
+
+/* Web3Forms 상담신청 전송 상태 */
+.web3forms-botcheck {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.form-submit-status {
+  min-height: 24px;
+  margin: 12px 0 0;
+  text-align: center;
+  color: #2a9d8f;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.form-submit-status.error {
+  color: #b42318;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: .72;
+  transform: none !important;
+}
