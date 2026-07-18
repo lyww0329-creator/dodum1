@@ -2,6 +2,9 @@
     const KAKAO_CHAT_URL = 'http://pf.kakao.com/_mgxaPX/chat';
     const PHONE_NUMBER = '010-8405-3950'; // 전화 상담 버튼 tel: 연결 번호
     const NAVER_FORM_URL = ''; // 예: 'https://form.naver.com/...' 입력 시 자동 활성화
+    // 아래 따옴표 안의 WEB3FORMS_ACCESS_KEY_여기에_붙여넣기 부분만
+    // Web3Forms에서 새로 발급받은 Form Access Key로 교체하세요.
+    const WEB3FORMS_ACCESS_KEY = 'WEB3FORMS_ACCESS_KEY_여기에_붙여넣기';
 
 
     const SUBJECTS = {
@@ -6513,28 +6516,32 @@ function languagesView(active = '영어') {
             <div class="section-head">
               <span class="eyebrow">문의 및 신청</span>
               <h2 id="contactTitle">체험 수업<br />신청하기</h2>
-              <p>선택한 학년과 과목이 있으면 아래 신청서에 자동으로 입력됩니다. 주소와 문의사항은 직접 입력할 수 있습니다.</p>
+              <p>학생 정보와 희망 수업 내용을 작성해 주시면 확인 후 상담 연락을 드립니다.</p>
             </div>
             <div class="quick-contact">
               <button type="button" data-phone-consult>☎ 010-8405-3950</button>
               <button class="kakao-quick" type="button" data-kakao-consult>💬 카카오 채널 상담</button>
             </div>
             <form class="contact-form" id="lessonForm" novalidate>
+              <input type="hidden" name="access_key" value="${escapeAttr(WEB3FORMS_ACCESS_KEY)}" />
+              <input type="hidden" name="subject" value="돋움과외 새 상담 신청" />
+              <input type="hidden" name="from_name" value="돋움과외 홈페이지" />
+              <input type="checkbox" name="botcheck" class="web3forms-botcheck" tabindex="-1" autocomplete="off" />
               <div class="form-row">
                 <div class="field">
                   <label for="studentName">학생 이름 *</label>
-                  <input id="studentName" name="studentName" type="text" autocomplete="name" required />
+                  <input id="studentName" name="학생 이름" type="text" autocomplete="name" required />
                 </div>
                 <div class="field">
                   <label for="guardianPhone">상담받으실 연락처 *</label>
-                  <input id="guardianPhone" name="guardianPhone" type="tel" inputmode="tel" autocomplete="tel" required />
+                  <input id="guardianPhone" name="상담 연락처" type="tel" inputmode="tel" autocomplete="tel" required />
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="field">
                   <label for="gradeStageSelect">학교급 *</label>
-                  <select id="gradeStageSelect" name="gradeStage" required>
+                  <select id="gradeStageSelect" name="학교급" required>
                     <option value="">학교급 선택</option>
                     <option value="초등"${selectedAttr(gradeStage, '초등')}>초등</option>
                     <option value="중등"${selectedAttr(gradeStage, '중등')}>중등</option>
@@ -6544,7 +6551,7 @@ function languagesView(active = '영어') {
                 </div>
                 <div class="field">
                   <label for="gradeDetailSelect">세부 학년 <span id="gradeDetailRequiredMark">*</span></label>
-                  <select id="gradeDetailSelect" name="grade" ${detailOptions.length ? 'required' : 'disabled'}>
+                  <select id="gradeDetailSelect" name="세부 학년" ${detailOptions.length ? 'required' : 'disabled'}>
                     ${gradeStage === '성인/N수생'
                       ? '<option value="">성인/N수생은 세부 학년 선택 없음</option>'
                       : detailOptions.length
@@ -6556,7 +6563,7 @@ function languagesView(active = '영어') {
 
               <div class="field">
                 <label for="subjectSelect">희망 과목 *</label>
-                <select id="subjectSelect" name="subject" required>
+                <select id="subjectSelect" name="희망 과목" required>
                   <option value="">과목을 선택해주세요</option>
                   ${['수학', '영어', '국어', '사회', '과학', '영어 회화', '일본어', '중국어', '상담 후 결정'].map(item => `<option value="${escapeAttr(item)}"${selectedAttr(subjectValue, item)}>${escapeText(item)}</option>`).join('')}
                 </select>
@@ -6565,31 +6572,32 @@ function languagesView(active = '영어') {
               <div class="field">
                 <label for="addressInput">주소 *</label>
                 <div class="address-row">
-                  <input id="addressInput" name="address" type="text" placeholder="도로명 주소를 검색해 주세요" value="${escapeAttr(regionValue)}" required />
+                  <input id="addressInput" name="주소" type="text" placeholder="도로명 주소를 검색해 주세요" value="${escapeAttr(regionValue)}" required />
                   <button type="button" data-address-search>주소 검색</button>
                 </div>
               </div>
 
               <div class="field">
                 <label for="detailAddress">상세주소 *</label>
-                <input id="detailAddress" name="detailAddress" type="text" required />
+                <input id="detailAddress" name="상세주소" type="text" required />
               </div>
 
               <div class="field">
                 <label for="messageInput">문의사항 <span class="optional-label">(선택)</span></label>
-                <textarea id="messageInput" name="message" placeholder="원하는 수업 방식, 상담 가능 시간 등을 적어주세요.">${escapeText(messageValue)}</textarea>
+                <textarea id="messageInput" name="문의사항" placeholder="원하는 수업 방식, 상담 가능 시간 등을 적어주세요.">${escapeText(messageValue)}</textarea>
               </div>
 
               <div class="privacy-consent">
                 <label for="privacyConsent">
-                  <input id="privacyConsent" name="privacyConsent" type="checkbox" required />
+                  <input id="privacyConsent" name="개인정보 수집 동의" type="checkbox" required />
                   <span>개인정보 수집 및 이용에 동의합니다. <span class="optional-label">(필수)</span></span>
                 </label>
                 <p>상담 신청 확인과 안내를 위해 학생 이름, 연락처, 학교급, 희망 과목, 주소, 문의 내용을 수집·이용합니다.</p>
               </div>
 
               <button class="contact-submit" type="submit" data-contact-submit>체험 수업 신청하기 →</button>
-              <p class="form-help">학년과 과목은 자동 입력될 수 있으며, 주소와 문의사항은 직접 입력해 주세요.</p>
+              <p class="form-submit-status" id="formSubmitStatus" role="status" aria-live="polite"></p>
+              <p class="form-help">작성하신 내용은 상담 확인과 안내 목적으로만 사용됩니다.</p>
             </form>
           </div>
         </section>`;
@@ -7091,21 +7099,62 @@ function languagesView(active = '영어') {
       if (requiredMark) requiredMark.hidden = !options.length;
     }
 
-    function handleContactSubmit(event) {
+    async function handleContactSubmit(event) {
       event.preventDefault();
       const form = event.currentTarget;
+      const submitButton = form.querySelector('[data-contact-submit]');
+      const status = form.querySelector('#formSubmitStatus');
+
       if (!form.checkValidity()) {
         form.reportValidity();
         return;
       }
-      if (NAVER_FORM_URL) {
-        var formWindow = window.open(NAVER_FORM_URL, '_blank');
-        if (formWindow) formWindow.opener = null;
+
+      if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.includes('여기에_붙여넣기')) {
+        if (status) {
+          status.textContent = 'Web3Forms Access Key를 먼저 입력해 주세요.';
+          status.className = 'form-submit-status error';
+        }
         return;
       }
-      openSubmitSuccessModal();
-      form.reset();
-      updateGradeDetailSelect('');
+
+      const originalText = submitButton ? submitButton.textContent : '';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = '신청 내용을 전송하고 있습니다…';
+      }
+      if (status) {
+        status.textContent = '';
+        status.className = 'form-submit-status';
+      }
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || '전송에 실패했습니다.');
+        }
+
+        openSubmitSuccessModal();
+        form.reset();
+        updateGradeDetailSelect('');
+        if (status) status.textContent = '';
+      } catch (error) {
+        if (status) {
+          status.textContent = '신청 전송에 실패했습니다. 잠시 후 다시 시도하거나 전화·카카오톡으로 문의해 주세요.';
+          status.className = 'form-submit-status error';
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText || '체험 수업 신청하기 →';
+        }
+      }
     }
 
     document.addEventListener('pointerdown', (event) => {
