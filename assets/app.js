@@ -6693,6 +6693,36 @@ function languagesView(active = '영어') {
       ]
     };
 
+
+    function ensureRegionMobileGridStyle() {
+      if (document.getElementById('regionMobileFourColumnStyle')) return;
+
+      const style = document.createElement('style');
+      style.id = 'regionMobileFourColumnStyle';
+      style.textContent = `
+        @media (max-width: 768px) {
+          .province-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+            gap: 8px !important;
+          }
+
+          .province-grid .grid-button {
+            width: 100% !important;
+            min-width: 0 !important;
+            min-height: 44px;
+            padding: 9px 4px !important;
+            font-size: 12px !important;
+            line-height: 1.2;
+            white-space: normal;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    ensureRegionMobileGridStyle();
+
     let activeMobileBottomMenu = '';
 
     function findVisibleBottomNavigation(startElement) {
@@ -6999,7 +7029,7 @@ function languagesView(active = '영어') {
         return;
       }
 
-      const clickedBottomNav = findVisibleBottomNavigation(target);
+      const clickedBottomNav = target.closest('.mobile-bottom');
       if (clickedBottomNav && !target.closest('#mobileBottomChooser')) {
         const label = (target.textContent || '').replace(/\s+/g, '').trim();
         const menuByLabel = {
