@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://YOUR_DOMAIN/sitemaps/sitemap-1.xml</loc>
+    <loc>https://dodumg.com/sitemaps/sitemap-1.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://YOUR_DOMAIN/sitemaps/sitemap-2.xml</loc>
+    <loc>https://dodumg.com/sitemaps/sitemap-2.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://YOUR_DOMAIN/sitemaps/sitemap-3.xml</loc>
+    <loc>https://dodumg.com/sitemaps/sitemap-3.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://YOUR_DOMAIN/sitemaps/sitemap-additions-1%EC%B0%A8.xml</loc>
+    <loc>https://dodumg.com/sitemaps/sitemap-additions-1%EC%B0%A8.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://YOUR_DOMAIN/sitemaps/sitemap-additions-%EA%B4%91%EC%A3%BC.xml</loc>
+    <loc>https://dodumg.com/sitemaps/sitemap-additions-%EA%B4%91%EC%A3%BC.xml</loc>
   </sitemap>
 </sitemapindex>
