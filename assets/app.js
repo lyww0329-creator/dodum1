@@ -7199,7 +7199,12 @@ function languagesView(active = '영어') {
         });
         return;
       }
-      if (target.matches('[data-contact-route]')) { event.preventDefault(); setHash(target.dataset.contactRoute); return; }
+      if (target.matches('[data-contact-route]')) {
+        event.preventDefault();
+        const root = window.__SITE_ROOT__ || './';
+        window.location.href = root + encodeURIComponent('상담신청') + '/';
+        return;
+      }
       if (target.matches('[data-route]')) { event.preventDefault(); setHash(target.dataset.route); return; }
       if (target.matches('[data-subject]')) { setHash('subject/' + encodeURIComponent(target.dataset.subject)); return; }
       if (target.matches('[data-subject-grade]')) {
