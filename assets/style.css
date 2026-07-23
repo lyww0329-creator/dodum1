@@ -1070,20 +1070,20 @@
 
 @media (max-width: 680px) {
       .floating-consult {
-        right: 12px;
-        bottom: 96px;
-        gap: 8px;
+        right: 10px;
+        bottom: 18px;
+        gap: 6px;
       }
 
       .floating-consult button {
-        width: 122px;
-        min-height: 42px;
-        padding: 0 10px;
-        font-size: 13px;
+        width: 108px;
+        min-height: 38px;
+        padding: 0 9px;
+        font-size: 12px;
       }
 
       .floating-consult .icon {
-        font-size: 15px;
+        font-size: 14px;
       }
     }
 
