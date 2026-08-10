@@ -6603,7 +6603,19 @@ function languagesView(active = '영어') {
         </section>`;
     }
 
+    function updateOpenGraphImage() {
+      const imageUrl = 'https://dodumg.com/dodum-thumbnail.png';
+      let meta = document.head.querySelector('meta[property="og:image"]');
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', 'og:image');
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', imageUrl);
+    }
+
     function render(route = 'home') {
+      updateOpenGraphImage();
       const [page, a, b, c, d] = route.split('/').map(decodeURIComponent);
       const languageTheme = page === 'language' ? (a || '영어') : (page === 'languages' ? '영어' : '');
       document.body.classList.toggle('language-theme-active', !!languageTheme);
