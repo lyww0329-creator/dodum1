@@ -1898,7 +1898,7 @@
 
     @media (max-width: 680px) {
       .review-viewport {
-        --review-visible: 3;
+        --review-visible: 1;
         --review-gap: 8px;
       }
 
