@@ -5028,7 +5028,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       const summaryTitle = title || '지역과외';
       const area = locationLabel || summaryTitle.replace(/과외$/, '');
       const gradeText = gradeLabel ? `${gradeLabel} 학습 상태 확인` : '학년별 학습 상태 확인';
-      const subjectText = subject ? `${subject} 과목 우선순위 정리` : '국어·수학·영어 등 과목 선택 가능';
+      const subjectText = subject ? `${subject} 과목 우선순위 정리` : '전과목';
       return `
         <div class="detail-summary-box" aria-label="${summaryTitle} 3줄 요약">
           <p class="detail-summary-title">${summaryTitle} 3줄 요약</p>
@@ -5092,6 +5092,23 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         ['과목 기준', `${subjectText}에서 먼저 잡아야 할 단원과 학습 습관을 상담에서 확인합니다.`]
       ];
 
+      const regionConcernSection = !gradeData ? `
+          <section class="region-content-card">
+            <h3>${areaLabel}에서 자주 확인하는 학습 고민</h3>
+            <p>${areaLabel} 과외를 알아볼 때는 단순히 수업 가능 여부만 보기보다 학생의 공부 습관과 과목별 편차, 학교 일정까지 함께 확인하는 것이 좋습니다.</p>
+            <div class="region-criteria-grid">
+              ${[
+                ['공부 습관', '숙제와 복습이 일정하지 않거나 스스로 공부를 시작하는 데 어려움이 있는지 확인합니다.'],
+                ['과목별 편차', '잘하는 과목과 어려워하는 과목의 차이를 보고 우선 보완할 순서를 정리합니다.'],
+                ['시험·과제 관리', '학교 시험 일정과 과제량을 확인해 현재 학습 흐름에서 놓치고 있는 부분을 살펴봅니다.']
+              ].map(([head, body]) => `
+                <article class="region-criteria-card">
+                  <b>${head}</b>
+                  <span>${body}</span>
+                </article>`).join('')}
+            </div>
+          </section>` : '';
+
       const criteria = [
         ['현재 학습 상태', `${keyword}를 시작하기 전 ${gradeData ? `${gradeText} 과정에서 ` : ''}학생이 어느 단원에서 막히는지 확인합니다.`],
         ['수업 가능 방식', `${visitText}, 화상 수업 가능 시간, 희망 요일을 함께 봅니다.`],
@@ -5132,8 +5149,10 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
 
       return `
         <div class="region-content-stack">
+          ${regionConcernSection}
+
           <section class="region-content-card">
-            <h3>${keyword} 상담 안내</h3>
+            <h3>${areaLabel} 과외 상담 안내</h3>
             <p>${keyword}는 ${gradeData ? `${gradeText} 시기의 학습 흐름` : '학생의 현재 학습 상태'}${subject ? `과 ${subject} 학습 상태` : '과 필요한 과목'}를 함께 살펴보며 수업 방향을 정합니다. ${locationLabel} 지역 수업은 방문 가능 여부, 화상 수업 가능 시간, 학교 일정과 과제 상황까지 상담에서 함께 확인합니다.</p>
             <div class="region-mini-grid">
               ${miniCards.map(([head, body]) => `
@@ -5147,7 +5166,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           ${gradeBlendSection}
 
           <section class="region-content-card">
-            <h3>${keyword} 선택할 때 확인할 기준</h3>
+            <h3>과외 선택 전 확인할 기준</h3>
             <p>${keyword}는 수업 가능 방식과 함께 학생의 현재 학습 상태, 필요한 과목, 목표를 같이 정리해야 방향이 선명해집니다.</p>
             <div class="region-criteria-grid">
               ${criteria.map(([head, body]) => `
@@ -5159,7 +5178,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           </section>
 
           <section class="region-content-card">
-            <h3>${keyword} 수업 진행 방향</h3>
+            <h3>1:1 수업은 이렇게 진행됩니다</h3>
             <p>${keyword} 상담 후에는 학생의 현재 상태를 확인하고, 필요한 과목과 학습량을 조정하면서 1:1 개별 맞춤 수업으로 이어갑니다.</p>
             <div class="region-process-grid">
               ${process.map(([step, head, body]) => `
@@ -5172,7 +5191,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           </section>
 
           <section class="region-content-card">
-            <h3>${keyword} 상담 전 체크리스트</h3>
+            <h3>상담 전 확인해 주세요</h3>
             <p>${keyword} 상담 전에 아래 내용을 미리 정리해두면 방문·화상 방식, 현재 학습 상태, 필요한 과목에 맞춰 수업 방향을 더 빠르게 잡을 수 있습니다.</p>
             <div class="region-check-grid">
               ${checks.map(([head, body]) => `
