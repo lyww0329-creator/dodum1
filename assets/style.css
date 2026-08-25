@@ -5841,11 +5841,13 @@
     }
 
     .home-fit-point {
-      display: flex;
-      align-items: flex-start;
-      gap: 13px;
+      display: grid;
+      justify-items: center;
+      align-content: start;
+      gap: 10px;
       min-width: 0;
       padding: 4px 22px;
+      text-align: center;
     }
 
     .home-fit-point + .home-fit-point {
@@ -5996,12 +5998,12 @@
       }
 
       .home-fit-point {
-        display: flex;
-        align-items: center;
-        justify-items: initial;
-        gap: 14px;
+        display: grid;
+        justify-items: center;
+        align-content: start;
+        gap: 9px;
         padding: 17px 4px;
-        text-align: left;
+        text-align: center;
       }
 
       .home-fit-point + .home-fit-point {
