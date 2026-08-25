@@ -5834,6 +5834,7 @@
       line-height: 1.9;
       letter-spacing: -0.025em;
       word-break: keep-all;
+      text-align: left;
     }
 
     .home-fit-points {

@@ -4636,7 +4636,7 @@
                 </div>
                 <div class="home-fit-copy">
                   <span class="home-fit-eyebrow">학부모가 먼저 확인해야 할 기준</span>
-                  <h2 id="homeFitTitle">우리 아이에게 맞는 과외는<br /><span>아이를 제대로 아는 것에서 시작됩니다</span></h2>
+                  <h2 id="homeFitTitle">우리 아이에게<br />맞는 과외는<br /><span>아는 것에서 시작됩니다</span></h2>
                   <p>현재 아이의 학습 수준과 습관, 부족한 부분을 정확히 파악해야 어떤 과목을 어떻게 채워야 할지 방향이 보입니다. 돋움과외는 진단부터 맞춤 계획까지 아이에게 필요한 학습 방향을 함께 정리합니다.</p>
                 </div>
               </div>
