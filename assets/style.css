@@ -5818,6 +5818,7 @@
       font-weight: 950;
       letter-spacing: -0.06em;
       word-break: keep-all;
+      text-align: left;
     }
 
     .home-fit-copy h2 > span {
@@ -5843,13 +5844,13 @@
     }
 
     .home-fit-point {
-      display: grid;
-      justify-items: center;
-      align-content: start;
-      gap: 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 14px;
       min-width: 0;
       padding: 4px 22px;
-      text-align: center;
+      text-align: left;
     }
 
     .home-fit-point + .home-fit-point {
@@ -5947,11 +5948,12 @@
       }
 
       .home-fit-point {
-        display: grid;
-        justify-items: center;
-        gap: 9px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
         padding: 4px 12px;
-        text-align: center;
+        text-align: left;
       }
     }
 
@@ -6001,12 +6003,12 @@
       }
 
       .home-fit-point {
-        display: grid;
-        justify-items: center;
-        align-content: start;
-        gap: 9px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 14px;
         padding: 17px 4px;
-        text-align: center;
+        text-align: left;
       }
 
       .home-fit-point + .home-fit-point {
