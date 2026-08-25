@@ -5819,13 +5819,17 @@
       word-break: keep-all;
     }
 
+    .home-fit-copy h2 span {
+      color: var(--teal);
+    }
+
     .home-fit-copy h2 br + * {
       color: inherit;
     }
 
     .home-fit-copy p {
       margin: 0;
-      color: #526b7a;
+      color: #23384a;
       font-size: 15.5px;
       line-height: 1.9;
       letter-spacing: -0.025em;
@@ -5855,24 +5859,25 @@
     }
 
     .home-fit-point-icon {
-      width: 42px;
-      height: 42px;
+      width: 56px;
+      height: 56px;
       border-radius: 999px;
-      background: rgba(42,157,143,.10);
+      background: rgba(42,157,143,.08);
       color: var(--teal);
       box-shadow: none;
     }
 
     .home-fit-point-icon svg {
-      width: 20px;
-      height: 20px;
+      width: 27px;
+      height: 27px;
+      stroke-width: 2.2;
     }
 
     .home-fit-point b {
       display: block;
-      margin: 1px 0 5px;
+      margin: 1px 0 7px;
       color: var(--teal);
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.35;
       font-weight: 950;
       letter-spacing: -0.035em;
@@ -5880,7 +5885,7 @@
 
     .home-fit-point span {
       display: block;
-      color: #526b7a;
+      color: #23384a;
       font-size: 13px;
       line-height: 1.65;
       letter-spacing: -0.02em;
@@ -6012,8 +6017,13 @@
       }
 
       .home-fit-point-icon {
-        width: 40px;
-        height: 40px;
+        width: 52px;
+        height: 52px;
+      }
+
+      .home-fit-point-icon svg {
+        width: 25px;
+        height: 25px;
       }
 
       .home-fit-point b {
