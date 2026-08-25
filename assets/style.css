@@ -5754,3 +5754,272 @@
     width: min(100% - 28px, 540px);
   }
 }
+
+    /* 메인: 우리 아이에게 맞는 과외 섹션 */
+    .home-fit-section {
+      margin-bottom: clamp(104px, 10vw, 146px);
+    }
+
+    .home-fit-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+      align-items: stretch;
+      overflow: hidden;
+      border-radius: 30px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(42,157,143,.12);
+      box-shadow: 0 22px 48px rgba(15,23,42,.08);
+    }
+
+    .home-fit-image-wrap {
+      min-width: 0;
+      min-height: 430px;
+      overflow: hidden;
+      background: rgba(19,78,111,.05);
+    }
+
+    .home-fit-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+
+    .home-fit-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+      padding: clamp(34px, 4.5vw, 56px);
+    }
+
+    .home-fit-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin: 0 0 20px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(42,157,143,.10);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: -0.025em;
+    }
+
+    .home-fit-copy h2 {
+      margin: 0 0 24px;
+      color: var(--navy);
+      font-size: clamp(31px, 3.55vw, 46px);
+      line-height: 1.18;
+      font-weight: 950;
+      letter-spacing: -0.06em;
+      word-break: keep-all;
+    }
+
+    .home-fit-copy h2 br + * {
+      color: inherit;
+    }
+
+    .home-fit-copy p {
+      margin: 0;
+      color: #526b7a;
+      font-size: 15.5px;
+      line-height: 1.9;
+      letter-spacing: -0.025em;
+      word-break: keep-all;
+    }
+
+    .home-fit-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 22px;
+      padding: 20px 6px 2px;
+    }
+
+    .home-fit-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      min-width: 0;
+      padding: 4px 22px;
+    }
+
+    .home-fit-point + .home-fit-point {
+      border-left: 1px solid rgba(19,78,111,.12);
+    }
+
+    .home-fit-point-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(42,157,143,.10);
+      color: var(--teal);
+      box-shadow: none;
+    }
+
+    .home-fit-point-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .home-fit-point b {
+      display: block;
+      margin: 1px 0 5px;
+      color: var(--teal);
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .home-fit-point span {
+      display: block;
+      color: #526b7a;
+      font-size: 13px;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+    }
+
+    /* 좁은 PC */
+    @media (max-width: 1040px) {
+      .home-fit-main {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      .home-fit-image-wrap,
+      .home-fit-image {
+        min-height: 390px;
+      }
+
+      .home-fit-copy {
+        padding: 34px 30px;
+      }
+
+      .home-fit-copy h2 {
+        font-size: clamp(28px, 3.5vw, 38px);
+      }
+
+      .home-fit-point {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+
+    /* 태블릿: 사진 위, 문구 아래 */
+    @media (max-width: 820px) {
+      .home-fit-main {
+        grid-template-columns: 1fr;
+      }
+
+      .home-fit-image-wrap {
+        min-height: 0;
+        aspect-ratio: 16 / 10;
+      }
+
+      .home-fit-image {
+        min-height: 0;
+        height: 100%;
+        object-position: 50% 46%;
+      }
+
+      .home-fit-copy {
+        padding: 34px 28px 38px;
+      }
+
+      .home-fit-copy h2 {
+        font-size: clamp(28px, 6vw, 38px);
+      }
+
+      .home-fit-points {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .home-fit-point {
+        display: grid;
+        justify-items: center;
+        gap: 9px;
+        padding: 4px 12px;
+        text-align: center;
+      }
+    }
+
+    /* 모바일 */
+    @media (max-width: 640px) {
+      .home-fit-section {
+        margin-bottom: 96px;
+      }
+
+      .home-fit-main {
+        border-radius: 24px;
+      }
+
+      .home-fit-image-wrap {
+        aspect-ratio: 4 / 3;
+      }
+
+      .home-fit-image {
+        object-position: 50% 45%;
+      }
+
+      .home-fit-copy {
+        padding: 28px 20px 30px;
+      }
+
+      .home-fit-eyebrow {
+        margin-bottom: 16px;
+        font-size: 12px;
+      }
+
+      .home-fit-copy h2 {
+        margin-bottom: 18px;
+        font-size: clamp(27px, 8vw, 34px);
+        line-height: 1.2;
+      }
+
+      .home-fit-copy p {
+        font-size: 14.5px;
+        line-height: 1.82;
+      }
+
+      .home-fit-points {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 16px;
+        padding: 0;
+      }
+
+      .home-fit-point {
+        display: flex;
+        align-items: center;
+        justify-items: initial;
+        gap: 14px;
+        padding: 17px 4px;
+        text-align: left;
+      }
+
+      .home-fit-point + .home-fit-point {
+        border-left: 0;
+        border-top: 1px solid rgba(19,78,111,.10);
+      }
+
+      .home-fit-point-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .home-fit-point b {
+        font-size: 15px;
+      }
+
+      .home-fit-point span {
+        font-size: 13px;
+      }
+    }
+
