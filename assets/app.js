@@ -4624,15 +4624,47 @@
             </div>
           </div>
           <div class="home-description-section" aria-label="돋움과외 설명 영역">
-            <div class="home-spacer-box home-message-box" aria-label="핵심 메시지 영역">
-              <span>학부모가 먼저 확인해야 할 기준</span>
-              <strong>우리 아이에게 맞는 과외는<br />‘좋은 선생님’보다<br />아이를 제대로 아는 것에서 시작됩니다</strong>
-            </div>
+            <section class="home-fit-section" aria-labelledby="homeFitTitle">
+              <div class="home-fit-main">
+                <div class="home-fit-image-wrap">
+                  <img
+                    class="home-fit-image"
+                    src="/assets/home-tutoring-fit.png"
+                    alt="학생의 학습 내용을 함께 살펴보며 지도하는 1대1 과외 수업 모습"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="home-fit-copy">
+                  <span class="home-fit-eyebrow">학부모가 먼저 확인해야 할 기준</span>
+                  <h2 id="homeFitTitle">우리 아이에게 맞는 과외는<br />아이를 제대로 아는 것에서 시작됩니다</h2>
+                  <p>현재 아이의 학습 수준과 습관, 부족한 부분을 정확히 파악해야 어떤 과목을 어떻게 채워야 할지 방향이 보입니다. 돋움과외는 진단부터 맞춤 계획까지 아이에게 필요한 학습 방향을 함께 정리합니다.</p>
+                </div>
+              </div>
 
-            <div class="home-intro-blank" aria-label="메인 설명 또는 이미지 입력 영역">
-              <h2>${lineIcon('usercheck')}아이의 성격과 이해 속도에 맞춘 1:1 교육 설계</h2>
-              <p>아이마다 이해 속도와 질문 방식은 다릅니다. 돋움과외는 성적표만 보지 않고, 아이가 어떻게 배우는지부터 확인합니다.</p>
-            </div>
+              <div class="home-fit-points" aria-label="맞춤 과외 핵심 기준">
+                <div class="home-fit-point">
+                  ${lineIcon('target', 'home-fit-point-icon')}
+                  <div>
+                    <b>정확한 진단</b>
+                    <span>현재 수준과 학습 습관을 꼼꼼하게 확인합니다.</span>
+                  </div>
+                </div>
+                <div class="home-fit-point">
+                  ${lineIcon('clipboard', 'home-fit-point-icon')}
+                  <div>
+                    <b>맞춤 학습 계획</b>
+                    <span>아이에게 필요한 과목과 학습 방법, 목표를 구체적으로 정리합니다.</span>
+                  </div>
+                </div>
+                <div class="home-fit-point">
+                  ${lineIcon('chart', 'home-fit-point-icon')}
+                  <div>
+                    <b>지속적인 관리</b>
+                    <span>변화를 확인하고 부족한 부분을 꾸준히 보완합니다.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             <section class="home-info-block">
               <h2>${lineIcon('check')}상담 전, 함께 확인합니다</h2>
@@ -5321,7 +5353,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         const backRoute = districtMap ? `region/${encodeURIComponent(province)}/${encodeURIComponent(city)}` : `region/${encodeURIComponent(province)}`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span><span class="chip">${city}</span>${district ? `<span class="chip">${district}</span>` : ''}</div>
-          <button class="region-back" type="button" data-route="${backRoute}">이전 지역 다시 선택</button>
           <div class="region-grid-title">읍·면·동 선택</div>
           <div class="town-grid" aria-label="${scope} 읍면동 선택">
             ${towns.map(name => `<button class="grid-button" type="button" data-region-town="${name}" data-province-name="${province}" data-region-city-name="${city}" data-district-name="${district}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
