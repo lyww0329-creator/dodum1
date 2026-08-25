@@ -5820,12 +5820,8 @@
       word-break: keep-all;
     }
 
-    .home-fit-copy h2 span {
-      color: var(--teal);
-    }
-
-    .home-fit-copy h2 br + * {
-      color: inherit;
+    .home-fit-copy h2 > span {
+      color: #2a9d8f;
     }
 
     .home-fit-copy p {
@@ -5864,8 +5860,8 @@
       width: 56px;
       height: 56px;
       border-radius: 999px;
-      background: rgba(42,157,143,.08);
-      color: var(--teal);
+      background: #eef8f7;
+      color: #138f88;
       box-shadow: none;
     }
 
@@ -5878,7 +5874,7 @@
     .home-fit-point b {
       display: block;
       margin: 1px 0 7px;
-      color: var(--teal);
+      color: #2a9d8f;
       font-size: 16px;
       line-height: 1.35;
       font-weight: 950;
