@@ -5306,7 +5306,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         pickerTitle = `${province} 읍·면·동 선택`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span></div>
-          <button class="region-back" type="button" data-route="region">시·도 다시 선택</button>
           <div class="region-grid-title">읍·면·동 선택</div>
           <div class="town-grid" aria-label="${province} 읍면동 선택">
             ${towns.map(name => `<button class="grid-button" type="button" data-region-town="${name}" data-province-name="${province}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
@@ -5315,7 +5314,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         pickerTitle = `${province} 구·군 선택`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span></div>
-          <button class="region-back" type="button" data-route="region">시·도 다시 선택</button>
           <div class="region-grid-title">구·군 선택</div>
           <div class="region-district-grid" aria-label="${province} 구군 선택">
             ${districtList.map(name => `<button class="grid-button" type="button" data-region-district="${name}" data-province-name="${province}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
@@ -5324,7 +5322,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         pickerTitle = `${district} 읍·면·동 선택`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span><span class="chip">${district}</span></div>
-          <button class="region-back" type="button" data-route="region/${encodeURIComponent(province)}">구·군 다시 선택</button>
           <div class="region-grid-title">읍·면·동 선택</div>
           <div class="town-grid" aria-label="${district} 읍면동 선택">
             ${towns.map(name => `<button class="grid-button" type="button" data-region-town="${name}" data-province-name="${province}" data-district-name="${district}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
@@ -5333,7 +5330,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         pickerTitle = `${province} 시·군 선택`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span></div>
-          <button class="region-back" type="button" data-route="region">시·도 다시 선택</button>
           <div class="region-grid-title">시·군 선택</div>
           <div class="region-city-grid" aria-label="${province} 시군 선택">
             ${cityList.map(name => `<button class="grid-button" type="button" data-region-city="${name}" data-province-name="${province}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
@@ -5342,7 +5338,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         pickerTitle = `${city} 구·군 선택`;
         pickerBody = `
           <div class="region-path"><span class="chip">${province}</span><span class="chip">${city}</span></div>
-          <button class="region-back" type="button" data-route="region/${encodeURIComponent(province)}">시·군 다시 선택</button>
           <div class="region-grid-title">구·군 선택</div>
           <div class="region-district-grid" aria-label="${city} 구군 선택">
             ${districtList.map(name => `<button class="grid-button" type="button" data-region-district="${name}" data-province-name="${province}" data-region-city-name="${city}" data-region-grade-name="${activeGrade}" data-region-subject-name="${activeSubject}">${name}</button>`).join('')}
