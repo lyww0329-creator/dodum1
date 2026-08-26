@@ -6704,6 +6704,7 @@ function languagesView(active = '영어') {
     function render(route = 'home') {
       updateOpenGraphImage();
       const [page, a, b, c, d] = route.split('/').map(decodeURIComponent);
+      document.body.classList.remove('region-picker-active');
       const languageTheme = page === 'language' ? (a || '영어') : (page === 'languages' ? '영어' : '');
       document.body.classList.toggle('language-theme-active', !!languageTheme);
       if (languageTheme) document.body.dataset.languageTheme = languageTheme;
@@ -6739,6 +6740,7 @@ function languagesView(active = '영어') {
       else if (page === 'subjects') app.innerHTML = subjectsView('수학');
       else if (page === 'region') {
         const parsedRegion = parseRegionRoute(route);
+        document.body.classList.toggle('region-picker-active', !parsedRegion.regionTown);
         if (parsedRegion.regionTown) {
           app.innerHTML = regionView(
             parsedRegion.provinceName,

@@ -2190,7 +2190,7 @@
       transform: translateX(-50%);
       width: min(100% - 28px, 540px);
       display: none;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       padding: 10px;
       border-radius: 24px;
@@ -2406,7 +2406,7 @@
       .floating-consult { right: 10px; bottom: 88px; gap: 7px; }
       .floating-consult button { width: 40px; height: 40px; font-size: 15px; }
       .list-card.mobile-compact { grid-template-columns: 1fr; }
-      .mobile-bottom { grid-template-columns: repeat(4, 1fr); }
+      .mobile-bottom { grid-template-columns: repeat(3, 1fr); }
       .mobile-bottom button { font-size: 11px; padding: 8px 4px; }
       .modal { padding: 22px; border-radius: 26px; }
     }
@@ -6043,5 +6043,24 @@
       .home-fit-point span {
         font-size: 13px;
       }
+    }
+
+    @media (min-width: 1180px) {
+      .home-fit-copy h2 {
+        font-size: 38px;
+      }
+
+      .home-fit-copy h2 > span {
+        white-space: nowrap;
+      }
+    }
+
+    /* 하단 플로팅 메뉴: 홈 제외 / 지역 선택 화면에서는 숨김 */
+    .mobile-bottom button[data-route="home"] {
+      display: none !important;
+    }
+
+    body.region-picker-active .mobile-bottom {
+      display: none !important;
     }
 
