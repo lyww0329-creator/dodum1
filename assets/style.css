@@ -1842,6 +1842,8 @@
       --review-visible: 3;
       --review-gap: 18px;
       margin-top: 22px;
+      margin-bottom: -34px;
+      padding-bottom: 34px;
       overflow: hidden;
       width: 100%;
     }
