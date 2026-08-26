@@ -5864,6 +5864,11 @@
       background: #eef8f7;
       color: #138f88;
       box-shadow: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 56px;
+      padding: 0;
     }
 
     .home-fit-point-icon svg {
@@ -5882,7 +5887,7 @@
       letter-spacing: -0.035em;
     }
 
-    .home-fit-point span {
+    .home-fit-point > div > span {
       display: block;
       color: #23384a;
       font-size: 13px;
@@ -6019,6 +6024,7 @@
       .home-fit-point-icon {
         width: 52px;
         height: 52px;
+        flex-basis: 52px;
       }
 
       .home-fit-point-icon svg {
