@@ -5813,12 +5813,16 @@
     .home-fit-copy h2 {
       margin: 0 0 24px;
       color: var(--navy);
-      font-size: clamp(31px, 3.55vw, 46px);
+      font-size: clamp(31px, 2.9vw, 38px);
       line-height: 1.18;
       font-weight: 950;
       letter-spacing: -0.06em;
       word-break: keep-all;
       text-align: left;
+    }
+
+    .home-fit-copy h2 > span {
+      white-space: nowrap;
     }
 
     .home-fit-copy h2 > span {
