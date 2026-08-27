@@ -4795,6 +4795,10 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .region-criteria-grid.grade-point-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .region-process-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
