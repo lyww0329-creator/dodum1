@@ -5153,7 +5153,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           <section class="region-content-card">
             <h3>학년별 학습 포인트</h3>
             <p>학년에 따라 필요한 학습 관리의 우선순위가 달라질 수 있어 현재 과정에 맞는 기준을 먼저 확인합니다.</p>
-            <div class="region-criteria-grid">
+            <div class="region-criteria-grid grade-point-grid">
               ${[
                 ['초등', '읽기·쓰기·연산의 기본기와 숙제·복습 습관을 함께 확인합니다.'],
                 ['중등', '과목별 개념 정리와 학교 시험 범위, 오답 관리 흐름을 점검합니다.'],
@@ -5170,13 +5170,13 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       const afterConsultSection = `
           <section class="region-content-card">
             <h3>상담 후 진행 순서</h3>
-            <p>상담에서 확인한 내용을 바탕으로 수업 방식과 일정, 학습 방향을 정리한 뒤 첫 수업으로 이어집니다.</p>
+            <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업 후 아이 맞춤 커리큘럼으로 수업을 시작합니다.</p>
             <div class="region-process-grid">
               ${[
-                ['1단계', '상담 내용 정리', '학년, 과목, 현재 학습 상태와 희망 수업 방식을 정리합니다.'],
-                ['2단계', '수업 조건 조율', '방문·화상 여부와 가능한 요일, 시간대를 맞춥니다.'],
-                ['3단계', '학습 방향 확정', '우선 보완할 과목과 단원, 수업 목표를 정리합니다.'],
-                ['4단계', '첫 수업 시작', '정리된 방향에 맞춰 1:1 수업을 시작하고 이후 학습 상태에 따라 조정합니다.']
+                ['1단계', '간단한 학습 상담', '현재 학습 상태와 공부 습관, 성향, 고민 등을 간단히 확인합니다.'],
+                ['2단계', '선생님 일정 조율', '아이에게 맞는 선생님과 수업 가능한 요일과 시간을 조율합니다.'],
+                ['3단계', '무료 모의 수업', '실제 수업 방식과 선생님과의 호흡을 확인할 수 있도록 무료 모의 수업을 진행합니다.'],
+                ['4단계', '맞춤 커리큘럼 설계 후 수업 시작', '모의 수업 내용을 바탕으로 아이에게 필요한 학습 방향과 커리큘럼을 정리한 뒤 정식 수업을 시작합니다.']
               ].map(([step, head, body]) => `
                 <article class="region-process-step">
                   <b>${step}</b>
@@ -5424,16 +5424,16 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         return `
           <div class="region-grid-title">학년 선택</div>
           <div class="region-grade-grid" aria-label="${scopeLabel} 학년 선택">
-            ${regionGrades.map(name => `<button class="grid-button ${name === regionGradeGroup ? 'active' : ''}" type="button" data-region-grade="${name}" data-province-name="${province}" data-region-city-name="${city}" data-district-name="${district}" data-town-name="${town}" data-region-subject-current="${regionSubject}">${name}</button>`).join('')}
+            ${regionGrades.map(name => `<button class="grid-button ${name === regionGradeGroup ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
           </div>
           ${regionGradeGroup ? `
           <div class="region-grid-title">세부 학년 선택</div>
           <div class="region-detail-grade-grid" aria-label="${scopeLabel} 세부 학년 선택">
-            ${regionGradeDetails.map(name => `<button class="grid-button ${name === regionGradeDetail ? 'active' : ''}" type="button" data-region-grade="${name}" data-province-name="${province}" data-region-city-name="${city}" data-district-name="${district}" data-town-name="${town}" data-region-subject-current="${regionSubject}">${name}</button>`).join('')}
+            ${regionGradeDetails.map(name => `<button class="grid-button ${name === regionGradeDetail ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
           </div>` : ''}
           <div class="region-grid-title">과목 선택</div>
           <div class="region-subject-grid" aria-label="${scopeLabel} 과목 선택">
-            ${regionSubjects.map(name => `<button class="grid-button ${name === regionSubject ? 'active' : ''}" type="button" data-region-subject="${name}" data-province-name="${province}" data-region-city-name="${city}" data-district-name="${district}" data-town-name="${town}" data-region-grade-name="${regionGrade}">${name}</button>`).join('')}
+            ${regionSubjects.map(name => `<button class="grid-button ${name === regionSubject ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, regionGrade, name)}">${name}</button>`).join('')}
           </div>`;
       }
 
