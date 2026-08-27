@@ -5170,13 +5170,14 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       const afterConsultSection = `
           <section class="region-content-card">
             <h3>상담 후 진행 순서</h3>
-            <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업 후 아이 맞춤 커리큘럼으로 수업을 시작합니다.</p>
+            <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업을 바탕으로 맞춤 커리큘럼을 설계한 후 정식 수업을 시작합니다.</p>
             <div class="region-process-grid">
               ${[
                 ['1단계', '간단한 학습 상담', '현재 학습 상태와 공부 습관, 성향, 고민 등을 간단히 확인합니다.'],
                 ['2단계', '선생님 일정 조율', '아이에게 맞는 선생님과 수업 가능한 요일과 시간을 조율합니다.'],
                 ['3단계', '무료 모의 수업', '실제 수업 방식과 선생님과의 호흡을 확인할 수 있도록 무료 모의 수업을 진행합니다.'],
-                ['4단계', '맞춤 커리큘럼 설계 후 수업 시작', '모의 수업 내용을 바탕으로 아이에게 필요한 학습 방향과 커리큘럼을 정리한 뒤 정식 수업을 시작합니다.']
+                ['4단계', '맞춤 커리큘럼 설계', '모의 수업 내용을 바탕으로 아이에게 필요한 학습 방향과 커리큘럼을 구체적으로 정리합니다.'],
+                ['5단계', '수업 시작', '설계한 커리큘럼과 학습 방향에 맞춰 정식 1:1 수업을 시작합니다.']
               ].map(([step, head, body]) => `
                 <article class="region-process-step">
                   <b>${step}</b>
@@ -5193,11 +5194,10 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       ];
 
       const process = [
-        ['1단계', '상담 접수', `${keyword}의 학년, 과목, 방문·화상 가능 여부를 확인합니다.`],
-        ['2단계', '학습 진단', gradeData ? `${gradeText} 학교 진도, 최근 어려웠던 단원, 과제 습관을 나눠 봅니다.` : '학교 진도, 최근 어려웠던 단원, 과제 습관을 나눠 봅니다.'],
-        ['3단계', '방향 정리', gradeData ? `방문 또는 화상 가능 여부와 ${gradeText} 학습 우선순위를 조정합니다.` : '방문 또는 화상 가능 여부와 수업 우선순위를 조정합니다.'],
-        ['4단계', '1:1 맞춤 수업', '학생이 이해한 부분과 막히는 부분을 확인하며 수업합니다.'],
-        ['5단계', '피드백 조정', '과제와 오답을 보고 다음 수업의 학습량을 조정합니다.']
+        ['현재 수준 점검', gradeData ? `${gradeText} 학교 진도와 이해도, 어려움을 느끼는 단원과 학습 습관을 확인합니다.` : '학교 진도와 이해도, 어려움을 느끼는 단원과 학습 습관을 확인합니다.'],
+        ['개념·기초 보완', '부족한 부분을 중심으로 필요한 개념과 기본기를 채우며 학습의 빈틈을 줄입니다.'],
+        ['문제 적용과 오답 관리', '배운 내용을 문제에 적용하고 틀린 이유를 확인해 같은 실수가 반복되지 않도록 관리합니다.'],
+        ['학습 상태에 따른 조정', '진도와 이해도, 과제 수행 상태를 확인하며 학습량과 다음 수업의 방향을 조정합니다.']
       ];
 
       const checks = [
@@ -5246,11 +5246,10 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
 
           <section class="region-content-card">
             <h3>${keyword} 수업 진행 방향</h3>
-            <p>${keyword} 상담 후에는 학생의 현재 상태를 확인하고, 필요한 과목과 학습량을 조정하면서 1:1 개별 맞춤 수업으로 이어갑니다.</p>
-            <div class="region-process-grid">
-              ${process.map(([step, head, body]) => `
-                <article class="region-process-step">
-                  <b>${step}</b>
+            <p>${keyword} 수업은 정해진 단계를 일괄적으로 따라가기보다 학생의 현재 상태와 변화에 맞춰 필요한 부분을 중심으로 조정하며 진행합니다.</p>
+            <div class="region-direction-grid">
+              ${process.map(([head, body]) => `
+                <article class="region-direction-card">
                   <strong>${head}</strong>
                   <span>${body}</span>
                 </article>`).join('')}
