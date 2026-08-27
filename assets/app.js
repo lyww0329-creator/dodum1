@@ -7043,10 +7043,57 @@ function languagesView(active = '영어') {
       activeMobileBottomMenu = '';
     }
 
+    function currentRegionMobileContext() {
+      const currentRoute = location.hash.replace('#', '') || staticRouteFromLocation();
+      if (!currentRoute.startsWith('region/')) return null;
+
+      const parsed = parseRegionRoute(currentRoute);
+      if (!parsed.regionTown) return null;
+      return parsed;
+    }
+
+    function mobileBottomItemsWithRegionContext(menuName) {
+      const baseItems = MOBILE_BOTTOM_MENU_ITEMS[menuName];
+      if (!baseItems) return null;
+
+      const region = currentRegionMobileContext();
+      if (!region) return baseItems;
+
+      if (menuName === 'grade') {
+        return baseItems.map(([label]) => [
+          label,
+          buildRegionDeepRoute(
+            region.provinceName,
+            region.regionCity,
+            region.regionDistrict,
+            region.regionTown,
+            label,
+            region.regionSubject || ''
+          )
+        ]);
+      }
+
+      if (menuName === 'subjects') {
+        return baseItems.map(([label]) => [
+          label,
+          buildRegionDeepRoute(
+            region.provinceName,
+            region.regionCity,
+            region.regionDistrict,
+            region.regionTown,
+            region.regionGrade || '',
+            label
+          )
+        ]);
+      }
+
+      return baseItems;
+    }
+
     function toggleMobileBottomChooser(menuName, triggerButton) {
       if (!mobileBottomMenuIsVisible()) return false;
 
-      const items = MOBILE_BOTTOM_MENU_ITEMS[menuName];
+      const items = mobileBottomItemsWithRegionContext(menuName);
       if (!items) return false;
 
       const chooser = ensureMobileBottomChooser();
