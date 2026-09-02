@@ -5044,6 +5044,38 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         </div>`;
     }
 
+    function regionIntroHero(title = '지역과외', province = '서울', city = '', district = '', town = '', gradeLabel = '', subject = '') {
+      const areaLabel = town || district || city || province;
+      const gradeText = gradeLabel ? `${gradeLabel} 학생의 ` : '';
+      const subjectText = subject ? `${subject} 학습 상태와 ` : '';
+      return `
+        <div class="subject-study-hero region-intro-hero">
+          <div class="subject-study-main">
+            <h3>${areaLabel}에서 아이에게 맞는 학습 방향을 찾습니다</h3>
+            <p>${areaLabel} 과외는 ${gradeText}${subjectText}현재 공부 습관과 어려움을 먼저 확인하고, 필요한 과목과 학습 목표에 맞춰 수업 방향을 정리합니다.</p>
+            <div class="subject-lesson-mode" aria-label="${title} 수업 방식">
+              <span>1:1 개별 맞춤</span>
+              <span>화상</span>
+              <span>방문</span>
+            </div>
+          </div>
+          <div class="subject-study-side">
+            <div class="subject-study-point">
+              <b>현재 학습 상태</b>
+              <span>공부 습관, 이해도, 어려움을 느끼는 부분을 먼저 확인합니다.</span>
+            </div>
+            <div class="subject-study-point">
+              <b>필요한 과목</b>
+              <span>과목별 편차와 현재 우선순위를 보고 필요한 수업을 정리합니다.</span>
+            </div>
+            <div class="subject-study-point">
+              <b>학습 목표</b>
+              <span>기초 보완, 내신, 선행 등 아이에게 필요한 방향을 함께 확인합니다.</span>
+            </div>
+          </div>
+        </div>`;
+    }
+
     function regionContentSection(title = '지역과외', province = '서울', city = '', district = '', town = '', gradeLabel = '', subject = '') {
       const keyword = title || '지역과외';
       const locationParts = [province, city, district, town].filter(Boolean);
@@ -5445,6 +5477,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
               <h2>${regionTitle}</h2>
             </div>
             ${regionSummaryBox(regionTitle, regionGradeLabel, regionSubject, stageLabel)}
+            ${regionIntroHero(regionTitle, province, city, district, town, regionGradeLabel, regionSubject)}
             ${regionContentSection(regionTitle, province, city, district, town, regionGradeLabel, regionSubject)}
             <div class="subject-option-panel">
               ${regionSelectionControls(stageLabel)}
@@ -5468,6 +5501,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
                 </div>
               </div>
               ${regionSummaryBox(stageTitle, regionGradeLabel, regionSubject, stageLabel || province)}
+              ${regionIntroHero(stageTitle, province, city, district, town, regionGradeLabel, regionSubject)}
               ${regionContentSection(stageTitle, province, city, district, town, regionGradeLabel, regionSubject)}
               ${regionSelectionControls(stageLabel || province)}
               ${nextLocationStage()}
