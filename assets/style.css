@@ -6385,3 +6385,186 @@
         font-size: 11px;
       }
     }
+
+
+    /* region detail page size unification */
+    .region-view .region-intro-hero {
+      width: min(100%, 960px) !important;
+      gap: 14px !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-main {
+      padding: 24px 26px !important;
+      border-radius: 28px !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-main h3 {
+      font-size: clamp(22px, 2.2vw, 32px) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-main p {
+      margin-top: 10px !important;
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-side {
+      gap: 10px !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-point {
+      min-height: 72px !important;
+      padding: 14px 16px !important;
+      border-radius: 20px !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-point b {
+      margin-bottom: 4px !important;
+      font-size: 14px !important;
+      line-height: 1.35 !important;
+    }
+
+    .region-view .region-intro-hero .subject-study-point span {
+      font-size: 12px !important;
+      line-height: 1.5 !important;
+    }
+
+    .region-view .region-intro-hero .subject-lesson-mode {
+      margin-top: 16px !important;
+      gap: 7px !important;
+    }
+
+    .region-view .region-intro-hero .subject-lesson-mode span {
+      min-height: 30px !important;
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+    }
+
+    .region-view > .subject-option-panel {
+      width: min(100%, 960px) !important;
+      padding: 28px !important;
+      border-radius: 28px !important;
+    }
+
+    .region-view > .subject-option-panel .region-grid-title {
+      margin: 26px 0 12px !important;
+      font-size: 16px !important;
+      line-height: 1.35 !important;
+    }
+
+    .region-view > .subject-option-panel .region-grid-title:first-child {
+      margin-top: 0 !important;
+    }
+
+    .region-view > .subject-option-panel .grid-button {
+      min-height: 50px !important;
+      padding: 10px 10px !important;
+      border-radius: 16px !important;
+      font-size: 13px !important;
+      line-height: 1.3 !important;
+    }
+
+    .region-view > .subject-consult-banner {
+      width: min(100%, 960px) !important;
+      padding: 28px 24px !important;
+      border-radius: 28px !important;
+    }
+
+    .region-view > .subject-consult-banner h3 {
+      margin-bottom: 10px !important;
+      font-size: clamp(22px, 2.2vw, 32px) !important;
+      line-height: 1.25 !important;
+    }
+
+    .region-view > .subject-consult-banner p {
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    .region-view > .subject-consult-banner .subject-consult-btn {
+      min-width: 190px !important;
+      margin-top: 20px !important;
+      padding: 13px 28px !important;
+      font-size: 14px !important;
+    }
+
+    @media (max-width: 860px) {
+      .region-view .region-intro-hero {
+        grid-template-columns: 1fr !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-side {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-point {
+        min-height: 74px !important;
+        padding: 11px 8px !important;
+        border-radius: 16px !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-point b {
+        font-size: 11px !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-point span {
+        font-size: 9.5px !important;
+        line-height: 1.4 !important;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .region-view .region-intro-hero .subject-study-main {
+        padding: 20px 16px !important;
+        border-radius: 22px !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-main h3 {
+        font-size: 21px !important;
+      }
+
+      .region-view .region-intro-hero .subject-study-main p {
+        font-size: 14px !important;
+      }
+
+      .region-view > .subject-option-panel {
+        padding: 20px 16px !important;
+        border-radius: 22px !important;
+      }
+
+      .region-view > .subject-option-panel .region-grid-title {
+        margin: 22px 0 10px !important;
+        font-size: 15px !important;
+      }
+
+      .region-view > .subject-option-panel .grid-button {
+        min-height: 42px !important;
+        padding: 8px 5px !important;
+        font-size: 11px !important;
+        border-radius: 13px !important;
+      }
+
+      .region-view > .subject-consult-banner {
+        padding: 24px 16px !important;
+        border-radius: 22px !important;
+      }
+
+      .region-view > .subject-consult-banner h3 {
+        font-size: 21px !important;
+      }
+
+      .region-view > .subject-consult-banner p {
+        font-size: 14px !important;
+      }
+
+      .region-view > .subject-consult-banner .subject-consult-btn {
+        min-width: 170px !important;
+        margin-top: 18px !important;
+        padding: 12px 22px !important;
+        font-size: 13px !important;
+      }
+    }
+
