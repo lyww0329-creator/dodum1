@@ -5098,19 +5098,22 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
 
 
       const regionConcernSection = !gradeData ? `
-          <section class="region-content-card">
+          <section class="region-content-card region-concern-section">
             <h3>${areaLabel}에서 자주 확인하는 학습 고민</h3>
             <p>${areaLabel} 과외를 알아볼 때는 수업 가능 여부뿐 아니라 학생의 공부 습관, 과목별 편차, 학교 일정도 함께 확인하는 것이 좋습니다.</p>
-            <div class="region-criteria-grid">
+            <div class="region-concern-list">
               ${[
                 ['공부 습관', '숙제와 복습이 일정하지 않거나 스스로 공부를 시작하는 데 어려움이 있는지 확인합니다.'],
                 ['과목별 편차', '잘하는 과목과 어려워하는 과목의 차이를 보고 우선 보완할 순서를 정리합니다.'],
                 ['시험·과제 관리', '학교 시험 일정과 과제량을 확인해 현재 학습 흐름에서 놓치고 있는 부분을 살펴봅니다.']
               ].map(([head, body]) => `
-                <article class="region-criteria-card">
-                  <b>${head}</b>
-                  <span>${body}</span>
-                </article>`).join('')}
+                <div class="region-concern-item">
+                  <span class="region-concern-check" aria-hidden="true">✓</span>
+                  <div>
+                    <b>${head}</b>
+                    <span>${body}</span>
+                  </div>
+                </div>`).join('')}
             </div>
           </section>` : '';
 
@@ -5193,43 +5196,22 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         <div class="region-content-stack">
           ${regionConcernSection}
 
-          <section class="region-content-card">
-            <h3>${keyword} 상담 안내</h3>
-            <p>${keyword}는 ${gradeData ? `${gradeText} 시기의 학습 흐름` : '학생의 현재 학습 상태'}${subject ? `과 ${subject} 학습 상태` : '과 필요한 과목'}를 함께 살펴보며 수업 방향을 정합니다. ${locationLabel} 지역 수업은 방문 가능 여부, 화상 수업 가능 시간, 학교 일정과 과제 상황까지 상담에서 함께 확인합니다.</p>
-            <div class="region-mini-grid">
-              ${miniCards.map(([head, body]) => `
-                <article class="region-mini-card">
-                  <b>${head}</b>
-                  <span>${body}</span>
-                </article>`).join('')}
-            </div>
-          </section>
-
           ${gradeBlendSection}
 
           ${gradePointSection}
 
-          <section class="region-content-card">
+          <section class="region-content-card region-direction-section">
             <h3>${keyword} 수업 진행 방향</h3>
             <p>${keyword} 수업은 정해진 단계를 일괄적으로 따라가기보다 학생의 현재 상태와 변화에 맞춰 필요한 부분을 중심으로 조정하며 진행합니다.</p>
-            <div class="region-direction-grid">
-              ${process.map(([head, body]) => `
-                <article class="region-direction-card">
-                  <strong>${head}</strong>
-                  <span>${body}</span>
-                </article>`).join('')}
-            </div>
-          </section>
-
-          <section class="region-content-card">
-            <h3>${keyword} 상담 전 체크리스트</h3>
-            <p>${keyword} 상담 전에 아래 내용을 미리 정리해두면 방문·화상 방식, 현재 학습 상태, 필요한 과목에 맞춰 수업 방향을 더 빠르게 잡을 수 있습니다.</p>
-            <div class="region-check-grid">
-              ${checks.map(([head, body]) => `
-                <article class="region-check-card">
-                  <b>${head}</b>
-                  <span>${body}</span>
-                </article>`).join('')}
+            <div class="region-direction-list">
+              ${process.map(([head, body], index) => `
+                <div class="region-direction-row">
+                  <span class="region-direction-index">${String(index + 1).padStart(2, '0')}</span>
+                  <div class="region-direction-copy">
+                    <strong>${head}</strong>
+                    <span>${body}</span>
+                  </div>
+                </div>`).join('')}
             </div>
           </section>
 
@@ -5971,7 +5953,6 @@ function gradeView(activeGroup = '초등', activeGrade = '', activeSubject = '',
             <h2>${gradeTitle}</h2>
           </div>
           ${gradeStudySummaryBox(gradeSummaryTitle, group, grade)}
-          ${gradeStudyHero(group, grade, subject)}
           ${gradeConcernSection(group, grade, subject)}
           ${gradeGoalSection(group, grade, subject)}
           ${gradeLessonProcessSection(group, grade, subject)}
