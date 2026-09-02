@@ -5109,18 +5109,21 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>
 
-          <section class="region-content-card">
+          <section class="region-content-card region-grade-concern-goal-section">
             <h3>${keyword} ${gradeText} 고민과 수업 목표</h3>
             <p>${keyword} 상담에서는 지역과 수업 방식뿐 아니라 ${gradeText} 학생에게 자주 보이는 고민과 목표를 같이 확인해야 수업 방향이 자연스럽게 정리됩니다.</p>
-            <div class="region-criteria-grid">
+            <div class="region-grade-concern-goal-list">
               ${[
                 ...(gradeConcernItems || []).slice(0, 2),
                 ...(gradeGoalItems || []).slice(0, 1)
               ].map(([head, body]) => `
-                <article class="region-criteria-card">
-                  <b>${head}</b>
-                  <span>${body}</span>
-                </article>`).join('')}
+                <div class="region-grade-concern-goal-item">
+                  <span class="region-grade-concern-goal-check" aria-hidden="true">✓</span>
+                  <div>
+                    <b>${head}</b>
+                    <span>${body}</span>
+                  </div>
+                </div>`).join('')}
             </div>
           </section>` : '';
 
