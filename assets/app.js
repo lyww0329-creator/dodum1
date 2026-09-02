@@ -4594,31 +4594,6 @@
     }
 
 
-    function homeConsultDirectionSection() {
-      return `
-        <section class="home-info-block">
-          <h2>${lineIcon('compass')}상담 후 수업 방향이 정해지는 과정</h2>
-          <p>상담 후에는 학년, 과목, 지역, 수업 방식을 한 번에 정하는 것이 아니라 아이의 현재 상태를 기준으로 필요한 순서를 정리합니다.</p>
-          <div class="home-info-grid">
-            <div class="home-info-card">
-              ${lineIcon('search', 'home-card-icon')}
-              <b>현재 상태 확인</b>
-              <span>성적표만 보지 않고 막히는 단원, 공부 습관, 질문 방식, 과제 상황을 함께 확인합니다.</span>
-            </div>
-            <div class="home-info-card">
-              ${lineIcon('book', 'home-card-icon')}
-              <b>수업 조건 정리</b>
-              <span>학년, 과목, 지역, 방문 또는 화상 가능 여부를 나눠 아이에게 맞는 수업 조건을 정리합니다.</span>
-            </div>
-            <div class="home-info-card">
-              ${lineIcon('target', 'home-card-icon')}
-              <b>맞춤 방향 안내</b>
-              <span>기초 보완, 내신 준비, 선행, 회화처럼 지금 우선해야 할 목표를 정하고 수업 방향을 안내합니다.</span>
-            </div>
-          </div>
-        </section>`;
-    }
-
     function homeView() {
       return `
         <section class="hero view">
@@ -4673,60 +4648,45 @@
               </div>
             </section>
 
-            <section class="home-info-block">
-              <h2>${lineIcon('check')}상담 전, 함께 확인합니다</h2>
-              <p>상담은 단순 신청 접수가 아니라 자녀에게 필요한 수업 방향을 정리하는 과정입니다.</p>
-              <div class="home-check-grid" aria-label="상담 전 확인 항목">
-                <div class="home-check-item">현재 성적보다 먼저 막히는 지점</div>
-                <div class="home-check-item">공부 습관과 질문 방식</div>
-                <div class="home-check-item">학년과 과목에 맞는 수업 목적</div>
-                <div class="home-check-item">체험 수업 전 확인해야 할 조건</div>
+            <section class="home-info-block home-child-check-section">
+              <h2>${lineIcon('check')}우리 아이는 어떤 모습인가요?</h2>
+              <p>아이의 현재 모습을 먼저 살펴보면 어떤 부분부터 도와야 할지 수업 방향이 더 선명해집니다.</p>
+              <div class="home-child-check-grid" aria-label="아이 학습 상태 체크">
+                <div class="home-child-check-item">계획은 세우지만 오래 이어가지 못해요</div>
+                <div class="home-child-check-item">모르는 문제를 그냥 넘어가는 편이에요</div>
+                <div class="home-child-check-item">공부는 하는데 성적 변화가 크지 않아요</div>
+                <div class="home-child-check-item">특정 과목이나 단원에서 자주 막혀요</div>
+                <div class="home-child-check-item">혼자 공부할 때 집중력이 쉽게 떨어져요</div>
+                <div class="home-child-check-item">공부 자신감이 많이 낮아졌어요</div>
               </div>
+              <p class="home-child-check-note">아이마다 공부가 막히는 이유가 다르기 때문에 현재 상태를 먼저 확인하는 것부터 시작합니다.</p>
             </section>
 
-            ${homeConsultDirectionSection()}
-
-            <section class="home-info-block">
+            <section class="home-info-block home-choice-section">
               <h2>${lineIcon('search')}왜 돋움과외를 선택해야 할까요?</h2>
-              <p>아무리 좋은 수업도 아이가 이해하지 못하면 소용이 없습니다. 돋움과외는 단순한 선생님 소개에서 끝내지 않고, 자녀의 현재 실력과 공부 습관을 꼼꼼히 확인하여 1:1 맞춤 학습 방향을 제안합니다.</p>
-              <div class="home-info-grid">
-                <div class="home-info-card">
-                  ${lineIcon('compass', 'home-card-icon')}
-                  <b>아이를 먼저 봅니다</b>
-                  <span>점수만 보지 않고 학습 동기, 질문 방식, 이해 속도를 함께 확인합니다.</span>
-                </div>
-                <div class="home-info-card">
-                  ${lineIcon('book', 'home-card-icon')}
-                  <b>수업 방향을 맞춥니다</b>
-                  <span>학년, 과목, 수준, 목표에 따라 지금 필요한 1:1 수업 방향을 정리합니다.</span>
-                </div>
-                <div class="home-info-card">
-                  ${lineIcon('shield', 'home-card-icon')}
-                  <b>시작 후에도 확인합니다</b>
-                  <span>수업이 시작된 뒤에도 진행 상황을 살피며 학습 방향이 흔들리지 않게 조율합니다.</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="home-info-block">
-              <h2>${lineIcon('graduation')}코칭이 필요한 이유</h2>
-              <p>혼자서 공부하는 방법을 모르는 아이에게는 문제 풀이식 수업보다 스스로 계획하고 실천하는 1:1 코칭이 필요합니다.</p>
-              <div class="home-info-grid">
-                <div class="home-info-card">
-                  ${lineIcon('calendar', 'home-card-icon')}
-                  <b>계획 없이 공부하는 아이</b>
-                  <span>오늘 무엇을 해야 하는지부터 정리해 공부 리듬을 차근차근 되찾게 합니다.</span>
-                </div>
-                <div class="home-info-card">
-                  ${lineIcon('target', 'home-card-icon')}
-                  <b>질문을 못 하고 넘어가는 아이</b>
-                  <span>모르는 부분을 편하게 묻는 1:1 환경에서 기초 개념과 약점 단원을 채워갑니다.</span>
-                </div>
-                <div class="home-info-card">
-                  ${lineIcon('trophy', 'home-card-icon')}
-                  <b>자신감이 떨어진 아이</b>
-                  <span>아이 눈높이에 맞춘 설명과 작은 성취 경험을 통해 공부에 대한 불안감을 줄입니다.</span>
-                </div>
+              <p>정해진 수업 방식에 아이를 맞추기보다, 현재 상태를 먼저 보고 필요한 방향을 함께 정리합니다.</p>
+              <div class="home-choice-list" aria-label="돋움과외 선택 이유">
+                <article class="home-choice-item">
+                  <div class="home-choice-number">01</div>
+                  <div>
+                    <b>아이부터 봅니다</b>
+                    <span>점수만 보지 않고 현재 학습 상태와 공부 습관, 질문 방식까지 함께 확인합니다.</span>
+                  </div>
+                </article>
+                <article class="home-choice-item">
+                  <div class="home-choice-number">02</div>
+                  <div>
+                    <b>수업을 맞춥니다</b>
+                    <span>정해진 방식에 학생을 맞추지 않고 학년, 과목, 수준, 목표에 맞춰 필요한 수업 방향을 정리합니다.</span>
+                  </div>
+                </article>
+                <article class="home-choice-item">
+                  <div class="home-choice-number">03</div>
+                  <div>
+                    <b>계속 확인합니다</b>
+                    <span>수업 시작 후에도 학습 상태와 변화를 살피며 필요한 부분을 계속 조정합니다.</span>
+                  </div>
+                </article>
               </div>
             </section>
 
@@ -4754,28 +4714,33 @@
             </section>
 
             <section class="home-info-block home-system-block">
-              <h2>${lineIcon('trophy')}돋움과외의 개별 맞춤 관리 시스템</h2>
-              <p>상담부터 수업 정착까지, 자녀의 상태를 확인하고 수업 방향을 조율하는 진행 과정을 안내합니다.</p>
-              <div class="home-timeline" aria-label="돋움과외 4단계 관리 과정">
+              <h2>${lineIcon('trophy')}상담부터 수업까지</h2>
+              <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업을 바탕으로 맞춤 커리큘럼을 설계한 후 정식 수업을 시작합니다.</p>
+              <div class="home-timeline" aria-label="상담부터 수업까지 5단계 진행 과정">
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">1</div>
-                  <b>상세 상담 및 공부 성향 파악</b>
-                  <span>전화나 카카오톡을 통해 현재 자녀가 겪고 있는 성적 고민과 평소 공부 습관을 일차적으로 확인합니다.</span>
+                  <b>간단한 학습 상담</b>
+                  <span>현재 학습 상태와 공부 습관, 성향, 고민을 먼저 확인합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">2</div>
-                  <b>1:1 맞춤 수업 설계</b>
-                  <span>파악된 내용을 바탕으로 자녀의 학년과 과목, 학습 목적에 맞는 1대1 수업을 연결합니다.</span>
+                  <b>선생님 일정 조율</b>
+                  <span>학생의 지역과 가능한 시간에 맞춰 선생님 일정을 확인하고 조율합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">3</div>
-                  <b>체험 수업으로 성향 확인</b>
-                  <span>연결된 수업이 아이와 잘 맞는지 모의 수업을 통해 설명 속도나 소통 방식을 직접 확인하고 조율합니다.</span>
+                  <b>무료 모의 수업</b>
+                  <span>실제 수업 전에 설명 방식과 소통이 학생에게 잘 맞는지 확인합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">4</div>
-                  <b>정기 피드백 및 수업 관리</b>
-                  <span>본격적인 수업 진행 후에도 주기적인 상담과 연락을 통해 학습 상태를 점검하고 올바른 방향을 유지합니다.</span>
+                  <b>맞춤 커리큘럼 설계</b>
+                  <span>상담과 모의 수업에서 확인한 내용을 바탕으로 필요한 학습 방향을 구체화합니다.</span>
+                </div>
+                <div class="home-timeline-item">
+                  <div class="home-timeline-step">5</div>
+                  <b>수업 시작</b>
+                  <span>정리된 방향과 일정에 맞춰 정식 수업을 시작합니다.</span>
                 </div>
               </div>
             </section>
