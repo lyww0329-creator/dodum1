@@ -4845,15 +4845,18 @@
     function subjectCoreSection(active = '수학') {
       const data = subjectStudyData(active);
       return `
-        <div class="subject-study-section">
+        <div class="subject-study-section subject-core-check-section">
           <h3>${active} 학습 체크포인트</h3>
           <p>공부 과정에서 반복해서 확인해야 할 기준입니다.</p>
-          <div class="subject-card-grid">
+          <div class="subject-core-check-list">
             ${data.keys.map(([title, body]) => `
-              <article class="subject-key-card">
-                <b>${title}</b>
-                <span>${body}</span>
-              </article>`).join('')}
+              <div class="subject-core-check-item">
+                <span class="subject-core-check-icon" aria-hidden="true">✓</span>
+                <div>
+                  <b>${title}</b>
+                  <span>${body}</span>
+                </div>
+              </div>`).join('')}
           </div>
         </div>`;
     }
@@ -4979,7 +4982,6 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           ${subjectLessonProcessSection(active)}
           ${subjectMethodsSection(active)}
           ${subjectCoreSection(active)}
-          ${subjectDiagnosisSection(active)}
           ${subjectGuideSection(active)}
           ${subjectRoadmapSection(active)}
 
