@@ -6589,3 +6589,158 @@
       }
     }
 
+
+    /* grade page refinement */
+    .grade-goal-list {
+      width: min(100%, 820px);
+      margin: 24px auto 0;
+      border-top: 1px solid rgba(42,157,143,.16);
+    }
+
+    .grade-goal-row {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 22px 8px;
+      border-bottom: 1px solid rgba(42,157,143,.16);
+    }
+
+    .grade-goal-index {
+      color: var(--teal);
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.045em;
+    }
+
+    .grade-goal-copy b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-size: 16px;
+      line-height: 1.4;
+      font-weight: 950;
+      letter-spacing: -0.035em;
+    }
+
+    .grade-goal-copy span {
+      display: block;
+      color: #526b7a;
+      font-size: 13px;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+    }
+
+    .grade-parent-miss-list {
+      display: grid;
+      gap: 0;
+      margin-top: 24px;
+      border-top: 1px solid rgba(42,157,143,.14);
+    }
+
+    .grade-parent-miss-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      padding: 18px 4px;
+      border-bottom: 1px solid rgba(42,157,143,.14);
+    }
+
+    .grade-parent-miss-check {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(42,157,143,.12);
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 950;
+      line-height: 1;
+    }
+
+    .grade-parent-miss-item b {
+      display: block;
+      margin: 1px 0 5px;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 950;
+      line-height: 1.4;
+      letter-spacing: -0.035em;
+    }
+
+    .grade-parent-miss-item div > span {
+      display: block;
+      color: #526b7a;
+      font-size: 13px;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+      word-break: keep-all;
+    }
+
+    @media (min-width: 981px) {
+      .grade-process-grid {
+        position: relative;
+      }
+
+      .grade-process-grid::before {
+        content: "";
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        top: 29px;
+        height: 2px;
+        background: rgba(42,157,143,.18);
+        z-index: 0;
+      }
+
+      .grade-process-grid .subject-process-step {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .grade-goal-row {
+        grid-template-columns: 50px minmax(0, 1fr);
+        gap: 12px;
+        padding: 18px 2px;
+      }
+
+      .grade-goal-index {
+        font-size: 20px;
+      }
+
+      .grade-goal-copy b {
+        font-size: 14px;
+      }
+
+      .grade-goal-copy span {
+        font-size: 11px;
+      }
+
+      .grade-parent-miss-item {
+        grid-template-columns: 30px minmax(0, 1fr);
+        gap: 10px;
+        padding: 15px 0;
+      }
+
+      .grade-parent-miss-check {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+      }
+
+      .grade-parent-miss-item b {
+        font-size: 13px;
+      }
+
+      .grade-parent-miss-item div > span {
+        font-size: 11px;
+      }
+    }
+

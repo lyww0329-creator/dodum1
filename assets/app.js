@@ -5763,7 +5763,21 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
     function gradeGoalSection(group = '초등', grade = '', subject = '') {
       const keyword = gradeKeywordLabel(group, grade, subject);
       const items = GRADE_GOAL_COPY[group] || GRADE_GOAL_COPY['초등'];
-      return `<div class="subject-study-section"><h3>${keyword} 수업 목표</h3><p>${keyword}는 단순히 진도만 나가는 방식보다 현재 필요한 목표를 먼저 정하고, 학생에게 맞는 학습 흐름을 만드는 것이 좋습니다.</p><div class="grade-insight-grid">${items.map(([title,body])=>`<article class="grade-insight-card"><b>${title}</b><span>${body}</span></article>`).join('')}</div></div>`;
+      return `
+        <div class="subject-study-section grade-goal-section">
+          <h3>${keyword} 수업 목표</h3>
+          <p>${keyword}는 단순히 진도만 나가는 방식보다 현재 필요한 목표를 먼저 정하고, 학생에게 맞는 학습 흐름을 만드는 것이 좋습니다.</p>
+          <div class="grade-goal-list">
+            ${items.map(([title, body], index) => `
+              <div class="grade-goal-row">
+                <span class="grade-goal-index">${String(index + 1).padStart(2, '0')}</span>
+                <div class="grade-goal-copy">
+                  <b>${title}</b>
+                  <span>${body}</span>
+                </div>
+              </div>`).join('')}
+          </div>
+        </div>`;
     }
 
 
@@ -5794,15 +5808,18 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       const keyword = gradeKeywordLabel(group, grade, subject);
       const items = GRADE_PARENT_MISS_POINTS[group] || GRADE_PARENT_MISS_POINTS['초등'];
       return `
-        <div class="subject-study-section">
+        <div class="subject-study-section grade-parent-miss-section">
           <h3>${keyword} 상담 전에 자주 놓치는 부분</h3>
           <p>${keyword} 상담에서는 성적이나 진도만 보는 것보다 학생이 실제로 어떻게 공부하고 있는지 확인하는 과정이 중요합니다.</p>
-          <div class="grade-insight-grid">
+          <div class="grade-parent-miss-list">
             ${items.map(([title, body]) => `
-              <article class="grade-insight-card">
-                <b>${title}</b>
-                <span>${body}</span>
-              </article>`).join('')}
+              <div class="grade-parent-miss-item">
+                <span class="grade-parent-miss-check" aria-hidden="true">✓</span>
+                <div>
+                  <b>${title}</b>
+                  <span>${body}</span>
+                </div>
+              </div>`).join('')}
           </div>
         </div>`;
     }
@@ -5872,7 +5889,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         <div class="subject-study-section">
           <h3>${keyword} 수업 진행 과정</h3>
           <p>${keyword}는 테스트 수업과 진단을 바탕으로 학생별 커리큘럼을 정리한 뒤, 1:1 개별 맞춤 방식으로 진행합니다.</p>
-          <div class="subject-process-grid">
+          <div class="subject-process-grid grade-process-grid">
             ${steps.map(([step, title, body]) => `
               <div class="subject-process-step">
                 <b>${step}</b>
@@ -5994,7 +6011,6 @@ function gradeView(activeGroup = '초등', activeGrade = '', activeSubject = '',
           ${gradeGuideSection(group, grade, subject)}
           ${gradeSubjectFocusSection(group, grade, subject)}
           ${gradeParentMissSection(group, grade, subject)}
-          ${gradeParentChecklistSection(group, grade, subject)}
           ${gradeFAQSection(group, grade, subject)}
 
           <div class="subject-option-panel">
