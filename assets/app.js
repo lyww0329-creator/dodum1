@@ -6154,7 +6154,7 @@ function gradeView(activeGroup = '초등', activeGrade = '', activeSubject = '',
           ['수업 범위', '파닉스부터 성인·비즈니스까지']
         ],
         targets: ['파닉스·기초', '초등 회화', '중·고등 내신', '수능 대비', '유학&단기 캠프',
-          '시험·자격증', '비즈니스', '영자 신문', '성인 회화', '여행 회화'],
+          '시험·자격증', '비즈니스', '영자 신문', '에세이', '미국 교과서', '국제학교', '영어 토론', '성인 회화', '여행 회화'],
         types: [
           ['파닉스·기초', '알파벳, 소리, 발음, 쉬운 단어를 연결해 영어의 첫 시작을 잡습니다.'],
           ['초등 회화', '듣기와 말하기 습관을 만들고, 짧은 문장으로 자신 있게 표현하도록 돕습니다.'],
@@ -6662,16 +6662,8 @@ function languagesView(active = '영어') {
               </div>
 
               <div class="field">
-                <label for="addressInput">주소 *</label>
-                <div class="address-row">
-                  <input id="addressInput" name="address" type="text" placeholder="도로명 주소를 검색해 주세요" value="${escapeAttr(regionValue)}" required />
-                  <button type="button" data-address-search>주소 검색</button>
-                </div>
-              </div>
-
-              <div class="field">
-                <label for="detailAddress">상세주소 *</label>
-                <input id="detailAddress" name="detail_address" type="text" required />
+                <label for="addressInput">지역 *</label>
+                <input id="addressInput" name="address" type="text" placeholder="동까지 작성해주세요" value="${escapeAttr(regionValue)}" required />
               </div>
 
               <div class="field">
@@ -6684,7 +6676,7 @@ function languagesView(active = '영어') {
                   <input id="privacyConsent" name="privacy_consent" type="checkbox" required />
                   <span>개인정보 수집 및 이용에 동의합니다. <span class="optional-label">(필수)</span></span>
                 </label>
-                <p>상담 신청 확인과 안내를 위해 학생 이름, 연락처, 학교급, 희망 과목, 주소, 문의 내용을 수집·이용합니다.</p>
+                <p>상담 신청 확인과 안내를 위해 학생 이름, 연락처, 학교급, 희망 과목, 지역, 문의 내용을 수집·이용합니다.</p>
               </div>
 
               <button class="contact-submit" type="submit" data-contact-submit>체험 수업 신청하기 →</button>
@@ -7288,7 +7280,6 @@ function languagesView(active = '영어') {
         const grade = form.querySelector('#gradeDetailSelect')?.value || '';
         const lessonSubject = form.querySelector('#subjectSelect')?.value || '';
         const address = form.querySelector('#addressInput')?.value.trim() || '';
-        const detailAddress = form.querySelector('#detailAddress')?.value.trim() || '';
         const inquiryMessage = form.querySelector('#messageInput')?.value.trim() || '';
 
         const formattedMessage = [
@@ -7297,8 +7288,7 @@ function languagesView(active = '영어') {
           `학교급: ${gradeStage}`,
           `세부 학년: ${grade}`,
           `희망 과목: ${lessonSubject}`,
-          `주소: ${address}`,
-          `상세주소: ${detailAddress || '-'}`,
+          `지역: ${address}`,
           '',
           '문의사항',
           inquiryMessage || '-'
