@@ -6568,3 +6568,24 @@
       }
     }
 
+
+    /* region detail: unify horizontal widths */
+    .region-view > .detail-summary-box,
+    .region-view > .region-intro-hero,
+    .region-view > .region-content-stack,
+    .region-view > .subject-option-panel,
+    .region-view > .subject-consult-banner {
+      width: 100% !important;
+      max-width: none !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+
+    /* wide PC: keep floating consultation buttons out of the content boxes */
+    @media (min-width: 1440px) {
+      .floating-consult {
+        right: 22px !important;
+      }
+    }
+
