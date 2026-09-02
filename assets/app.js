@@ -5953,6 +5953,7 @@ function gradeView(activeGroup = '초등', activeGrade = '', activeSubject = '',
             <h2>${gradeTitle}</h2>
           </div>
           ${gradeStudySummaryBox(gradeSummaryTitle, group, grade)}
+          ${gradeStudyHero(group, grade, subject)}
           ${gradeConcernSection(group, grade, subject)}
           ${gradeGoalSection(group, grade, subject)}
           ${gradeLessonProcessSection(group, grade, subject)}
