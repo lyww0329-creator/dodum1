@@ -4049,6 +4049,10 @@
       return value === '성인-N수생' ? '성인/N수생' : value;
     }
 
+    function isDetailGradeValue(value = '') {
+      return Object.values(GRADE_GROUPS).some(grades => grades.includes(value));
+    }
+
     function appendStaticQuery(path, params) {
       const q = new URLSearchParams();
       Object.entries(params || {}).forEach(([k,v]) => { if (v) q.set(k,v); });
@@ -4113,9 +4117,15 @@
         }
         const grade=detail||group;
         const gradeForUrl = gradeValueForUrl(grade);
+        const isDetailGrade = Boolean(detail) && isDetailGradeValue(detail);
         if(province){
           const segs=[province]; if(district) segs.push(district); if(town) segs.push(town);
           if (subject) {
+            if (isDetailGrade) {
+              segs.push(gradeForUrl);
+              segs.push(subject+'과외');
+              return join(segs);
+            }
             segs.push(subject+'과외');
             return appendStaticQuery(join(segs), {학년:gradeForUrl});
           }
@@ -4138,6 +4148,11 @@
         if(p.regionDistrict) segs.push(p.regionDistrict);
         if(p.regionTown) segs.push(p.regionTown);
         if(p.regionSubject) {
+          if (p.regionGrade && isDetailGradeValue(p.regionGrade)) {
+            segs.push(gradeValueForUrl(p.regionGrade));
+            segs.push(p.regionSubject+'과외');
+            return join(segs);
+          }
           segs.push(p.regionSubject+'과외');
           return appendStaticQuery(join(segs), p.regionGrade ? {학년:gradeValueForUrl(p.regionGrade)} : {});
         }
