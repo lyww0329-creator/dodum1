@@ -7450,9 +7450,9 @@ function languagesView(active = '영어') {
         ['성인/N수생', '/성인-N수생과외/']
       ],
       subjects: [
-        ['국어', 'subject/' + encodeURIComponent('국어')],
-        ['영어', 'subject/' + encodeURIComponent('영어')],
         ['수학', 'subject/' + encodeURIComponent('수학')],
+        ['영어', 'subject/' + encodeURIComponent('영어')],
+        ['국어', 'subject/' + encodeURIComponent('국어')],
         ['사회', 'subject/' + encodeURIComponent('사회')],
         ['과학', 'subject/' + encodeURIComponent('과학')]
       ],
