@@ -5653,26 +5653,71 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>` : '';
 
+      const highMathGradeTabbedCopy = {
+        '고1': {
+          title: '공통수학의 흐름을 잡는 시기',
+          intro: '중학교보다 학습량과 문제 난도가 빠르게 올라가는 시기라, 고등 수학의 공부 방식에 적응하면서 공통수학의 핵심 개념과 단원 흐름을 안정적으로 잡는 것이 중요합니다.',
+          points: [
+            ['공통수학 개념 정리', '단원별 핵심 개념을 따로 외우기보다 앞뒤 단원이 어떻게 연결되는지 함께 정리합니다.'],
+            ['학습량과 진도 적응', '학교 수업 속도에 맞춰 그날 배운 내용을 밀리지 않게 복습하는 흐름을 만듭니다.'],
+            ['첫 내신 이후 학습 조정', '첫 시험 결과를 바탕으로 공부 시간, 복습 주기, 문제 풀이량을 다시 조정합니다.']
+          ]
+        },
+        '고2': {
+          title: '선택과목에 따라 학습 방향이 본격적으로 달라지는 시기',
+          intro: '공통수학 이후에는 미적분, 확률과 통계, 기하 등 학교와 학생의 선택 과목에 따라 공부 범위와 난도가 달라집니다. 선택한 과목의 진도를 따라가면서 이전 개념과 연결하고, 과목별 학습량을 나눠 관리하는 것이 중요합니다.',
+          points: [
+            ['미적분·확률과 통계·기하 학습 배분', '학교 진도와 선택 과목의 난도를 고려해 어떤 과목에 시간을 더 써야 할지 우선순위를 정합니다.'],
+            ['공통수학과 선택과목 연결', '미적분이나 기하를 공부할 때 필요한 이전 개념을 함께 확인해 기초 빈틈이 새 단원까지 이어지지 않게 합니다.'],
+            ['선택과목별 복습 관리', '과목마다 자주 틀리는 단원과 문제 유형을 나눠 기록하고, 시험이 끝난 뒤에도 복습 범위를 누적해 관리합니다.']
+          ]
+        },
+        '고3': {
+          title: '선택과목과 목표에 맞춰 학습을 압축하는 시기',
+          intro: '고3은 미적분, 확률과 통계, 기하 등 선택한 과목과 현재 성적, 시험 일정에 따라 학습 우선순위를 더 세밀하게 나눌 필요가 있습니다. 모든 내용을 같은 비중으로 보기보다 점수 변화 가능성이 큰 영역에 시간을 집중하는 것이 중요합니다.',
+          points: [
+            ['선택과목 취약 단원 집중', '미적분의 계산·함수 영역, 확률과 통계의 경우의 수·확률·통계, 기하의 도형·벡터처럼 선택과목 안에서도 약한 단원을 구분해 보완합니다.'],
+            ['내신·모의고사 학습 비중 조절', '학교 시험 기간에는 내신 범위를 집중하고, 이후에는 모의고사와 실전 문제 풀이 비중을 높여 학습 흐름을 조절합니다.'],
+            ['실전 대비와 복습 범위 압축', '반복해서 틀리는 문제와 시간이 오래 걸리는 유형을 중심으로 복습 범위를 줄여 실전에서 바로 적용할 수 있도록 정리합니다.']
+          ]
+        }
+      };
+
       const highMathGradeTabbedSection = subject === '수학' && gradeLabel === '고등' ? `
           <section class="region-content-card region-learning-section region-high-math-grade-tabs-section" data-high-math-grade-section>
             <h3>학년별 학습 포인트</h3>
-            <p>고등 수학은 학년별 학교 진도와 시험 목표가 달라 현재 시기에 필요한 학습 우선순위를 나눠 확인하는 것이 중요합니다.</p>
+            <p>고등 수학은 학년이 올라갈수록 공통수학에서 선택과목, 실전 대비로 학습의 중심이 달라집니다. 현재 학년에 맞는 내용을 선택해 확인해 보세요.</p>
             <div class="region-high-math-grade-tabs" role="tablist" aria-label="고등 수학 세부학년 선택">
               ${['고1', '고2', '고3'].map((gradeName, index) => `
                 <button class="region-high-math-grade-tab ${index === 0 ? 'active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" data-high-math-grade-tab="${index}">${gradeName}</button>`).join('')}
             </div>
             <div class="region-high-math-grade-viewport">
               <div class="region-high-math-grade-track" data-high-math-grade-track>
-                ${['고1', '고2', '고3'].map((gradeName, index) => `
+                ${['고1', '고2', '고3'].map((gradeName, index) => {
+                  const gradeCopy = highMathGradeTabbedCopy[gradeName];
+                  return `
                   <div class="region-high-math-grade-slide" role="tabpanel" aria-label="${gradeName} 수학 학습 포인트" aria-hidden="${index === 0 ? 'false' : 'true'}">
-                    <div class="region-learning-grid">
-                      ${highMathGradePointMap[gradeName].map(([head, body]) => `
-                        <article class="region-learning-card">
-                          <b>${head}</b>
-                          <span>${body}</span>
-                        </article>`).join('')}
+                    <div class="region-high-math-grade-panel">
+                      <div class="region-high-math-grade-panel-head">
+                        <span class="region-high-math-grade-label">${gradeName}</span>
+                        <div>
+                          <strong>${gradeCopy.title}</strong>
+                          <p>${gradeCopy.intro}</p>
+                        </div>
+                      </div>
+                      <div class="region-high-math-grade-points">
+                        ${gradeCopy.points.map(([head, body], pointIndex) => `
+                          <div class="region-high-math-grade-point">
+                            <span class="region-high-math-grade-point-no">0${pointIndex + 1}</span>
+                            <div>
+                              <b>${head}</b>
+                              <span>${body}</span>
+                            </div>
+                          </div>`).join('')}
+                      </div>
                     </div>
-                  </div>`).join('')}
+                  </div>`;
+                }).join('')}
               </div>
             </div>
           </section>` : '';

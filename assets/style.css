@@ -7024,9 +7024,98 @@
   min-width: 0;
 }
 
-.region-high-math-grade-slide .region-learning-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.region-high-math-grade-panel {
   margin-top: 16px;
+  padding: clamp(22px, 3vw, 30px);
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(19,78,111,.055), rgba(42,157,143,.045));
+  border: 1px solid rgba(19,78,111,.08);
+}
+
+.region-high-math-grade-panel-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(19,78,111,.10);
+}
+
+.region-high-math-grade-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+}
+
+.region-high-math-grade-panel-head strong {
+  display: block;
+  color: var(--navy);
+  font-size: clamp(19px, 2.5vw, 25px);
+  line-height: 1.3;
+  letter-spacing: -0.045em;
+  margin-bottom: 9px;
+}
+
+.region-high-math-grade-panel-head p {
+  margin: 0;
+  color: #52687a;
+  font-size: 15px;
+  line-height: 1.75;
+  letter-spacing: -0.02em;
+}
+
+.region-high-math-grade-points {
+  display: grid;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.region-high-math-grade-point {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 2px;
+  border-bottom: 1px solid rgba(19,78,111,.085);
+}
+
+.region-high-math-grade-point:last-child {
+  border-bottom: 0;
+  padding-bottom: 2px;
+}
+
+.region-high-math-grade-point-no {
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .02em;
+  padding-top: 3px;
+}
+
+.region-high-math-grade-point b {
+  display: block;
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.035em;
+  margin-bottom: 5px;
+}
+
+.region-high-math-grade-point span:not(.region-high-math-grade-point-no) {
+  display: block;
+  color: #52687a;
+  font-size: 14px;
+  line-height: 1.65;
+  letter-spacing: -0.015em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -7048,8 +7137,45 @@
     font-size: 13px;
   }
 
-  .region-high-math-grade-slide .region-learning-grid {
-    grid-template-columns: 1fr;
+  .region-high-math-grade-panel {
     margin-top: 12px;
+    padding: 19px 17px;
+    border-radius: 21px;
+  }
+
+  .region-high-math-grade-panel-head {
+    grid-template-columns: 1fr;
+    gap: 11px;
+    padding-bottom: 17px;
+  }
+
+  .region-high-math-grade-label {
+    width: fit-content;
+    min-width: 50px;
+    height: 31px;
+    font-size: 12px;
+  }
+
+  .region-high-math-grade-panel-head strong {
+    font-size: 18px;
+  }
+
+  .region-high-math-grade-panel-head p {
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+
+  .region-high-math-grade-point {
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+    padding: 15px 0;
+  }
+
+  .region-high-math-grade-point b {
+    font-size: 14.5px;
+  }
+
+  .region-high-math-grade-point span:not(.region-high-math-grade-point-no) {
+    font-size: 13px;
   }
 }
