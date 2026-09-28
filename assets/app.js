@@ -4464,6 +4464,11 @@
         target: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1.5"></circle></svg>',
         clipboard: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V2.8h6V4"></path><path d="m8.5 12 2 2 4-4"></path><path d="M8.5 17h7"></path></svg>',
         chart: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V11"></path><path d="M10 19V7"></path><path d="M16 19V4"></path><path d="M3 21h18"></path><path d="m4 10 5-4 4 3 7-6"></path><path d="M17 3h3v3"></path></svg>',
+        branch: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="5" r="2"></circle><circle cx="18" cy="7" r="2"></circle><circle cx="18" cy="17" r="2"></circle><path d="M8 5h3a4 4 0 0 1 4 4v6"></path><path d="M15 9h1"></path><path d="M15 15h1"></path></svg>',
+        link: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"></path></svg>',
+        repeat: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m17 1 4 4-4 4"></path><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><path d="m7 23-4-4 4-4"></path><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>',
+        sliders: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10"></path><path d="M18 6h2"></path><circle cx="16" cy="6" r="2"></circle><path d="M4 12h2"></path><path d="M10 12h10"></path><circle cx="8" cy="12" r="2"></circle><path d="M4 18h8"></path><path d="M16 18h4"></path><circle cx="14" cy="18" r="2"></circle></svg>',
+        stopwatch: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l3 2"></path><path d="M9 2h6"></path><path d="M12 2v3"></path><path d="m18 6 2-2"></path></svg>',
         trophy: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="M7 4h10v5a5 5 0 0 1-10 0V4z"></path><path d="M7 6H4a3 3 0 0 0 3 3"></path><path d="M17 6h3a3 3 0 0 1-3 3"></path></svg>',
         check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 6-11 11-5-5"></path></svg>',
         pin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>',
@@ -5667,9 +5672,9 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           title: '선택과목에 따라 학습 방향이 본격적으로 달라지는 시기',
           intro: '공통수학 이후에는 미적분, 확률과 통계, 기하 등 학교와 학생의 선택 과목에 따라 공부 범위와 난도가 달라집니다. 선택한 과목의 진도를 따라가면서 이전 개념과 연결하고, 과목별 학습량을 나눠 관리하는 것이 중요합니다.',
           points: [
-            ['미적분·확률과 통계·기하 학습 배분', '학교 진도와 선택 과목의 난도를 고려해 어떤 과목에 시간을 더 써야 할지 우선순위를 정합니다.', 'chart'],
-            ['공통수학과 선택과목 연결', '미적분이나 기하를 공부할 때 필요한 이전 개념을 함께 확인해 기초 빈틈이 새 단원까지 이어지지 않게 합니다.', 'book'],
-            ['선택과목별 복습 관리', '과목마다 자주 틀리는 단원과 문제 유형을 나눠 기록하고, 시험이 끝난 뒤에도 복습 범위를 누적해 관리합니다.', 'clipboard']
+            ['미적분·확률과 통계·기하 학습 배분', '학교 진도와 선택 과목의 난도를 고려해 어떤 과목에 시간을 더 써야 할지 우선순위를 정합니다.', 'branch'],
+            ['공통수학과 선택과목 연결', '미적분이나 기하를 공부할 때 필요한 이전 개념을 함께 확인해 기초 빈틈이 새 단원까지 이어지지 않게 합니다.', 'link'],
+            ['선택과목별 복습 관리', '과목마다 자주 틀리는 단원과 문제 유형을 나눠 기록하고, 시험이 끝난 뒤에도 복습 범위를 누적해 관리합니다.', 'repeat']
           ]
         },
         '고3': {
@@ -5677,8 +5682,8 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           intro: '고3은 미적분, 확률과 통계, 기하 등 선택한 과목과 현재 성적, 시험 일정에 따라 학습 우선순위를 더 세밀하게 나눌 필요가 있습니다. 모든 내용을 같은 비중으로 보기보다 점수 변화 가능성이 큰 영역에 시간을 집중하는 것이 중요합니다.',
           points: [
             ['선택과목 취약 단원 집중', '미적분의 계산·함수 영역, 확률과 통계의 경우의 수·확률·통계, 기하의 도형·벡터처럼 선택과목 안에서도 약한 단원을 구분해 보완합니다.', 'target'],
-            ['내신·모의고사 학습 비중 조절', '학교 시험 기간에는 내신 범위를 집중하고, 이후에는 모의고사와 실전 문제 풀이 비중을 높여 학습 흐름을 조절합니다.', 'chart'],
-            ['실전 대비와 복습 범위 압축', '반복해서 틀리는 문제와 시간이 오래 걸리는 유형을 중심으로 복습 범위를 줄여 실전에서 바로 적용할 수 있도록 정리합니다.', 'clipboard']
+            ['내신·모의고사 학습 비중 조절', '학교 시험 기간에는 내신 범위를 집중하고, 이후에는 모의고사와 실전 문제 풀이 비중을 높여 학습 흐름을 조절합니다.', 'sliders'],
+            ['실전 대비와 복습 범위 압축', '반복해서 틀리는 문제와 시간이 오래 걸리는 유형을 중심으로 복습 범위를 줄여 실전에서 바로 적용할 수 있도록 정리합니다.', 'stopwatch']
           ]
         }
       };
