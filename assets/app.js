@@ -4991,6 +4991,75 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
         : subjectProvince
           ? subjectDistricts.map(name => `<button class="grid-button ${name === subjectDistrict ? 'active' : ''}" type="button" data-subject-district="${name}" data-subject-name="${active}" data-active-grade="${selectedGrade}" data-province-name="${subjectProvince}">${name}</button>`).join('')
           : Object.keys(REGION_TREE).map(name => `<button class="grid-button" type="button" data-subject-province="${name}" data-subject-name="${active}" data-active-grade="${selectedGrade}">${name}</button>`).join('');
+
+      const subjectHighMathGradeCopy = {
+        '고1': {
+          title: '공통수학 기초를 고등 학습 흐름으로 연결하는 시기',
+          intro: '고1은 중등 수학에서 고등 수학으로 학습 방식이 크게 달라지는 시기입니다. 공통수학의 개념 흐름을 잡고, 빨라진 학교 진도와 첫 내신을 경험하면서 자신에게 맞는 복습 주기와 문제 풀이량을 조정하는 과정이 중요합니다.',
+          points: [
+            ['학교 진도와 학습량 적응', '수업 속도가 빨라지는 만큼 배운 내용을 그날 정리하고 복습이 밀리지 않도록 학습 흐름을 안정시킵니다.', 'chart'],
+            ['공통수학 개념 흐름 연결', '각 단원을 따로 외우기보다 앞에서 배운 개념이 다음 내용에 어떻게 이어지는지 함께 정리합니다.', 'book'],
+            ['첫 내신 결과로 학습 방식 보완', '첫 시험에서 확인된 강점과 약점을 바탕으로 공부 시간, 복습 간격, 문제 풀이량을 다시 맞춥니다.', 'clipboard']
+          ]
+        },
+        '고2': {
+          title: '미적분·확률과 통계·기하 등 선택과목 관리가 중요해지는 시기',
+          intro: '고2부터는 학교와 학생의 선택에 따라 미적분, 확률과 통계, 기하 등 학습 범위와 난도가 달라질 수 있습니다. 선택과목의 진도를 따라가면서 공통수학에서 이어지는 개념을 확인하고, 과목별 공부량과 복습 범위를 나눠 관리하는 것이 중요합니다.',
+          points: [
+            ['공통수학에서 선택과목으로 연결', '미적분이나 기하를 학습할 때 필요한 이전 개념을 함께 확인해 기초 빈틈이 이후 단원까지 이어지지 않게 합니다.', 'link'],
+            ['미적분·확률과 통계·기하 학습 배분', '학교 진도와 선택 과목의 난도를 기준으로 과목마다 필요한 공부 시간과 우선순위를 조절합니다.', 'branch'],
+            ['과목별 복습 범위 누적', '시험이 끝날 때마다 다시 처음부터 시작하지 않도록 선택과목별 오답과 복습 범위를 차곡차곡 이어갑니다.', 'repeat']
+          ]
+        },
+        '고3': {
+          title: '선택과목과 시험 일정에 맞춰 학습 범위를 정교하게 줄이는 시기',
+          intro: '고3은 미적분, 확률과 통계, 기하 등 선택한 과목과 현재 성적, 남은 시험 일정에 따라 공부의 우선순위를 더 세밀하게 정해야 합니다. 모든 범위를 같은 비중으로 반복하기보다 필요한 단원과 유형에 시간을 집중해 실전 대비 효율을 높이는 것이 중요합니다.',
+          points: [
+            ['내신·모의고사 일정에 맞춘 비중 조절', '학교 시험 기간에는 내신 범위를 집중하고, 이후에는 모의고사와 실전 문제 풀이의 비중을 높여 학습 흐름을 조절합니다.', 'sliders'],
+            ['선택과목 취약 단원 우선 보완', '미적분, 확률과 통계, 기하 안에서도 반복해서 틀리는 단원과 유형을 구분해 필요한 부분부터 집중적으로 보완합니다.', 'target'],
+            ['오답 중심으로 실전 복습 압축', '이미 안정된 내용은 줄이고 시간이 오래 걸리거나 자주 틀리는 문제를 중심으로 복습 범위를 압축합니다.', 'stopwatch']
+          ]
+        }
+      };
+
+      const subjectHighMathGradeSection = active === '수학' && selectedGrade === '고등' ? `
+        <section class="region-content-card region-learning-section region-high-math-grade-tabs-section" data-high-math-grade-section>
+          <h3>학년별 학습 포인트</h3>
+          <p>고등 수학은 공통수학에서 선택과목과 실전 대비로 이어지면서 학년마다 관리해야 할 내용이 달라집니다. 고1·고2·고3 중 현재 학년을 선택해 확인해 보세요.</p>
+          <div class="region-high-math-grade-tabs" role="tablist" aria-label="고등 수학 세부학년 선택">
+            ${['고1', '고2', '고3'].map((gradeName, index) => `
+              <button class="region-high-math-grade-tab ${index === 0 ? 'active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" data-high-math-grade-tab="${index}">${gradeName}</button>`).join('')}
+          </div>
+          <div class="region-high-math-grade-viewport">
+            <div class="region-high-math-grade-track" data-high-math-grade-track>
+              ${['고1', '고2', '고3'].map((gradeName, index) => {
+                const gradeCopy = subjectHighMathGradeCopy[gradeName];
+                return `
+                <div class="region-high-math-grade-slide" role="tabpanel" aria-label="${gradeName} 수학 학습 포인트" aria-hidden="${index === 0 ? 'false' : 'true'}">
+                  <div class="region-high-math-grade-panel">
+                    <div class="region-high-math-grade-panel-head">
+                      <span class="region-high-math-grade-label">${gradeName}</span>
+                      <div>
+                        <strong>${gradeCopy.title}</strong>
+                        <p>${gradeCopy.intro}</p>
+                      </div>
+                    </div>
+                    <div class="region-high-math-grade-points">
+                      ${gradeCopy.points.map(([head, body, icon]) => `
+                        <div class="region-high-math-grade-point">
+                          <span class="region-high-math-grade-point-icon" aria-hidden="true">${iconSvg(icon || 'book')}</span>
+                          <div class="region-high-math-grade-point-copy">
+                            <b>${head}</b>
+                            <span>${body}</span>
+                          </div>
+                        </div>`).join('')}
+                    </div>
+                  </div>
+                </div>`;
+              }).join('')}
+            </div>
+          </div>
+        </section>` : '';
       return `
         <section class="view region-view">
           <div class="section-head">
@@ -4999,6 +5068,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           </div>
           ${subjectStudySummaryBox(`${active}과외`, active)}
           ${subjectStudyHero(active)}
+          ${subjectHighMathGradeSection}
           ${subjectLessonProcessSection(active)}
           ${subjectMethodsSection(active)}
           ${subjectCoreSection(active)}
