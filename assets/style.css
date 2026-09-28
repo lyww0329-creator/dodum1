@@ -6964,3 +6964,92 @@
     font-size: 12px;
   }
 }
+
+
+/* region + high school math: grade tabs / horizontal slide */
+.region-high-math-grade-tabs-section {
+  overflow: hidden;
+}
+
+.region-high-math-grade-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 22px 0 6px;
+  padding: 6px;
+  border-radius: 20px;
+  background: rgba(19,78,111,.055);
+}
+
+.region-high-math-grade-tab {
+  min-height: 48px;
+  border: 0;
+  border-radius: 15px;
+  background: transparent;
+  color: #526b7a;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+  transition: background .22s var(--ease), color .22s var(--ease), box-shadow .22s var(--ease), transform .22s var(--ease);
+}
+
+.region-high-math-grade-tab:hover,
+.region-high-math-grade-tab:focus-visible {
+  outline: none;
+  color: var(--navy);
+  background: rgba(255,255,255,.72);
+}
+
+.region-high-math-grade-tab.active {
+  color: var(--navy);
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(19,78,111,.10);
+}
+
+.region-high-math-grade-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.region-high-math-grade-track {
+  display: flex;
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform .42s var(--ease);
+  will-change: transform;
+}
+
+.region-high-math-grade-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 0;
+}
+
+.region-high-math-grade-slide .region-learning-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .region-high-math-grade-track {
+    transition: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .region-high-math-grade-tabs {
+    gap: 6px;
+    padding: 5px;
+    border-radius: 17px;
+  }
+
+  .region-high-math-grade-tab {
+    min-height: 44px;
+    border-radius: 13px;
+    font-size: 13px;
+  }
+
+  .region-high-math-grade-slide .region-learning-grid {
+    grid-template-columns: 1fr;
+    margin-top: 12px;
+  }
+}

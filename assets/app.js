@@ -5653,6 +5653,30 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>` : '';
 
+      const highMathGradeTabbedSection = subject === '수학' && gradeLabel === '고등' ? `
+          <section class="region-content-card region-learning-section region-high-math-grade-tabs-section" data-high-math-grade-section>
+            <h3>학년별 학습 포인트</h3>
+            <p>고등 수학은 학년별 학교 진도와 시험 목표가 달라 현재 시기에 필요한 학습 우선순위를 나눠 확인하는 것이 중요합니다.</p>
+            <div class="region-high-math-grade-tabs" role="tablist" aria-label="고등 수학 세부학년 선택">
+              ${['고1', '고2', '고3'].map((gradeName, index) => `
+                <button class="region-high-math-grade-tab ${index === 0 ? 'active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" data-high-math-grade-tab="${index}">${gradeName}</button>`).join('')}
+            </div>
+            <div class="region-high-math-grade-viewport">
+              <div class="region-high-math-grade-track" data-high-math-grade-track>
+                ${['고1', '고2', '고3'].map((gradeName, index) => `
+                  <div class="region-high-math-grade-slide" role="tabpanel" aria-label="${gradeName} 수학 학습 포인트" aria-hidden="${index === 0 ? 'false' : 'true'}">
+                    <div class="region-learning-grid">
+                      ${highMathGradePointMap[gradeName].map(([head, body]) => `
+                        <article class="region-learning-card">
+                          <b>${head}</b>
+                          <span>${body}</span>
+                        </article>`).join('')}
+                    </div>
+                  </div>`).join('')}
+              </div>
+            </div>
+          </section>` : '';
+
       const highEnglishGradePointMap = {
         '고1': [
           ['중학교 영어에서 고등 영어로 어휘량 확장', '중학교에서 익힌 기본 어휘를 바탕으로 고등 내신과 모의고사에 필요한 어휘 범위를 넓힙니다.'],
@@ -5766,6 +5790,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>
 
+          ${highMathGradeTabbedSection}
           ${highMathGradePointSection}
           ${highEnglishGradePointSection}
           ${highSocialSubjectPointSection}
@@ -8049,6 +8074,23 @@ function languagesView(active = '영어') {
           const isActive = panel.dataset.homeSearchPanel === tabName;
           panel.hidden = !isActive;
           panel.classList.toggle('active', isActive);
+        });
+        return;
+      }
+      if (target.matches('[data-high-math-grade-tab]')) {
+        event.preventDefault();
+        const section = target.closest('[data-high-math-grade-section]');
+        if (!section) return;
+        const index = Math.max(0, Math.min(2, Number(target.dataset.highMathGradeTab || 0)));
+        const track = section.querySelector('[data-high-math-grade-track]');
+        if (track) track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
+        section.querySelectorAll('[data-high-math-grade-tab]').forEach((button, buttonIndex) => {
+          const isActive = buttonIndex === index;
+          button.classList.toggle('active', isActive);
+          button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+        section.querySelectorAll('.region-high-math-grade-slide').forEach((slide, slideIndex) => {
+          slide.setAttribute('aria-hidden', slideIndex === index ? 'false' : 'true');
         });
         return;
       }
