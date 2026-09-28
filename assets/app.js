@@ -6113,7 +6113,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           <div class="region-grade-grid" aria-label="${scopeLabel} 학년 선택">
             ${regionGrades.map(name => `<button class="grid-button ${name === regionGradeGroup ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
           </div>
-          ${regionGradeGroup ? `
+          ${regionGradeGroup && !(regionGradeGroup === '고등' && regionSubject === '수학') ? `
           <div class="region-grid-title">세부 학년 선택</div>
           <div class="region-detail-grade-grid" aria-label="${scopeLabel} 세부 학년 선택">
             ${regionGradeDetails.map(name => `<button class="grid-button ${name === regionGradeDetail ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
