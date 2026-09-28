@@ -7074,31 +7074,43 @@
 }
 
 .region-high-math-grade-points {
+  position: relative;
   display: grid;
   gap: 0;
-  margin-top: 4px;
+  margin-top: 18px;
+  padding-left: 18px;
+  border-left: 3px solid rgba(42,157,143,.24);
 }
 
 .region-high-math-grade-point {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 14px;
-  align-items: start;
-  padding: 18px 2px;
-  border-bottom: 1px solid rgba(19,78,111,.085);
+  position: relative;
+  padding: 3px 2px 18px 4px;
+}
+
+.region-high-math-grade-point + .region-high-math-grade-point {
+  padding-top: 18px;
+  border-top: 1px dashed rgba(19,78,111,.11);
 }
 
 .region-high-math-grade-point:last-child {
-  border-bottom: 0;
   padding-bottom: 2px;
 }
 
-.region-high-math-grade-point-no {
-  color: var(--teal);
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: .02em;
-  padding-top: 3px;
+.region-high-math-grade-point::before {
+  content: "";
+  position: absolute;
+  left: -25px;
+  top: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #fff;
+  border: 3px solid var(--teal);
+  box-shadow: 0 0 0 4px rgba(42,157,143,.08);
+}
+
+.region-high-math-grade-point + .region-high-math-grade-point::before {
+  top: 25px;
 }
 
 .region-high-math-grade-point b {
@@ -7107,14 +7119,14 @@
   font-size: 16px;
   line-height: 1.4;
   letter-spacing: -0.035em;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
-.region-high-math-grade-point span:not(.region-high-math-grade-point-no) {
+.region-high-math-grade-point span {
   display: block;
   color: #52687a;
   font-size: 14px;
-  line-height: 1.65;
+  line-height: 1.72;
   letter-spacing: -0.015em;
 }
 
@@ -7165,17 +7177,37 @@
     line-height: 1.7;
   }
 
+  .region-high-math-grade-points {
+    margin-top: 15px;
+    padding-left: 15px;
+    border-left-width: 2px;
+  }
+
   .region-high-math-grade-point {
-    grid-template-columns: 34px 1fr;
-    gap: 10px;
-    padding: 15px 0;
+    padding: 2px 0 15px 3px;
+  }
+
+  .region-high-math-grade-point + .region-high-math-grade-point {
+    padding-top: 15px;
+  }
+
+  .region-high-math-grade-point::before {
+    left: -21px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-width: 2px;
+  }
+
+  .region-high-math-grade-point + .region-high-math-grade-point::before {
+    top: 21px;
   }
 
   .region-high-math-grade-point b {
     font-size: 14.5px;
   }
 
-  .region-high-math-grade-point span:not(.region-high-math-grade-point-no) {
+  .region-high-math-grade-point span {
     font-size: 13px;
   }
 }

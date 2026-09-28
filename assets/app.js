@@ -5706,13 +5706,10 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
                         </div>
                       </div>
                       <div class="region-high-math-grade-points">
-                        ${gradeCopy.points.map(([head, body], pointIndex) => `
+                        ${gradeCopy.points.map(([head, body]) => `
                           <div class="region-high-math-grade-point">
-                            <span class="region-high-math-grade-point-no">0${pointIndex + 1}</span>
-                            <div>
-                              <b>${head}</b>
-                              <span>${body}</span>
-                            </div>
+                            <b>${head}</b>
+                            <span>${body}</span>
                           </div>`).join('')}
                       </div>
                     </div>
