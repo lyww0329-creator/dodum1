@@ -7077,52 +7077,76 @@
   position: relative;
   display: grid;
   gap: 0;
-  margin-top: 18px;
-  padding-left: 18px;
-  border-left: 3px solid rgba(42,157,143,.24);
+  margin-top: 20px;
 }
 
 .region-high-math-grade-point {
   position: relative;
-  padding: 3px 2px 18px 4px;
-}
-
-.region-high-math-grade-point + .region-high-math-grade-point {
-  padding-top: 18px;
-  border-top: 1px dashed rgba(19,78,111,.11);
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding: 0 0 22px;
 }
 
 .region-high-math-grade-point:last-child {
-  padding-bottom: 2px;
+  padding-bottom: 0;
 }
 
-.region-high-math-grade-point::before {
+.region-high-math-grade-point:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: -25px;
-  top: 10px;
-  width: 11px;
-  height: 11px;
+  left: 28px;
+  top: 52px;
+  bottom: 4px;
+  width: 2px;
   border-radius: 999px;
-  background: #fff;
-  border: 3px solid var(--teal);
-  box-shadow: 0 0 0 4px rgba(42,157,143,.08);
+  background: linear-gradient(180deg, rgba(42,157,143,.24), rgba(19,78,111,.10));
 }
 
-.region-high-math-grade-point + .region-high-math-grade-point::before {
-  top: 25px;
+.region-high-math-grade-point-icon {
+  position: relative;
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, rgba(42,157,143,.14), rgba(19,78,111,.08));
+  color: var(--navy);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.86), 0 9px 22px rgba(19,78,111,.08);
+}
+
+.region-high-math-grade-point-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.region-high-math-grade-point-copy {
+  min-width: 0;
+  padding-top: 4px;
 }
 
 .region-high-math-grade-point b {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 31px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(42,157,143,.095);
   color: var(--navy);
   font-size: 16px;
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: -0.035em;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
-.region-high-math-grade-point span {
+.region-high-math-grade-point span:not(.region-high-math-grade-point-icon) {
   display: block;
   color: #52687a;
   font-size: 14px;
@@ -7178,36 +7202,43 @@
   }
 
   .region-high-math-grade-points {
-    margin-top: 15px;
-    padding-left: 15px;
-    border-left-width: 2px;
+    margin-top: 17px;
   }
 
   .region-high-math-grade-point {
-    padding: 2px 0 15px 3px;
+    grid-template-columns: 46px minmax(0, 1fr);
+    gap: 12px;
+    padding-bottom: 18px;
   }
 
-  .region-high-math-grade-point + .region-high-math-grade-point {
-    padding-top: 15px;
+  .region-high-math-grade-point:not(:last-child)::after {
+    left: 22px;
+    top: 44px;
+    bottom: 3px;
   }
 
-  .region-high-math-grade-point::before {
-    left: -21px;
-    top: 8px;
-    width: 9px;
-    height: 9px;
-    border-width: 2px;
+  .region-high-math-grade-point-icon {
+    width: 46px;
+    height: 46px;
   }
 
-  .region-high-math-grade-point + .region-high-math-grade-point::before {
-    top: 21px;
+  .region-high-math-grade-point-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .region-high-math-grade-point-copy {
+    padding-top: 1px;
   }
 
   .region-high-math-grade-point b {
-    font-size: 14.5px;
+    min-height: 28px;
+    padding: 4px 9px;
+    font-size: 14px;
+    margin-bottom: 5px;
   }
 
-  .region-high-math-grade-point span {
+  .region-high-math-grade-point span:not(.region-high-math-grade-point-icon) {
     font-size: 13px;
   }
 }
