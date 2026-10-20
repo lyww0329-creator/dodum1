@@ -5797,6 +5797,178 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>` : '';
 
+
+      const regionGradeTabbedCopy = {
+        '초등': {
+          grades: ['초1', '초2', '초3', '초4', '초5', '초6'],
+          intro: '초등은 저학년의 공부 습관 형성에서 고학년의 자기주도 학습과 중학교 준비까지 학년마다 필요한 학습 초점이 달라집니다. 현재 학년을 선택해 필요한 학습 포인트를 확인해 보세요.',
+          items: {
+            '초1': {
+              title: '학교생활과 공부 습관에 적응하는 시기',
+              intro: '처음으로 과목별 수업과 숙제를 경험하는 시기라, 공부량을 늘리는 것보다 정해진 시간에 자리에 앉아 수업을 듣고 복습하는 기본 습관을 만드는 것이 중요합니다.',
+              points: [
+                ['앉아 있는 힘 기르기', '짧은 시간부터 시작해 정해진 시간 동안 자리에 앉아 공부를 이어가는 힘을 기릅니다.', 'target'],
+                ['수업을 끝까지 따라가는 습관 만들기', '설명을 듣고 문제를 끝까지 확인하는 연습을 통해 학습 집중력을 조금씩 키웁니다.', 'book'],
+                ['숙제·복습 리듬 만들기', '숙제와 복습 시간을 일정하게 정해 공부가 생활 속 자연스러운 습관이 되도록 합니다.', 'repeat']
+              ]
+            },
+            '초2': {
+              title: '기본 학습 습관을 안정시키는 시기',
+              intro: '초1에서 시작한 공부 습관을 조금 더 안정적으로 이어가면서, 해야 할 공부를 스스로 시작하고 집중하는 시간을 늘려가는 것이 중요합니다.',
+              points: [
+                ['집중하는 시간 늘리기', '한 번에 많은 양을 공부하기보다 집중할 수 있는 시간을 조금씩 늘려 학습 지속력을 키웁니다.', 'stopwatch'],
+                ['스스로 공부를 시작하는 연습하기', '부모님이 계속 알려주지 않아도 해야 할 숙제와 복습을 스스로 시작하는 습관을 익힙니다.', 'clipboard'],
+                ['기본 학습 꾸준히 반복하기', '읽기·쓰기·기초 연산처럼 매일 반복이 필요한 영역을 꾸준히 이어가 기본기를 안정시킵니다.', 'repeat']
+              ]
+            },
+            '초3': {
+              title: '과목별 공부가 본격적으로 나뉘는 시기',
+              intro: '배워야 할 내용이 늘고 과목별 특징이 뚜렷해지면서, 단순히 숙제를 끝내는 것보다 과목마다 다른 공부 방법을 익히는 것이 중요해집니다.',
+              points: [
+                ['과목별 공부 방법 익히기', '국어·수학·사회·과학 등 과목마다 읽기, 이해, 암기, 문제 풀이 방식이 다르다는 것을 익힙니다.', 'branch'],
+                ['문장제·서술형에 적응하기', '답만 쓰는 것보다 문제 조건을 확인하고 자신의 생각이나 풀이 과정을 표현하는 연습을 합니다.', 'clipboard'],
+                ['복습 범위 넓히기', '하루 단위 복습에서 단원 단위 복습으로 범위를 넓혀 배운 내용을 오래 유지하는 습관을 만듭니다.', 'chart']
+              ]
+            },
+            '초4': {
+              title: '개념 난도가 올라가며 학습 관리가 중요해지는 시기',
+              intro: '이전에 배운 내용을 활용하는 문제가 늘고 과목별 난도도 높아지는 시기입니다. 어려운 단원을 그대로 넘기지 않고 그때그때 보완하는 습관이 중요합니다.',
+              points: [
+                ['누적 개념 연결하기', '이전에 배운 내용이 새 단원과 어떻게 이어지는지 확인해 개념이 끊기지 않도록 합니다.', 'link'],
+                ['취약 단원 바로 보완하기', '어려워하는 단원을 미루지 않고 원인을 확인해 다음 진도까지 약점이 이어지지 않게 합니다.', 'target'],
+                ['과목별 복습 방식 정리하기', '과목마다 필요한 복습 시간과 방법을 구분해 공부 흐름을 안정적으로 만듭니다.', 'sliders']
+              ]
+            },
+            '초5': {
+              title: '고학년 학습량에 맞춰 공부 방식을 조절하는 시기',
+              intro: '학습량과 개념 난도가 함께 올라가면서 과목별 성적 차이가 나타나기 쉬운 시기입니다. 모든 과목을 같은 방식으로 공부하기보다 필요한 영역에 공부 시간을 알맞게 나누는 것이 중요합니다.',
+              points: [
+                ['과목별 학습량 조절하기', '어려운 과목이나 단원에 더 많은 시간을 배분해 공부 시간을 알맞게 나눕니다.', 'sliders'],
+                ['누적된 기초 빈틈 확인하기', '독해·어휘·분수·소수 등 이전 학년에서 부족했던 내용이 남아 있는지 다시 확인합니다.', 'search'],
+                ['스스로 계획하는 공부 늘리기', '정해진 숙제만 하는 것에서 벗어나 필요한 복습과 문제 풀이를 스스로 선택하는 연습을 합니다.', 'clipboard']
+              ]
+            },
+            '초6': {
+              title: '중학교 학습을 준비하는 시기',
+              intro: '초등 과정의 누적 내용을 정리하면서 중학교에서 늘어날 과목 수와 학습량에 대비해야 하는 시기입니다. 선행보다 기본 개념과 공부 습관을 안정적으로 정리하는 것이 중요합니다.',
+              points: [
+                ['초등 누적 범위 점검하기', '중학교 학습과 연결되는 국어 독해, 영어 기초, 수학 핵심 개념을 다시 확인합니다.', 'clipboard'],
+                ['취약 과목과 단원 정리하기', '중학교 진학 전에 반복해서 어려워하는 과목과 단원을 우선적으로 보완합니다.', 'target'],
+                ['중학교 공부 습관 미리 준비하기', '과목별 복습, 오답 관리, 주간 계획처럼 중학교에서 필요한 공부 습관을 미리 익힙니다.', 'chart']
+              ]
+            }
+          }
+        },
+        '중등': {
+          grades: ['중1', '중2', '중3'],
+          intro: '중학교는 학년이 올라갈수록 과목별 학습량과 난도가 달라지고, 내신 준비와 누적 개념 관리의 중요성도 커집니다. 현재 학년을 선택해 필요한 학습 포인트를 확인해 보세요.',
+          items: {
+            '중1': {
+              title: '중학교 공부 방식에 적응하는 시기',
+              intro: '과목 수와 학습량이 늘고 시험 방식도 달라지는 만큼, 초등 때의 공부 습관을 그대로 이어가기보다 과목별 복습 방식과 첫 내신 준비 흐름을 새롭게 잡는 것이 중요합니다.',
+              points: [
+                ['과목별 공부 방식 익히기', '국어·영어·수학·사회·과학마다 필요한 복습 방법과 공부 순서를 구분해 익힙니다.', 'book'],
+                ['첫 내신 준비 흐름 만들기', '시험 범위 확인, 교과서·프린트 정리, 복습 시기까지 중학교 시험 준비의 기본 흐름을 만듭니다.', 'clipboard'],
+                ['학습량 증가에 적응하기', '숙제와 복습이 밀리지 않도록 과목별 공부 시간을 나누고 주간 학습 리듬을 잡습니다.', 'chart']
+              ]
+            },
+            '중2': {
+              title: '과목별 난도와 학습량이 본격적으로 올라가는 시기',
+              intro: '중1 때보다 단원 난도가 높아지고 이전에 배운 내용을 활용하는 문제가 늘어나는 시기라, 단순히 진도를 따라가는 것보다 누적된 개념과 취약 과목을 함께 관리하는 것이 중요합니다.',
+              points: [
+                ['누적 개념 다시 연결하기', '이전 학년에서 배운 내용이 새 단원과 어떻게 이어지는지 확인해 개념 공백을 줄입니다.', 'link'],
+                ['취약 과목과 단원 우선순위 정하기', '점수 편차와 단원 난도를 확인해 먼저 보완해야 할 과목과 단원의 순서를 정리합니다.', 'target'],
+                ['내신 학습 루틴 안정시키기', '시험 직전에 몰아서 공부하지 않도록 평소 복습과 시험 대비를 자연스럽게 연결합니다.', 'repeat']
+              ]
+            },
+            '중3': {
+              title: '고등학교 학습을 준비하는 시기',
+              intro: '중학교 전 범위를 정리하면서 고등학교에서 필요한 공부 습관과 기초를 함께 점검해야 하는 시기입니다. 현재 성적만 보기보다 고등 과정까지 이어질 약점을 미리 확인하는 것이 중요합니다.',
+              points: [
+                ['중학교 누적 범위 점검하기', '고등 학습에 필요한 국어 독해, 영어 문법·독해, 수학 핵심 개념 등 기초를 다시 확인합니다.', 'clipboard'],
+                ['취약 과목 우선 정리하기', '고등 진학 전에 반복해서 흔들리는 과목과 단원을 먼저 보완해 학습 부담을 줄입니다.', 'target'],
+                ['고등 진학 전 학습 습관 정리하기', '학습량이 더 늘어나는 고등학교에 맞춰 복습 주기, 오답 관리, 과목별 공부 시간을 미리 정리합니다.', 'chart']
+              ]
+            }
+          }
+        },
+        '고등': {
+          grades: ['고1', '고2', '고3'],
+          intro: '고등학교는 학년이 올라갈수록 공통과목에서 선택과목과 실전 대비로 학습의 중심이 달라집니다. 현재 학년을 선택해 필요한 학습 포인트를 확인해 보세요.',
+          items: {
+            '고1': {
+              title: '고등학교 공부 방식에 적응하는 시기',
+              intro: '중학교보다 과목별 학습량과 문제 난도가 크게 올라가는 시기라, 처음부터 무리하게 공부량을 늘리기보다 고등학교 수업과 시험 흐름에 맞는 공부 방식을 잡는 것이 중요합니다.',
+              points: [
+                ['공통과목 학습 흐름 익히기', '국어·영어·수학을 중심으로 학교 진도와 복습 흐름을 맞추고, 과목별 공부 방법을 구분해 익힙니다.', 'book'],
+                ['첫 내신 준비 방식 만들기', '시험 범위 확인부터 교과서·프린트 정리, 복습 시기까지 고등학교 내신 준비의 기본 흐름을 만듭니다.', 'clipboard'],
+                ['과목별 학습량 조절하기', '과제와 복습이 밀리지 않도록 과목마다 필요한 공부 시간을 나누고 주간 학습 리듬을 정리합니다.', 'chart']
+              ]
+            },
+            '고2': {
+              title: '선택과목과 누적 학습이 중요해지는 시기',
+              intro: '고1보다 과목별 난도가 높아지고 선택과목에 따라 학습 범위도 달라지는 시기입니다. 이전에 배운 내용과 새 단원을 연결하면서 내신과 모의고사를 함께 관리하는 흐름이 필요합니다.',
+              points: [
+                ['선택과목별 학습 방향 정리하기', '수학·과학·사회 등 학교와 학생의 선택에 따라 달라지는 과목별 진도와 학습 우선순위를 정리합니다.', 'branch'],
+                ['누적된 개념과 취약 영역 연결하기', '고1에서 배운 내용이 새 단원에 어떻게 이어지는지 확인하고 반복해서 흔들리는 부분을 함께 보완합니다.', 'link'],
+                ['내신과 모의고사 병행하기', '학교 시험 기간과 평소 학습 기간을 나눠 내신 준비와 모의고사 학습이 한쪽으로 치우치지 않도록 조절합니다.', 'sliders']
+              ]
+            },
+            '고3': {
+              title: '목표와 남은 기간에 맞춰 학습을 압축하는 시기',
+              intro: '내신, 수능, 모의고사를 모두 같은 비중으로 공부하기보다 현재 성적과 목표에 맞춰 우선순위를 정하는 것이 중요합니다. 남은 기간 안에서 점수 변화 가능성이 큰 영역에 학습을 집중해야 합니다.',
+              points: [
+                ['취약 과목과 단원 우선순위 정하기', '전체 범위를 다시 시작하기보다 반복해서 틀리거나 점수 편차가 큰 과목과 단원을 먼저 정리합니다.', 'target'],
+                ['내신·모의고사·수능 비중 조절하기', '학교 일정과 현재 목표에 따라 내신과 실전 문제 풀이의 비중을 시기별로 조절합니다.', 'sliders'],
+                ['실전 문제 풀이와 시간 관리하기', '제한된 시간 안에 문제를 풀고 검토하는 연습을 반복하면서 시험 상황에 맞는 학습 흐름을 만듭니다.', 'stopwatch']
+              ]
+            }
+          }
+        }
+      };
+
+      const regionGradeTabbedData = !subject && ['초등', '중등', '고등'].includes(gradeLabel)
+        ? regionGradeTabbedCopy[gradeLabel]
+        : null;
+      const regionGradeTabbedSection = regionGradeTabbedData ? `
+          <section class="region-content-card region-learning-section region-high-math-grade-tabs-section" data-high-math-grade-section>
+            <h3>학년별 학습 포인트</h3>
+            <p>${regionGradeTabbedData.intro}</p>
+            <div class="region-high-math-grade-tabs" role="tablist" aria-label="${gradeLabel} 세부학년 선택">
+              ${regionGradeTabbedData.grades.map((gradeName, index) => `
+                <button class="region-high-math-grade-tab ${index === 0 ? 'active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" data-high-math-grade-tab="${index}">${gradeName}</button>`).join('')}
+            </div>
+            <div class="region-high-math-grade-viewport">
+              <div class="region-high-math-grade-track" data-high-math-grade-track>
+                ${regionGradeTabbedData.grades.map((gradeName, index) => {
+                  const gradeCopy = regionGradeTabbedData.items[gradeName];
+                  return `
+                  <div class="region-high-math-grade-slide" role="tabpanel" aria-label="${gradeName} 학습 포인트" aria-hidden="${index === 0 ? 'false' : 'true'}">
+                    <div class="region-high-math-grade-panel">
+                      <div class="region-high-math-grade-panel-head">
+                        <span class="region-high-math-grade-label">${gradeName}</span>
+                        <div>
+                          <strong>${gradeCopy.title}</strong>
+                          <p>${gradeCopy.intro}</p>
+                        </div>
+                      </div>
+                      <div class="region-high-math-grade-points">
+                        ${gradeCopy.points.map(([head, body, icon]) => `
+                          <div class="region-high-math-grade-point">
+                            <span class="region-high-math-grade-point-icon" aria-hidden="true">${iconSvg(icon || 'book')}</span>
+                            <div class="region-high-math-grade-point-copy">
+                              <b>${head}</b>
+                              <span>${body}</span>
+                            </div>
+                          </div>`).join('')}
+                      </div>
+                    </div>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>
+          </section>` : '';
+
       const highEnglishGradePointMap = {
         '고1': [
           ['중학교 영어에서 고등 영어로 어휘량 확장', '중학교에서 익힌 기본 어휘를 바탕으로 고등 내신과 모의고사에 필요한 어휘 범위를 넓힙니다.'],
@@ -5910,6 +6082,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>
 
+          ${regionGradeTabbedSection}
           ${highMathGradeTabbedSection}
           ${highMathGradePointSection}
           ${highEnglishGradePointSection}
@@ -6183,7 +6356,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           <div class="region-grade-grid" aria-label="${scopeLabel} 학년 선택">
             ${regionGrades.map(name => `<button class="grid-button ${name === regionGradeGroup ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
           </div>
-          ${regionGradeGroup && !(regionGradeGroup === '고등' && regionSubject === '수학') ? `
+          ${regionGradeGroup && !((regionGradeGroup === '고등' && regionSubject === '수학') || (!regionSubject && ['초등', '중등', '고등'].includes(regionGradeGroup))) ? `
           <div class="region-grid-title">세부 학년 선택</div>
           <div class="region-detail-grade-grid" aria-label="${scopeLabel} 세부 학년 선택">
             ${regionGradeDetails.map(name => `<button class="grid-button ${name === regionGradeDetail ? 'active' : ''}" type="button" data-route="${buildRegionDeepRoute(province, city, district, town, name, regionSubject)}">${name}</button>`).join('')}
