@@ -6150,6 +6150,30 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
             </div>
           </section>` : '';
 
+      const tuitionSection = `
+          <section class="region-content-card region-tuition-section">
+            <h3>과외 비용 안내</h3>
+            <p>과외 비용은 학생의 학년과 일주일 총 수업 시간에 따라 달라집니다.<br>아래 금액은 <strong>주 1~4시간 수업 기준의 대략적인 4주 비용</strong>입니다.</p>
+            <div class="region-tuition-table-wrap">
+              <table class="region-tuition-table">
+                <thead>
+                  <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">4주 기준 예상 비용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">초등</th><td>약 10만원대 ~ 50만원대</td></tr>
+                  <tr><th scope="row">중등</th><td>약 10만원대 ~ 50만원대</td></tr>
+                  <tr><th scope="row">고1·고2</th><td>약 10만원대 ~ 60만원대</td></tr>
+                  <tr><th scope="row">고3·성인/N수생</th><td>약 10만원대 ~ 70만원대</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="region-tuition-example"><strong>주 2회 × 60분</strong>과 <strong>주 1회 × 120분</strong>은 모두 주 2시간 수업으로 같은 비용 기준이 적용됩니다.</p>
+            <p class="region-tuition-note">정확한 비용은 학년과 원하는 수업 시간을 확인한 뒤 상담 시 안내드립니다.</p>
+          </section>`;
+
       const afterConsultSection = `
           <section class="region-content-card">
             <h3>상담 후 진행 순서</h3>
@@ -6206,6 +6230,8 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
                 </div>`).join('')}
             </div>
           </section>
+
+          ${tuitionSection}
 
           ${afterConsultSection}
 

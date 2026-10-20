@@ -7242,3 +7242,84 @@
     font-size: 14.3px;
   }
 }
+
+/* 과외 비용 안내 */
+.region-tuition-section > p:first-of-type {
+  margin-bottom: 18px;
+}
+
+.region-tuition-table-wrap {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dce8f1;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.region-tuition-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.region-tuition-table th,
+.region-tuition-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #e7eef4;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 1.55;
+}
+
+.region-tuition-table thead th {
+  background: #f3f8fc;
+  font-weight: 800;
+}
+
+.region-tuition-table thead th:first-child,
+.region-tuition-table tbody th {
+  width: 34%;
+}
+
+.region-tuition-table tbody th {
+  font-weight: 750;
+  background: #fbfdff;
+}
+
+.region-tuition-table tbody td {
+  font-weight: 700;
+}
+
+.region-tuition-table tbody tr:last-child th,
+.region-tuition-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.region-tuition-example {
+  margin-top: 16px !important;
+  padding: 13px 15px;
+  border-radius: 14px;
+  background: #f7fafc;
+  line-height: 1.7;
+}
+
+.region-tuition-note {
+  margin-top: 10px !important;
+  color: #64748b;
+}
+
+@media (max-width: 640px) {
+  .region-tuition-table th,
+  .region-tuition-table td {
+    padding: 13px 12px;
+  }
+
+  .region-tuition-table thead th:first-child,
+  .region-tuition-table tbody th {
+    width: 38%;
+  }
+
+  .region-tuition-example {
+    padding: 12px 13px;
+  }
+}
