@@ -8374,7 +8374,9 @@ function languagesView(active = '영어') {
         event.preventDefault();
         const section = target.closest('[data-high-math-grade-section]');
         if (!section) return;
-        const index = Math.max(0, Math.min(2, Number(target.dataset.highMathGradeTab || 0)));
+        const tabButtons = Array.from(section.querySelectorAll('[data-high-math-grade-tab]'));
+        const maxIndex = Math.max(0, tabButtons.length - 1);
+        const index = Math.max(0, Math.min(maxIndex, Number(target.dataset.highMathGradeTab || 0)));
         const track = section.querySelector('[data-high-math-grade-track]');
         if (track) track.style.transform = `translate3d(-${index * 100}%, 0, 0)`;
         section.querySelectorAll('[data-high-math-grade-tab]').forEach((button, buttonIndex) => {
