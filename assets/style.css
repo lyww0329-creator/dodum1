@@ -7323,3 +7323,11 @@
     padding: 12px 13px;
   }
 }
+
+/* 과외 비용 안내 - PC 세로 여백 조정 */
+@media (min-width: 761px) {
+  .region-content-card + .region-tuition-section,
+  .region-tuition-section + .region-content-card {
+    margin-top: 0 !important;
+  }
+}
