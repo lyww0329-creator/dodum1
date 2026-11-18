@@ -4742,33 +4742,33 @@
             </section>
 
             <section class="home-info-block home-system-block">
-              <h2>${lineIcon('trophy')}상담부터 수업까지</h2>
-              <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업을 바탕으로 맞춤 커리큘럼을 설계한 후 정식 수업을 시작합니다.</p>
-              <div class="home-timeline" aria-label="상담부터 수업까지 5단계 진행 과정">
+              <h2>${lineIcon('trophy')}수업 및 학습 관리 과정</h2>
+              <p>상담부터 수업, 학습 관리까지 하나의 흐름으로 체계적으로 진행합니다.</p>
+              <div class="home-timeline" aria-label="수업 및 학습 관리 5단계 과정">
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">1</div>
                   <b>간단한 학습 상담</b>
-                  <span>현재 학습 상태와 공부 습관, 성향, 고민을 먼저 확인합니다.</span>
+                  <span>현재 학습 상태와 공부 습관, 성향, 목표를 확인합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">2</div>
-                  <b>선생님 일정 조율</b>
-                  <span>학생의 지역과 가능한 시간에 맞춰 선생님 일정을 확인하고 조율합니다.</span>
+                  <b>무료 모의 수업</b>
+                  <span>실제 수업 방식과 선생님과의 호흡을 확인합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">3</div>
-                  <b>무료 모의 수업</b>
-                  <span>실제 수업 전에 설명 방식과 소통이 학생에게 잘 맞는지 확인합니다.</span>
+                  <b>스쿨핏 학습 설계</b>
+                  <span>학교별 학습 환경과 학생의 현재 수준을 분석해 학습 방향과 계획을 구체적으로 설계합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">4</div>
-                  <b>맞춤 커리큘럼 설계</b>
-                  <span>상담과 모의 수업에서 확인한 내용을 바탕으로 필요한 학습 방향을 구체화합니다.</span>
+                  <b>1:1 맞춤 수업</b>
+                  <span>설계한 학습 방향에 맞춰 개념 이해부터 문제 적용, 응용까지 학생 수준에 맞게 진행합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">5</div>
-                  <b>수업 시작</b>
-                  <span>정리된 방향과 일정에 맞춰 정식 수업을 시작합니다.</span>
+                  <b>최대 주 7일 관리</b>
+                  <span>온라인 독서실을 활용해 수업이 없는 날에도 학습 흐름을 이어가며, 꾸준한 자기주도학습 습관 형성을 돕습니다.</span>
                 </div>
               </div>
             </section>
@@ -6176,15 +6176,15 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
 
       const afterConsultSection = `
           <section class="region-content-card">
-            <h3>상담 후 진행 순서</h3>
-            <p>간단한 상담으로 학습 상태와 성향을 확인한 뒤 선생님과 시간을 조율하고, 무료 모의 수업을 바탕으로 맞춤 커리큘럼을 설계한 후 정식 수업을 시작합니다.</p>
+            <h3>수업 및 학습 관리 과정</h3>
+            <p>상담부터 수업, 학습 관리까지 하나의 흐름으로 체계적으로 진행합니다.</p>
             <div class="region-process-grid">
               ${[
-                ['1단계', '간단한 학습 상담', '현재 학습 상태와 공부 습관, 성향, 고민 등을 간단히 확인합니다.'],
-                ['2단계', '선생님 일정 조율', '아이에게 맞는 선생님과 수업 가능한 요일과 시간을 조율합니다.'],
-                ['3단계', '무료 모의 수업', '실제 수업 방식과 선생님과의 호흡을 확인할 수 있도록 무료 모의 수업을 진행합니다.'],
-                ['4단계', '맞춤 커리큘럼 설계', '모의 수업 내용을 바탕으로 아이에게 필요한 학습 방향과 커리큘럼을 구체적으로 정리합니다.'],
-                ['5단계', '수업 시작', '설계한 커리큘럼과 학습 방향에 맞춰 정식 1:1 수업을 시작합니다.']
+                ['1단계', '간단한 학습 상담', '현재 학습 상태와 공부 습관, 성향, 목표를 확인합니다.'],
+                ['2단계', '무료 모의 수업', '실제 수업 방식과 선생님과의 호흡을 확인합니다.'],
+                ['3단계', '스쿨핏 학습 설계', '학교별 학습 환경과 학생의 현재 수준을 분석해 학습 방향과 계획을 구체적으로 설계합니다.'],
+                ['4단계', '1:1 맞춤 수업', '설계한 학습 방향에 맞춰 개념 이해부터 문제 적용, 응용까지 학생 수준에 맞게 진행합니다.'],
+                ['5단계', '최대 주 7일 관리', '온라인 독서실을 활용해 수업이 없는 날에도 학습 흐름을 이어가며, 꾸준한 자기주도학습 습관 형성을 돕습니다.']
               ].map(([step, head, body]) => `
                 <article class="region-process-step">
                   <b>${step}</b>
