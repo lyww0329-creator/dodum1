@@ -8074,3 +8074,117 @@
     padding-top: 80px;
   }
 }
+
+/* =========================================================
+   메인 전체 섹션 간격 + 비용 안내 크기 최종 통일
+   - 모든 주요 섹션에 동일한 호흡 적용
+   - 비용 안내 카드는 메인 콘텐츠 폭에 맞춰 확대
+   - 문구/구조 변경 없음
+   ========================================================= */
+
+/* 설명 영역 내부의 모든 큰 섹션을 같은 리듬으로 */
+.home-description-section > section {
+  padding-top: clamp(124px, 10vw, 164px) !important;
+  padding-bottom: clamp(124px, 10vw, 164px) !important;
+}
+
+/* 특정 섹션에 남아 있던 별도 간격값을 공통 규칙으로 통일 */
+.home-description-section .home-fit-section,
+.home-description-section .home-child-check-section,
+.home-description-section .home-choice-section,
+.home-description-section .home-info-block,
+.home-description-section .home-system-block,
+.home-description-section .home-tuition-section {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.home-info-block + .home-info-block {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+}
+
+/* 메인 후반부도 동일한 시각적 호흡으로 */
+.home-region-section {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+  padding-bottom: clamp(124px, 10vw, 164px) !important;
+}
+
+.review-section {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+  padding-bottom: clamp(124px, 10vw, 164px) !important;
+}
+
+.review-section + .faq {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+  padding-bottom: clamp(124px, 10vw, 164px) !important;
+}
+
+.faq + .home-final-cta {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+}
+
+/* 비용 안내: 다른 메인 콘텐츠와 시각적 폭/무게 맞춤 */
+.home-tuition-section > p {
+  max-width: none !important;
+}
+
+.home-tuition-card {
+  width: 100% !important;
+  max-width: none !important;
+  margin-top: 38px !important;
+  padding: clamp(30px, 3vw, 42px) !important;
+  border-radius: 28px !important;
+  box-sizing: border-box;
+}
+
+.home-tuition-card .region-tuition-table-wrap {
+  width: 100%;
+  max-width: none !important;
+}
+
+.home-tuition-card .region-tuition-table th,
+.home-tuition-card .region-tuition-table td {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.home-tuition-card .region-tuition-example {
+  margin-top: 22px;
+  padding: 18px 22px;
+}
+
+.home-tuition-card .region-tuition-note {
+  margin-top: 18px;
+}
+
+@media (max-width: 760px) {
+  .home-description-section > section,
+  .home-info-block + .home-info-block,
+  .home-region-section,
+  .review-section,
+  .review-section + .faq {
+    padding-top: 88px !important;
+    padding-bottom: 88px !important;
+  }
+
+  .faq + .home-final-cta {
+    padding-top: 88px !important;
+  }
+
+  .home-tuition-card {
+    margin-top: 28px !important;
+    padding: 20px !important;
+    border-radius: 22px !important;
+  }
+
+  .home-tuition-card .region-tuition-table th,
+  .home-tuition-card .region-tuition-table td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
