@@ -8188,3 +8188,31 @@
     padding-bottom: 16px;
   }
 }
+
+
+/* =========================================================
+   메인 히어로 제목 강조
+   - 기존 문구/라벨 유지
+   - 핵심 문구만 돋움과외 민트 포인트
+   ========================================================= */
+.home-view .hero-card h1 {
+  width: min(100%, 1080px);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(46px, 5.2vw, 72px);
+  line-height: 1.14;
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.home-view .hero-title-highlight {
+  color: var(--teal);
+}
+
+@media (max-width: 760px) {
+  .home-view .hero-card h1 {
+    font-size: clamp(32px, 9vw, 43px);
+    line-height: 1.2;
+    letter-spacing: -0.055em;
+  }
+}

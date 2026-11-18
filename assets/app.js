@@ -4653,7 +4653,7 @@
         <section class="hero view">
           <div class="hero-card">
             <span class="eyebrow">맞춤형 1:1 과외 안내</span>
-            <h1>성적 변화는<br />아이를 정확하게 아는 수업에서<br />시작됩니다</h1>
+            <h1>성적 변화는<br /><span class="hero-title-highlight">아이를 정확하게 아는 수업</span>에서 시작됩니다</h1>
             <div class="cta-row">
               <button class="primary-btn" type="button" data-route="contact">상담 신청하기</button>
               <button class="ghost-btn" type="button" data-route="subjects">과목별 보기</button>
