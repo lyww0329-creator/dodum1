@@ -7451,3 +7451,156 @@
     word-break: keep-all;
   }
 }
+
+/* grade/mobile parity: detailed-grade tabs + tuition must stay visible on small screens */
+@media (max-width: 760px) {
+  .grade-page-detail-tabs,
+  .grade-page-tuition-section {
+    display: block !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .grade-page-detail-tabs .region-high-math-grade-viewport,
+  .grade-page-tuition-section .region-tuition-table-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* =========================================================
+   메인페이지 파스텔 섹션 배경형 리디자인
+   - 기존 문구/콘텐츠/내부 카드 구조 유지
+   - 큰 외곽 컨테이너 박스 제거
+   - 섹션별 은은한 배경색으로 구분
+   ========================================================= */
+
+/* 메인 최상단도 큰 카드 대신 배경 위 콘텐츠처럼 보이게 */
+.hero {
+  position: relative;
+  z-index: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -42px;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #fbf8f3;
+  pointer-events: none;
+}
+
+.hero-card {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.hero-card::before,
+.hero-card::after {
+  display: none;
+}
+
+/* 전체 설명 영역의 큰 흰색 외곽 박스 제거 */
+.home-description-section {
+  width: min(100%, 1040px);
+  margin: 46px auto 0;
+  padding: 0;
+  gap: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* 각 큰 섹션은 카드가 아니라 넓은 배경 띠로 구분 */
+.home-description-section > section {
+  position: relative;
+  z-index: 0;
+  margin: 0 !important;
+  padding: clamp(72px, 7vw, 104px) 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.home-description-section > section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* 돋움과외의 청록/네이비와 어울리는 아주 연한 파스텔 배경 */
+.home-description-section > section:nth-child(1)::before {
+  background: #f3faf8;
+}
+
+.home-description-section > section:nth-child(2)::before {
+  background: #fbf7f2;
+}
+
+.home-description-section > section:nth-child(3)::before {
+  background: #f4f8fa;
+}
+
+.home-description-section > section:nth-child(4)::before {
+  background: #f8f6f1;
+}
+
+.home-description-section > section:nth-child(5)::before {
+  background: #eef8f6;
+}
+
+/* 기존 섹션 자체에 있던 큰 박스 스타일만 제거 */
+.home-child-check-section {
+  padding-left: 0;
+  padding-right: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.home-system-block {
+  background: transparent;
+}
+
+/* 첫 소개 콘텐츠의 내부 카드와 세부 카드들은 기존 디자인 유지 */
+.home-fit-section {
+  margin-bottom: 0;
+}
+
+/* 섹션이 바뀌는 지점이 과하게 끊겨 보이지 않도록 경계선/장식은 사용하지 않음 */
+.home-description-section > section + section {
+  margin-top: 0 !important;
+}
+
+/* 모바일도 같은 배경형 구조를 유지하되 여백만 축소 */
+@media (max-width: 640px) {
+  .home-description-section {
+    margin-top: 28px;
+  }
+
+  .home-description-section > section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero::before {
+    top: -24px;
+  }
+}
