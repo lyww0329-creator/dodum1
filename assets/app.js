@@ -4612,6 +4612,32 @@
         </section>`;
     }
 
+
+    function homeTuitionSection() {
+      return `
+        <section class="home-info-block home-tuition-section" aria-labelledby="homeTuitionTitle">
+          <h2 id="homeTuitionTitle">${lineIcon('wallet')}과외 비용 안내</h2>
+          <p>학년과 주간 총 수업 시간에 따라 비용이 달라집니다.<br>아래 금액은 <strong>주 1~4시간, 4주 기준의 대략적인 예상 비용</strong>입니다.</p>
+          <div class="home-tuition-card">
+            <div class="region-tuition-table-wrap">
+              <table class="region-tuition-table">
+                <thead>
+                  <tr><th scope="col">구분</th><th scope="col">4주 기준 예상 비용</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">초등</th><td>약 10만원대 ~ 50만원대</td></tr>
+                  <tr><th scope="row">중등</th><td>약 10만원대 ~ 50만원대</td></tr>
+                  <tr><th scope="row">고1·고2</th><td>약 10만원대 ~ 60만원대</td></tr>
+                  <tr><th scope="row">고3·성인/N수생</th><td>약 10만원대 ~ 70만원대</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="region-tuition-example"><strong>주 2회 × 60분</strong>과 <strong>주 1회 × 120분</strong>은 모두 주 2시간 수업으로 같은 비용 기준이 적용됩니다.</p>
+            <p class="region-tuition-note">정확한 비용은 상담 시 안내드립니다.</p>
+          </div>
+        </section>`;
+    }
+
     function homeFinalCTA() {
       return `
         <section class="home-final-cta" aria-labelledby="homeFinalCtaTitle">
@@ -4767,6 +4793,7 @@
                 </div>
               </div>
             </section>
+            ${homeTuitionSection()}
           </div>
         </section>
         ${homeRegionSection()}
