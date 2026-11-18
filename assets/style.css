@@ -7544,25 +7544,52 @@
   pointer-events: none;
 }
 
-/* 돋움과외의 청록/네이비와 어울리는 아주 연한 파스텔 배경 */
+/* 돋움과외의 청록/네이비와 어울리는 아주 연한 파스텔 배경
+   섹션 경계는 선처럼 끊지 않고 다음 색으로 자연스럽게 블렌딩 */
 .home-description-section > section:nth-child(1)::before {
-  background: #f3faf8;
+  background: linear-gradient(
+    to bottom,
+    #fbf8f3 0,
+    #f3faf8 88px,
+    #f3faf8 calc(100% - 96px),
+    #fbf7f2 100%
+  );
 }
 
 .home-description-section > section:nth-child(2)::before {
-  background: #fbf7f2;
+  background: linear-gradient(
+    to bottom,
+    #fbf7f2 0,
+    #fbf7f2 calc(100% - 96px),
+    #f4f8fa 100%
+  );
 }
 
 .home-description-section > section:nth-child(3)::before {
-  background: #f4f8fa;
+  background: linear-gradient(
+    to bottom,
+    #f4f8fa 0,
+    #f4f8fa calc(100% - 96px),
+    #f8f6f1 100%
+  );
 }
 
 .home-description-section > section:nth-child(4)::before {
-  background: #f8f6f1;
+  background: linear-gradient(
+    to bottom,
+    #f8f6f1 0,
+    #f8f6f1 calc(100% - 96px),
+    #eef8f6 100%
+  );
 }
 
 .home-description-section > section:nth-child(5)::before {
-  background: #eef8f6;
+  background: linear-gradient(
+    to bottom,
+    #eef8f6 0,
+    #eef8f6 calc(100% - 96px),
+    #f8faf9 100%
+  );
 }
 
 /* 기존 섹션 자체에 있던 큰 박스 스타일만 제거 */
