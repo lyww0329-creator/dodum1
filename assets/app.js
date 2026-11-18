@@ -4743,30 +4743,25 @@
 
             <section class="home-info-block home-system-block">
               <h2>${lineIcon('trophy')}수업 및 학습 관리 과정</h2>
-              <p>상담부터 수업, 학습 관리까지 하나의 흐름으로 체계적으로 진행합니다.</p>
-              <div class="home-timeline" aria-label="수업 및 학습 관리 5단계 과정">
+              <p>무료수업부터 학습 설계, 1:1 수업, 학습 관리까지 하나의 흐름으로 이어집니다.</p>
+              <div class="home-timeline" aria-label="수업 및 학습 관리 4단계 과정">
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">1</div>
-                  <b>간단한 학습 상담</b>
-                  <span>현재 학습 상태와 공부 습관, 성향, 목표를 확인합니다.</span>
+                  <b>무료수업</b>
+                  <span>1:1 첫 수업으로 현재 실력과 공부 습관을 확인합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">2</div>
-                  <b>무료 모의 수업</b>
-                  <span>실제 수업 방식과 선생님과의 호흡을 확인합니다.</span>
+                  <b>스쿨핏 학습 설계</b>
+                  <span>학교의 시험·일정 정보를 바탕으로 학생에게 필요한 공부 방향을 설계합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">3</div>
-                  <b>스쿨핏 학습 설계</b>
-                  <span>학교별 학습 환경과 학생의 현재 수준을 분석해 학습 방향과 계획을 구체적으로 설계합니다.</span>
+                  <b>1:1 맞춤 수업</b>
+                  <span>과목 선생님과 학생 수준에 맞춘 1:1 교과수업을 진행합니다.</span>
                 </div>
                 <div class="home-timeline-item">
                   <div class="home-timeline-step">4</div>
-                  <b>1:1 맞춤 수업</b>
-                  <span>설계한 학습 방향에 맞춰 개념 이해부터 문제 적용, 응용까지 학생 수준에 맞게 진행합니다.</span>
-                </div>
-                <div class="home-timeline-item">
-                  <div class="home-timeline-step">5</div>
                   <b>최대 주 7일 관리</b>
                   <span>온라인 독서실을 활용해 수업이 없는 날에도 학습 흐름을 이어가며, 꾸준한 자기주도학습 습관 형성을 돕습니다.</span>
                 </div>
@@ -6177,14 +6172,13 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
       const afterConsultSection = `
           <section class="region-content-card">
             <h3>수업 및 학습 관리 과정</h3>
-            <p>상담부터 수업, 학습 관리까지 하나의 흐름으로 체계적으로 진행합니다.</p>
+            <p>무료수업부터 학습 설계, 1:1 수업, 학습 관리까지 하나의 흐름으로 이어집니다.</p>
             <div class="region-process-grid">
               ${[
-                ['1단계', '간단한 학습 상담', '현재 학습 상태와 공부 습관, 성향, 목표를 확인합니다.'],
-                ['2단계', '무료 모의 수업', '실제 수업 방식과 선생님과의 호흡을 확인합니다.'],
-                ['3단계', '스쿨핏 학습 설계', '학교별 학습 환경과 학생의 현재 수준을 분석해 학습 방향과 계획을 구체적으로 설계합니다.'],
-                ['4단계', '1:1 맞춤 수업', '설계한 학습 방향에 맞춰 개념 이해부터 문제 적용, 응용까지 학생 수준에 맞게 진행합니다.'],
-                ['5단계', '최대 주 7일 관리', '온라인 독서실을 활용해 수업이 없는 날에도 학습 흐름을 이어가며, 꾸준한 자기주도학습 습관 형성을 돕습니다.']
+                ['1단계', '무료수업', '1:1 첫 수업으로 현재 실력과 공부 습관을 확인합니다.'],
+                ['2단계', '스쿨핏 학습 설계', '학교의 시험·일정 정보를 바탕으로 학생에게 필요한 공부 방향을 설계합니다.'],
+                ['3단계', '1:1 맞춤 수업', '과목 선생님과 학생 수준에 맞춘 1:1 교과수업을 진행합니다.'],
+                ['4단계', '최대 주 7일 관리', '온라인 독서실을 활용해 수업이 없는 날에도 학습 흐름을 이어가며, 꾸준한 자기주도학습 습관 형성을 돕습니다.']
               ].map(([step, head, body]) => `
                 <article class="region-process-step">
                   <b>${step}</b>
