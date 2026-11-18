@@ -7882,3 +7882,167 @@
     padding: 19px 18px;
   }
 }
+
+/* =========================================================
+   메인 후반 영역 크기 확대
+   - 지역별 과외 안내 / FAQ 가독성 강화
+   - 문구 및 콘텐츠 구조 변경 없음
+   ========================================================= */
+@media (min-width: 761px) {
+  .home-region-card .section-head h2 {
+    font-size: clamp(44px, 4.4vw, 58px) !important;
+    line-height: 1.08;
+  }
+
+  .home-region-card .section-head p {
+    font-size: 18.5px !important;
+    line-height: 1.85;
+  }
+
+  .home-search-tabs {
+    width: min(100%, 700px) !important;
+    padding: 10px !important;
+    gap: 12px !important;
+  }
+
+  .home-search-tab {
+    min-height: 54px !important;
+    font-size: 17px !important;
+  }
+
+  .home-region-main-button {
+    min-height: 72px !important;
+    font-size: 20px !important;
+    border-radius: 20px;
+  }
+
+  .review-section + .faq h2 {
+    font-size: clamp(40px, 4vw, 50px) !important;
+    line-height: 1.1;
+  }
+
+  .review-section + .faq .accordion {
+    max-width: 980px !important;
+    gap: 20px !important;
+  }
+
+  .review-section + .faq details {
+    border-radius: 24px !important;
+  }
+
+  .review-section + .faq summary {
+    min-height: 74px;
+    padding: 24px 28px !important;
+    font-size: 17.5px !important;
+  }
+
+  .review-section + .faq details > div,
+  .review-section + .faq details > p {
+    font-size: 16.5px;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 760px) {
+  .home-region-card .section-head h2 {
+    font-size: clamp(32px, 9vw, 40px) !important;
+  }
+
+  .home-region-card .section-head p {
+    font-size: 16px !important;
+  }
+
+  .home-search-tab {
+    min-height: 50px !important;
+    font-size: 15px !important;
+  }
+
+  .home-region-main-button {
+    min-height: 64px !important;
+    font-size: 17px !important;
+  }
+
+  .review-section + .faq h2 {
+    font-size: clamp(31px, 9vw, 39px) !important;
+  }
+
+  .review-section + .faq summary {
+    min-height: 64px;
+    padding: 21px 20px !important;
+    font-size: 15.5px !important;
+  }
+}
+
+
+/* =========================================================
+   메인페이지 전체 섹션 호흡 확대
+   - 내용/카드 구성은 유지
+   - 큰 섹션 사이의 시각적 간격만 넓힘
+   ========================================================= */
+.home-description-section > section {
+  padding-top: clamp(104px, 9vw, 142px);
+  padding-bottom: clamp(104px, 9vw, 142px);
+}
+
+/* 특히 체크 섹션 → 선택 이유 섹션이 붙어 보이지 않도록 여유 확보 */
+.home-child-check-section {
+  padding-bottom: clamp(118px, 10vw, 156px) !important;
+}
+
+.home-choice-section {
+  padding-top: clamp(118px, 10vw, 156px) !important;
+}
+
+/* 메인 후반부도 같은 리듬으로 통일 */
+.home-region-section {
+  padding-top: clamp(96px, 8.5vw, 126px);
+  padding-bottom: clamp(100px, 9vw, 132px);
+}
+
+.review-section {
+  padding-top: clamp(110px, 9.5vw, 148px);
+  padding-bottom: clamp(116px, 10vw, 156px);
+}
+
+.review-section + .faq {
+  padding-top: clamp(118px, 10vw, 160px);
+  padding-bottom: clamp(120px, 10vw, 164px);
+}
+
+.faq + .home-final-cta {
+  padding-top: clamp(104px, 9vw, 140px);
+}
+
+@media (max-width: 760px) {
+  .home-description-section > section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .home-child-check-section {
+    padding-bottom: 82px !important;
+  }
+
+  .home-choice-section {
+    padding-top: 82px !important;
+  }
+
+  .home-region-section {
+    padding-top: 74px;
+    padding-bottom: 78px;
+  }
+
+  .review-section {
+    padding-top: 82px;
+    padding-bottom: 88px;
+  }
+
+  .review-section + .faq {
+    padding-top: 88px;
+    padding-bottom: 92px;
+  }
+
+  .faq + .home-final-cta {
+    padding-top: 80px;
+  }
+}

@@ -4717,7 +4717,7 @@
             </section>
 
             <section class="home-info-block home-choice-section">
-              <h2>${lineIcon('search')}왜 돋움과외를 선택해야 할까요?</h2>
+              <h2>${lineIcon('search')}왜 돋움과외일까요?</h2>
               <p>정해진 수업 방식에 아이를 맞추기보다, 현재 상태를 먼저 보고 필요한 방향을 함께 정리합니다.</p>
               <div class="home-choice-list" aria-label="돋움과외 선택 이유">
                 <article class="home-choice-item">
