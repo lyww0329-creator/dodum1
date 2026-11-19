@@ -7575,49 +7575,23 @@
 /* 돋움과외의 청록/네이비와 어울리는 아주 연한 파스텔 배경
    섹션 경계는 선처럼 끊지 않고 다음 색으로 자연스럽게 블렌딩 */
 .home-description-section > section:nth-child(1)::before {
-  background: linear-gradient(
-    to bottom,
-    #fbf8f3 0,
-    #f3faf8 88px,
-    #f3faf8 calc(100% - 96px),
-    #fbf7f2 100%
-  );
+  background: linear-gradient(180deg, #fbf8f3 0%, #f6faf8 52%, #f3faf8 100%);
 }
 
 .home-description-section > section:nth-child(2)::before {
-  background: linear-gradient(
-    to bottom,
-    #fbf7f2 0,
-    #fbf7f2 calc(100% - 96px),
-    #f4f8fa 100%
-  );
+  background: linear-gradient(180deg, #f3faf8 0%, #f8faf8 48%, #f4f8fa 100%);
 }
 
 .home-description-section > section:nth-child(3)::before {
-  background: linear-gradient(
-    to bottom,
-    #f4f8fa 0,
-    #f4f8fa calc(100% - 96px),
-    #f8f6f1 100%
-  );
+  background: linear-gradient(180deg, #f4f8fa 0%, #f6f8f6 48%, #f8f6f1 100%);
 }
 
 .home-description-section > section:nth-child(4)::before {
-  background: linear-gradient(
-    to bottom,
-    #f8f6f1 0,
-    #f8f6f1 calc(100% - 96px),
-    #eef8f6 100%
-  );
+  background: linear-gradient(180deg, #f8f6f1 0%, #f5f8f4 50%, #eef8f6 100%);
 }
 
 .home-description-section > section:nth-child(5)::before {
-  background: linear-gradient(
-    to bottom,
-    #eef8f6 0,
-    #eef8f6 calc(100% - 96px),
-    #f8faf9 100%
-  );
+  background: linear-gradient(180deg, #eef8f6 0%, #f2f9f7 48%, #f9f5ef 100%);
 }
 
 /* 기존 섹션 자체에 있던 큰 박스 스타일만 제거 */
@@ -7693,22 +7667,8 @@
 }
 
 /* 새 비용 섹션까지 파스텔 배경 흐름 연결 */
-.home-description-section > section:nth-child(5)::before {
-  background: linear-gradient(
-    to bottom,
-    #eef8f6 0,
-    #eef8f6 calc(100% - 96px),
-    #f9f5ef 100%
-  );
-}
-
 .home-description-section > section:nth-child(6)::before {
-  background: linear-gradient(
-    to bottom,
-    #f9f5ef 0,
-    #f9f5ef calc(100% - 96px),
-    #f8faf9 100%
-  );
+  background: linear-gradient(180deg, #f9f5ef 0%, #faf8f4 46%, #f8faf9 100%);
 }
 
 @media (max-width: 640px) {
@@ -7735,24 +7695,6 @@
   padding: clamp(78px, 7vw, 104px) 0 clamp(82px, 7vw, 110px);
 }
 
-.home-region-section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #f8faf9 0%,
-    #f2faf8 14%,
-    #f2faf8 86%,
-    #faf7f2 100%
-  );
-  pointer-events: none;
-}
 
 .home-region-card {
   background: transparent !important;
@@ -7793,23 +7735,9 @@
 }
 
 .review-section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #faf7f2 0%,
-    #fbfaf7 16%,
-    #fbfaf7 84%,
-    #f4f9f8 100%
-  );
-  pointer-events: none;
+  display: none;
 }
+
 
 .review-section .section-head {
   margin-bottom: 34px;
@@ -7832,23 +7760,9 @@
 }
 
 .review-section + .faq::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #f4f9f8 0%,
-    #f7fbfa 18%,
-    #f7fbfa 82%,
-    #fbf8f3 100%
-  );
-  pointer-events: none;
+  display: none;
 }
+
 
 .review-section + .faq h2 {
   margin-bottom: 36px !important;
