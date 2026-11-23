@@ -7200,7 +7200,7 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
           : Object.keys(REGION_TREE).map(name => `<button class="grid-button" type="button" data-grade-province="${name}" data-grade-group-name="${group}" data-grade-name="${grade}" data-grade-subject-name="${subject}">${name}</button>`).join('');
 
       return `
-        <section class="view region-view">
+        <section class="view region-view grade-view">
           <div class="section-head">
             <span class="eyebrow">학년별</span>
             <h2>${gradeTitle}</h2>
