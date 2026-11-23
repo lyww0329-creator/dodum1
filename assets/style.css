@@ -7498,66 +7498,66 @@
 }
 
 /* =========================================================
-   메인페이지 파스텔 섹션 배경형 리디자인
-   - 기존 문구/콘텐츠/내부 카드 구조 유지
-   - 큰 외곽 컨테이너 박스 제거
-   - 섹션별 은은한 배경색으로 구분
+   메인페이지 최종 통합 스타일
+   - 기존 메인 전용 덮어쓰기 규칙을 하나로 통합
+   - PC / 좁은 PC / 모바일에서 동일한 디자인 체계 유지
+   - 큰 외곽 박스는 다시 나타나지 않도록 명시적으로 제거
    ========================================================= */
 
-/* 메인 최상단도 큰 카드 대신 배경 위 콘텐츠처럼 보이게 */
 .hero {
   position: relative;
   z-index: 0;
+  isolation: isolate;
 }
 
 .hero::before {
   content: "";
   position: absolute;
   z-index: -1;
-  top: -42px;
-  bottom: 0;
-  left: 50%;
+  inset: -42px 50% 0 auto;
   width: 100vw;
-  transform: translateX(-50%);
+  transform: translateX(50%);
   background: #fbf8f3;
   pointer-events: none;
 }
 
 .hero-card {
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
 }
 
 .hero-card::before,
 .hero-card::after {
-  display: none;
+  display: none !important;
 }
 
-/* 전체 설명 영역의 큰 흰색 외곽 박스 제거 */
+/* 메인 큰 외곽 컨테이너는 모든 화면 크기에서 제거 */
 .home-description-section {
-  width: min(100%, 1040px);
-  margin: 46px auto 0;
-  padding: 0;
-  gap: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
+  width: min(100%, 1040px) !important;
+  margin: 46px auto 0 !important;
+  padding: 0 !important;
+  display: grid;
+  gap: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
 }
 
-/* 각 큰 섹션은 카드가 아니라 넓은 배경 띠로 구분 */
 .home-description-section > section {
   position: relative;
   z-index: 0;
+  isolation: isolate;
   margin: 0 !important;
-  padding: clamp(72px, 7vw, 104px) 0;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
+  padding: clamp(124px, 10vw, 164px) 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .home-description-section > section::before {
@@ -7572,530 +7572,43 @@
   pointer-events: none;
 }
 
-/* 돋움과외의 청록/네이비와 어울리는 아주 연한 파스텔 배경
-   섹션 경계는 선처럼 끊지 않고 다음 색으로 자연스럽게 블렌딩 */
 .home-description-section > section:nth-child(1)::before {
-  background: linear-gradient(
-    to bottom,
-    #fbf8f3 0,
-    #f3faf8 88px,
-    #f3faf8 calc(100% - 96px),
-    #fbf7f2 100%
-  );
+  background: linear-gradient(180deg, #fbf8f3 0%, #f3faf8 72%, #fbf7f2 100%);
 }
-
 .home-description-section > section:nth-child(2)::before {
-  background: linear-gradient(
-    to bottom,
-    #fbf7f2 0,
-    #fbf7f2 calc(100% - 96px),
-    #f4f8fa 100%
-  );
+  background: linear-gradient(180deg, #fbf7f2 0%, #fbf7f2 72%, #f4f8fa 100%);
 }
-
 .home-description-section > section:nth-child(3)::before {
-  background: linear-gradient(
-    to bottom,
-    #f4f8fa 0,
-    #f4f8fa calc(100% - 96px),
-    #f8f6f1 100%
-  );
+  background: linear-gradient(180deg, #f4f8fa 0%, #f4f8fa 72%, #f8f6f1 100%);
 }
-
 .home-description-section > section:nth-child(4)::before {
-  background: linear-gradient(
-    to bottom,
-    #f8f6f1 0,
-    #f8f6f1 calc(100% - 96px),
-    #eef8f6 100%
-  );
+  background: linear-gradient(180deg, #f8f6f1 0%, #f8f6f1 72%, #eef8f6 100%);
 }
-
 .home-description-section > section:nth-child(5)::before {
-  background: linear-gradient(
-    to bottom,
-    #eef8f6 0,
-    #eef8f6 calc(100% - 96px),
-    #f8faf9 100%
-  );
+  background: linear-gradient(180deg, #eef8f6 0%, #eef8f6 72%, #f9f5ef 100%);
 }
-
-/* 기존 섹션 자체에 있던 큰 박스 스타일만 제거 */
-.home-child-check-section {
-  padding-left: 0;
-  padding-right: 0;
-  background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-}
-
-.home-system-block {
-  background: transparent;
-}
-
-/* 첫 소개 콘텐츠의 내부 카드와 세부 카드들은 기존 디자인 유지 */
-.home-fit-section {
-  margin-bottom: 0;
-}
-
-/* 섹션이 바뀌는 지점이 과하게 끊겨 보이지 않도록 경계선/장식은 사용하지 않음 */
-.home-description-section > section + section {
-  margin-top: 0 !important;
-}
-
-/* 모바일도 같은 배경형 구조를 유지하되 여백만 축소 */
-@media (max-width: 640px) {
-  .home-description-section {
-    margin-top: 28px;
-  }
-
-  .home-description-section > section {
-    padding-top: 56px;
-    padding-bottom: 56px;
-  }
-
-  .hero::before {
-    top: -24px;
-  }
-}
-
-/* 메인페이지 과외 비용 안내 */
-.home-tuition-section > p {
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.home-tuition-card {
-  width: min(100%, 760px);
-  margin: 28px auto 0;
-  padding: 24px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 30px rgba(28, 74, 80, 0.07);
-}
-
-.home-tuition-card .region-tuition-table-wrap {
-  border-color: #dfeae7;
-}
-
-.home-tuition-card .region-tuition-table thead th {
-  background: #f2f8f6;
-}
-
-.home-tuition-card .region-tuition-table tbody th {
-  background: #fbfdfc;
-}
-
-.home-tuition-card .region-tuition-example {
-  background: #f6faf8;
-}
-
-/* 새 비용 섹션까지 파스텔 배경 흐름 연결 */
-.home-description-section > section:nth-child(5)::before {
-  background: linear-gradient(
-    to bottom,
-    #eef8f6 0,
-    #eef8f6 calc(100% - 96px),
-    #f9f5ef 100%
-  );
-}
-
 .home-description-section > section:nth-child(6)::before {
-  background: linear-gradient(
-    to bottom,
-    #f9f5ef 0,
-    #f9f5ef calc(100% - 96px),
-    #f2faf8 100%
-  );
+  background: linear-gradient(180deg, #f9f5ef 0%, #f9f5ef 72%, #f2faf8 100%);
 }
 
-@media (max-width: 640px) {
-  .home-tuition-card {
-    margin-top: 22px;
-    padding: 16px;
-    border-radius: 18px;
-  }
-}
-
-/* =========================================================
-   메인페이지 여백/후반 섹션 통일 정리
-   - 콘텐츠 문구/순서 변경 없음
-   - 지역별 안내 큰 외곽 카드 제거
-   - 후기/FAQ와 같은 파스텔 섹션 흐름으로 통일
-   - 섹션 내부 및 섹션 사이 여백 확대
-   ========================================================= */
-
-/* 지역별 과외 안내: 큰 외곽 흰 박스 제거 */
-.home-region-section {
-  position: relative;
-  z-index: 0;
-  margin-top: clamp(118px, 10vw, 160px) !important;
-  padding: clamp(78px, 7vw, 104px) 0 clamp(82px, 7vw, 110px);
-}
-
-.home-region-section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #f2faf8 0%,
-    #f2faf8 86%,
-    #faf7f2 100%
-  );
-  pointer-events: none;
-}
-
-.home-region-card {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-}
-
-/* 지역별 안내 내부 호흡 */
-.home-region-card .section-head {
-  margin-bottom: 38px !important;
-}
-
-.home-search-tabs {
-  margin-bottom: 32px !important;
-}
-
-.home-region-card .section-head h2 {
-  margin-bottom: 18px !important;
-}
-
-.home-region-card .section-head p {
-  margin-top: 0 !important;
-  line-height: 1.8;
-}
-
-.home-search-panel {
-  margin-top: 34px;
-}
-
-/* 후기 섹션도 배경 띠로 열어두고 앞뒤 여백 확보 */
-.review-section {
-  position: relative;
-  z-index: 0;
-  margin-top: 0 !important;
-  padding: clamp(96px, 8vw, 132px) 0 clamp(104px, 9vw, 144px);
-}
-
-.review-section::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #faf7f2 0%,
-    #fbfaf7 16%,
-    #fbfaf7 84%,
-    #f4f9f8 100%
-  );
-  pointer-events: none;
-}
-
-.review-section .section-head {
-  margin-bottom: 34px;
-}
-
-.review-viewport {
-  margin-top: 30px !important;
-}
-
-/* FAQ: 후기와 붙어 보이지 않도록 독립 섹션 호흡 + 파스텔 배경 */
-.review-section + .faq,
-.faq {
-  position: relative;
-  z-index: 0;
-}
-
-.review-section + .faq {
-  margin-top: 0 !important;
-  padding: clamp(108px, 9vw, 148px) 0 clamp(112px, 9vw, 152px);
-}
-
-.review-section + .faq::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    to bottom,
-    #f4f9f8 0%,
-    #f7fbfa 18%,
-    #f7fbfa 82%,
-    #fbf8f3 100%
-  );
-  pointer-events: none;
-}
-
-.review-section + .faq h2 {
-  margin-bottom: 36px !important;
-}
-
-.review-section + .faq .accordion {
-  gap: 18px !important;
-}
-
-.review-section + .faq details {
-  border-radius: 22px;
-}
-
-.review-section + .faq summary {
-  padding: 22px 24px;
-}
-
-/* FAQ 다음 CTA도 너무 붙지 않게 */
-.faq + .home-final-cta {
-  margin-top: 0 !important;
-  padding-top: clamp(92px, 8vw, 128px);
-}
-
-@media (max-width: 760px) {
-  .home-region-section {
-    margin-top: 68px !important;
-    padding: 62px 0 68px;
-  }
-
-  .home-region-card .section-head {
-    margin-bottom: 28px !important;
-  }
-
-  .home-search-tabs {
-    margin-bottom: 24px !important;
-  }
-
-  .home-search-panel {
-    margin-top: 26px;
-  }
-
-  .review-section {
-    padding: 70px 0 78px;
-  }
-
-  .review-section + .faq {
-    padding: 76px 0 84px;
-  }
-
-  .review-section + .faq h2 {
-    margin-bottom: 28px !important;
-  }
-
-  .review-section + .faq .accordion {
-    gap: 14px !important;
-  }
-
-  .review-section + .faq summary {
-    padding: 19px 18px;
-  }
-}
-
-/* =========================================================
-   메인 후반 영역 크기 확대
-   - 지역별 과외 안내 / FAQ 가독성 강화
-   - 문구 및 콘텐츠 구조 변경 없음
-   ========================================================= */
-@media (min-width: 761px) {
-  .home-region-card .section-head h2 {
-    font-size: clamp(44px, 4.4vw, 58px) !important;
-    line-height: 1.08;
-  }
-
-  .home-region-card .section-head p {
-    font-size: 18.5px !important;
-    line-height: 1.85;
-  }
-
-  .home-search-tabs {
-    width: min(100%, 700px) !important;
-    padding: 10px !important;
-    gap: 12px !important;
-  }
-
-  .home-search-tab {
-    min-height: 54px !important;
-    font-size: 17px !important;
-  }
-
-  .home-region-main-button {
-    min-height: 72px !important;
-    font-size: 20px !important;
-    border-radius: 20px;
-  }
-
-  .review-section + .faq h2 {
-    font-size: clamp(40px, 4vw, 50px) !important;
-    line-height: 1.1;
-  }
-
-  .review-section + .faq .accordion {
-    max-width: 980px !important;
-    gap: 20px !important;
-  }
-
-  .review-section + .faq details {
-    border-radius: 24px !important;
-  }
-
-  .review-section + .faq summary {
-    min-height: 74px;
-    padding: 24px 28px !important;
-    font-size: 17.5px !important;
-  }
-
-  .review-section + .faq details > div,
-  .review-section + .faq details > p {
-    font-size: 16.5px;
-    line-height: 1.8;
-  }
-}
-
-@media (max-width: 760px) {
-  .home-region-card .section-head h2 {
-    font-size: clamp(32px, 9vw, 40px) !important;
-  }
-
-  .home-region-card .section-head p {
-    font-size: 16px !important;
-  }
-
-  .home-search-tab {
-    min-height: 50px !important;
-    font-size: 15px !important;
-  }
-
-  .home-region-main-button {
-    min-height: 64px !important;
-    font-size: 17px !important;
-  }
-
-  .review-section + .faq h2 {
-    font-size: clamp(31px, 9vw, 39px) !important;
-  }
-
-  .review-section + .faq summary {
-    min-height: 64px;
-    padding: 21px 20px !important;
-    font-size: 15.5px !important;
-  }
-}
-
-
-/* =========================================================
-   메인페이지 전체 섹션 호흡 확대
-   - 내용/카드 구성은 유지
-   - 큰 섹션 사이의 시각적 간격만 넓힘
-   ========================================================= */
-.home-description-section > section {
-  padding-top: clamp(104px, 9vw, 142px);
-  padding-bottom: clamp(104px, 9vw, 142px);
-}
-
-/* 특히 체크 섹션 → 선택 이유 섹션이 붙어 보이지 않도록 여유 확보 */
-.home-child-check-section {
-  padding-bottom: clamp(118px, 10vw, 156px) !important;
-}
-
-.home-choice-section {
-  padding-top: clamp(118px, 10vw, 156px) !important;
-}
-
-/* 메인 후반부도 같은 리듬으로 통일 */
-.home-region-section {
-  padding-top: clamp(96px, 8.5vw, 126px);
-  padding-bottom: clamp(100px, 9vw, 132px);
-}
-
-.review-section {
-  padding-top: clamp(110px, 9.5vw, 148px);
-  padding-bottom: clamp(116px, 10vw, 156px);
-}
-
-.review-section + .faq {
-  padding-top: clamp(118px, 10vw, 160px);
-  padding-bottom: clamp(120px, 10vw, 164px);
-}
-
-.faq + .home-final-cta {
-  padding-top: clamp(104px, 9vw, 140px);
-}
-
-@media (max-width: 760px) {
-  .home-description-section > section {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  .home-child-check-section {
-    padding-bottom: 82px !important;
-  }
-
-  .home-choice-section {
-    padding-top: 82px !important;
-  }
-
-  .home-region-section {
-    padding-top: 74px;
-    padding-bottom: 78px;
-  }
-
-  .review-section {
-    padding-top: 82px;
-    padding-bottom: 88px;
-  }
-
-  .review-section + .faq {
-    padding-top: 88px;
-    padding-bottom: 92px;
-  }
-
-  .faq + .home-final-cta {
-    padding-top: 80px;
-  }
-}
-
-/* =========================================================
-   메인 전체 섹션 간격 + 비용 안내 크기 최종 통일
-   - 모든 주요 섹션에 동일한 호흡 적용
-   - 비용 안내 카드는 메인 콘텐츠 폭에 맞춰 확대
-   - 문구/구조 변경 없음
-   ========================================================= */
-
-/* 설명 영역 내부의 모든 큰 섹션을 같은 리듬으로 */
-.home-description-section > section {
-  padding-top: clamp(124px, 10vw, 164px) !important;
-  padding-bottom: clamp(124px, 10vw, 164px) !important;
-}
-
-/* 특정 섹션에 남아 있던 별도 간격값을 공통 규칙으로 통일 */
-.home-description-section .home-fit-section,
-.home-description-section .home-child-check-section,
-.home-description-section .home-choice-section,
-.home-description-section .home-info-block,
-.home-description-section .home-system-block,
-.home-description-section .home-tuition-section {
+/* 예전 모바일/태블릿 외곽 카드 스타일이 재등장하지 않게 */
+.home-child-check-section,
+.home-system-block,
+.home-info-block,
+.home-fit-section,
+.home-choice-section,
+.home-tuition-section {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
+}
+
+.home-child-check-section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 
 .home-info-block + .home-info-block {
@@ -8103,31 +7616,7 @@
   padding-top: clamp(124px, 10vw, 164px) !important;
 }
 
-/* 메인 후반부도 동일한 시각적 호흡으로 */
-.home-region-section {
-  margin-top: 0 !important;
-  padding-top: clamp(124px, 10vw, 164px) !important;
-  padding-bottom: clamp(124px, 10vw, 164px) !important;
-}
-
-.review-section {
-  margin-top: 0 !important;
-  padding-top: clamp(124px, 10vw, 164px) !important;
-  padding-bottom: clamp(124px, 10vw, 164px) !important;
-}
-
-.review-section + .faq {
-  margin-top: 0 !important;
-  padding-top: clamp(124px, 10vw, 164px) !important;
-  padding-bottom: clamp(124px, 10vw, 164px) !important;
-}
-
-.faq + .home-final-cta {
-  margin-top: 0 !important;
-  padding-top: clamp(124px, 10vw, 164px) !important;
-}
-
-/* 비용 안내: 다른 메인 콘텐츠와 시각적 폭/무게 맞춤 */
+/* 비용 안내 */
 .home-tuition-section > p {
   max-width: none !important;
 }
@@ -8135,65 +7624,184 @@
 .home-tuition-card {
   width: 100% !important;
   max-width: none !important;
-  margin-top: 38px !important;
+  margin: 38px auto 0 !important;
   padding: clamp(30px, 3vw, 42px) !important;
-  border-radius: 28px !important;
   box-sizing: border-box;
+  border-radius: 28px !important;
+  background: rgba(255,255,255,.92) !important;
+  border: 1px solid rgba(42,157,143,.09) !important;
+  box-shadow: 0 14px 34px rgba(28,74,80,.07) !important;
 }
 
 .home-tuition-card .region-tuition-table-wrap {
-  width: 100%;
+  width: 100% !important;
   max-width: none !important;
+  border-color: #dfeae7 !important;
 }
 
+.home-tuition-card .region-tuition-table thead th { background: #f2f8f6 !important; }
+.home-tuition-card .region-tuition-table tbody th { background: #fbfdfc !important; }
 .home-tuition-card .region-tuition-table th,
 .home-tuition-card .region-tuition-table td {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
 .home-tuition-card .region-tuition-example {
-  margin-top: 22px;
-  padding: 18px 22px;
+  margin-top: 22px !important;
+  padding: 18px 22px !important;
+  background: #f6faf8 !important;
+}
+.home-tuition-card .region-tuition-note { margin-top: 18px !important; }
+
+/* 지역별 과외 안내: 외곽 박스 제거, 배경 띠만 유지 */
+.home-region-section {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  margin-top: 0 !important;
+  padding: clamp(124px, 10vw, 164px) 0 !important;
 }
 
-.home-tuition-card .region-tuition-note {
-  margin-top: 18px;
+.home-region-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #f2faf8 0%, #f2faf8 82%, #faf7f2 100%);
+  pointer-events: none;
 }
 
-@media (max-width: 760px) {
-  .home-description-section > section,
-  .home-info-block + .home-info-block,
-  .home-region-section,
-  .review-section,
-  .review-section + .faq {
-    padding-top: 88px !important;
-    padding-bottom: 88px !important;
-  }
-
-  .faq + .home-final-cta {
-    padding-top: 88px !important;
-  }
-
-  .home-tuition-card {
-    margin-top: 28px !important;
-    padding: 20px !important;
-    border-radius: 22px !important;
-  }
-
-  .home-tuition-card .region-tuition-table th,
-  .home-tuition-card .region-tuition-table td {
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
+.home-region-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
+.home-region-card .section-head { margin-bottom: 38px !important; }
+.home-region-card .section-head h2 {
+  margin-bottom: 18px !important;
+  font-size: clamp(44px, 4.4vw, 58px) !important;
+  line-height: 1.08;
+}
+.home-region-card .section-head p {
+  margin-top: 0 !important;
+  font-size: 18.5px !important;
+  line-height: 1.85;
+}
 
-/* =========================================================
-   메인 히어로 제목 강조
-   - 기존 문구/라벨 유지
-   - 핵심 문구만 돋움과외 민트 포인트
-   ========================================================= */
+.home-search-tabs {
+  width: min(100%, 700px) !important;
+  margin: 0 auto 32px !important;
+  padding: 10px !important;
+  gap: 12px !important;
+}
+
+.home-search-tab {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 54px !important;
+  padding: 0 14px;
+  font-size: 17px !important;
+  text-align: center;
+}
+
+.home-tab-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin-right: 0 !important;
+  vertical-align: middle;
+}
+
+.home-search-panel { margin-top: 34px; }
+.home-search-panel[data-home-search-panel="subject"] .home-region-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 14px;
+}
+.home-search-panel[data-home-search-panel="subject"] .grid-button {
+  min-height: 50px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.home-search-panel[data-home-search-panel="language"] .home-region-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: center;
+}
+
+.home-region-main-button {
+  min-height: 72px !important;
+  font-size: 20px !important;
+  border-radius: 20px;
+}
+
+/* 후기 / FAQ */
+.review-section {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  margin-top: 0 !important;
+  padding: clamp(124px, 10vw, 164px) 0 !important;
+}
+.review-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #faf7f2 0%, #fbfaf7 78%, #f4f9f8 100%);
+  pointer-events: none;
+}
+.review-section .section-head { margin-bottom: 34px; }
+.review-viewport { margin-top: 30px !important; }
+
+.review-section + .faq {
+  position: relative;
+  z-index: 0;
+  isolation: isolate;
+  margin-top: 0 !important;
+  padding: clamp(124px, 10vw, 164px) 0 !important;
+}
+.review-section + .faq::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 auto 0 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #f4f9f8 0%, #f7fbfa 78%, #fbf8f3 100%);
+  pointer-events: none;
+}
+.review-section + .faq h2 {
+  margin-bottom: 36px !important;
+  font-size: clamp(40px, 4vw, 50px) !important;
+  line-height: 1.1;
+}
+.review-section + .faq .accordion {
+  max-width: 980px !important;
+  gap: 20px !important;
+}
+.review-section + .faq details { border-radius: 24px !important; }
+.review-section + .faq summary {
+  min-height: 74px;
+  padding: 24px 28px !important;
+  font-size: 17.5px !important;
+}
+.faq + .home-final-cta {
+  margin-top: 0 !important;
+  padding-top: clamp(124px, 10vw, 164px) !important;
+}
+
+/* 히어로 제목 강조 */
 .home-view .hero-card h1 {
   width: min(100%, 1080px);
   margin-left: auto;
@@ -8203,15 +7811,403 @@
   letter-spacing: -0.065em;
   text-wrap: balance;
 }
+.home-view .hero-title-highlight { color: var(--teal); }
 
-.home-view .hero-title-highlight {
-  color: var(--teal);
+/* 좁은 PC / 태블릿: 기존 박스가 다시 생기지 않게 같은 구조 유지 */
+@media (max-width: 1100px) {
+  .home-description-section {
+    width: min(100%, 920px) !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .home-description-section > section {
+    padding-top: 104px !important;
+    padding-bottom: 104px !important;
+  }
+
+  .home-info-block + .home-info-block {
+    padding-top: 104px !important;
+  }
+
+  .home-region-section,
+  .review-section,
+  .review-section + .faq {
+    padding-top: 104px !important;
+    padding-bottom: 104px !important;
+  }
 }
 
+/* 모바일: 디자인은 동일, 배치/크기만 모바일에 맞춤 */
 @media (max-width: 760px) {
+  .hero::before { top: -24px; }
+
+  .home-description-section {
+    width: 100% !important;
+    margin-top: 28px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .home-description-section > section {
+    padding: 82px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .home-child-check-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .home-info-block + .home-info-block { padding-top: 82px !important; }
+
+  .home-tuition-card {
+    width: 100% !important;
+    margin-top: 28px !important;
+    padding: 20px !important;
+    border-radius: 22px !important;
+  }
+  .home-tuition-card .region-tuition-table th,
+  .home-tuition-card .region-tuition-table td {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .home-region-section,
+  .review-section,
+  .review-section + .faq {
+    margin-top: 0 !important;
+    padding: 82px 0 !important;
+  }
+
+  .home-region-card {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .home-region-card .section-head { margin-bottom: 28px !important; }
+  .home-region-card .section-head h2 {
+    font-size: clamp(32px, 9vw, 40px) !important;
+  }
+  .home-region-card .section-head p { font-size: 16px !important; }
+
+  .home-search-tabs {
+    width: 100% !important;
+    margin-bottom: 24px !important;
+    padding: 8px !important;
+    gap: 8px !important;
+  }
+  .home-search-tab {
+    min-height: 50px !important;
+    font-size: 15px !important;
+  }
+  .home-search-panel { margin-top: 26px; }
+
+  .home-search-panel[data-home-search-panel="subject"] .home-region-grid,
+  .home-search-panel[data-home-search-panel="language"] .home-region-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .home-region-main-button {
+    min-height: 64px !important;
+    font-size: 17px !important;
+  }
+
+  .review-section + .faq h2 {
+    font-size: clamp(31px, 9vw, 39px) !important;
+    margin-bottom: 28px !important;
+  }
+  .review-section + .faq .accordion { gap: 14px !important; }
+  .review-section + .faq summary {
+    min-height: 64px;
+    padding: 21px 20px !important;
+    font-size: 15.5px !important;
+  }
+
+  .faq + .home-final-cta { padding-top: 82px !important; }
+
   .home-view .hero-card h1 {
     font-size: clamp(32px, 9vw, 43px);
     line-height: 1.2;
     letter-spacing: -0.055em;
+  }
+}
+
+/* =========================================================
+   학년과외 페이지 비율/크기 보정
+   - 작은 요약 박스, 핵심 카드, 수업방식 태그, 학습 포인트 확대
+   - 문구/구조 변경 없음
+   ========================================================= */
+.grade-view .detail-summary-box {
+  width: min(100%, 1000px);
+  padding: 28px 26px;
+  border-radius: 30px;
+}
+
+.grade-view .detail-summary-title {
+  margin-bottom: 18px;
+  font-size: clamp(1.5rem, 2.3vw, 1.85rem);
+}
+
+.grade-view .detail-summary-lines {
+  gap: 14px;
+}
+
+.grade-view .detail-summary-line {
+  min-height: 66px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.grade-view .subject-study-hero,
+.grade-view .subject-study-section,
+.grade-view .subject-roadmap-section,
+.grade-view .subject-faq-section {
+  width: min(100%, 1000px);
+}
+
+.grade-view .subject-study-hero {
+  gap: 22px;
+}
+
+.grade-view .subject-study-main {
+  padding: 36px 34px;
+}
+
+.grade-view .subject-study-main h3,
+.grade-view .subject-study-section h3,
+.grade-view .subject-roadmap-section h3,
+.grade-view .subject-faq-section h3 {
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+}
+
+.grade-view .subject-study-main p,
+.grade-view .subject-study-section > p,
+.grade-view .subject-roadmap-section > p,
+.grade-view .subject-faq-section > p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.grade-view .subject-study-side {
+  gap: 14px;
+}
+
+.grade-view .subject-study-point {
+  min-height: 104px;
+  padding: 22px 20px;
+  border-radius: 24px;
+}
+
+.grade-view .subject-study-point b {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.grade-view .subject-study-point span {
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+
+.grade-view .subject-lesson-mode {
+  margin-top: 22px;
+  gap: 10px;
+}
+
+.grade-view .subject-lesson-mode span {
+  min-height: 40px;
+  padding: 9px 15px;
+  font-size: 15.5px;
+}
+
+.grade-view .grade-focus-grid {
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.grade-view .grade-focus-card {
+  min-height: 156px;
+  padding: 24px 22px;
+  border-radius: 24px;
+}
+
+.grade-view .grade-focus-card b {
+  margin-bottom: 10px;
+  font-size: 19px;
+}
+
+.grade-view .grade-focus-card span {
+  font-size: 16px;
+  line-height: 1.62;
+}
+
+@media (max-width: 860px) {
+  .grade-view .detail-summary-box {
+    padding: 22px 18px;
+  }
+
+  .grade-view .detail-summary-title {
+    font-size: 1.35rem;
+  }
+
+  .grade-view .detail-summary-lines {
+    gap: 9px;
+  }
+
+  .grade-view .detail-summary-line {
+    min-height: 62px;
+    padding: 10px 8px;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+
+  .grade-view .subject-study-main {
+    padding: 26px 22px;
+  }
+
+  .grade-view .subject-study-hero .subject-study-side {
+    gap: 10px !important;
+  }
+
+  .grade-view .subject-study-hero .subject-study-point {
+    min-height: 92px !important;
+    padding: 14px 10px !important;
+    border-radius: 18px !important;
+  }
+
+  .grade-view .subject-study-hero .subject-study-point b {
+    font-size: 13.5px !important;
+  }
+
+  .grade-view .subject-study-hero .subject-study-point span {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .grade-view .subject-lesson-mode span {
+    min-height: 34px;
+    padding: 7px 11px;
+    font-size: 13px;
+  }
+
+  .grade-view .grade-focus-card {
+    min-height: 116px;
+    padding: 15px 12px;
+  }
+
+  .grade-view .grade-focus-card b {
+    font-size: 14px;
+  }
+
+  .grade-view .grade-focus-card span {
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+}
+
+/* =========================================================
+   학년과외 페이지 간격 보정
+   - 크기 보정 상태 유지
+   - 카드/섹션 사이 호흡 확대
+   - 문구/구조 변경 없음
+   ========================================================= */
+.grade-view .detail-summary-box + .subject-study-hero {
+  margin-top: 64px !important;
+}
+
+.grade-view .subject-study-hero {
+  gap: 34px !important;
+}
+
+.grade-view .subject-study-side {
+  gap: 20px !important;
+}
+
+.grade-view .subject-lesson-mode {
+  margin-top: 30px !important;
+  gap: 14px !important;
+}
+
+.grade-view .subject-study-hero + .subject-study-section,
+.grade-view .subject-study-section + .subject-study-section,
+.grade-view .subject-study-section + .subject-roadmap-section,
+.grade-view .subject-roadmap-section + .subject-study-section,
+.grade-view .subject-study-section + .subject-faq-section,
+.grade-view .subject-faq-section + .subject-option-panel {
+  margin-top: 72px !important;
+}
+
+.grade-view .grade-focus-grid {
+  gap: 22px !important;
+  margin-top: 32px !important;
+}
+
+.grade-view .grade-insight-grid {
+  gap: 20px !important;
+  margin-top: 28px !important;
+}
+
+.grade-view .grade-checklist-grid {
+  gap: 16px !important;
+  margin-top: 24px !important;
+}
+
+@media (max-width: 860px) {
+  .grade-view .detail-summary-box + .subject-study-hero {
+    margin-top: 44px !important;
+  }
+
+  .grade-view .subject-study-hero {
+    gap: 24px !important;
+  }
+
+  .grade-view .subject-study-hero .subject-study-side {
+    gap: 16px !important;
+  }
+
+  .grade-view .subject-lesson-mode {
+    margin-top: 24px !important;
+    gap: 10px !important;
+  }
+
+  .grade-view .subject-study-hero + .subject-study-section,
+  .grade-view .subject-study-section + .subject-study-section,
+  .grade-view .subject-study-section + .subject-roadmap-section,
+  .grade-view .subject-roadmap-section + .subject-study-section,
+  .grade-view .subject-study-section + .subject-faq-section,
+  .grade-view .subject-faq-section + .subject-option-panel {
+    margin-top: 50px !important;
+  }
+
+  .grade-view .grade-focus-grid {
+    gap: 14px !important;
+    margin-top: 24px !important;
+  }
+
+  .grade-view .grade-insight-grid {
+    gap: 12px !important;
+    margin-top: 22px !important;
+  }
+
+  .grade-view .grade-checklist-grid {
+    gap: 10px !important;
+    margin-top: 20px !important;
   }
 }
