@@ -7201,6 +7201,39 @@ function subjectsView(active = '수학', activeGrade = '', activeProvince = '', 
 
       return `
         <section class="view region-view grade-view">
+          <style>
+            .grade-view > .detail-summary-box{width:100%!important;max-width:none!important;padding:34px 30px!important;border-radius:32px!important;}
+            .grade-view > .detail-summary-box .detail-summary-title{font-size:30px!important;margin-bottom:22px!important;}
+            .grade-view > .detail-summary-box .detail-summary-lines{gap:16px!important;}
+            .grade-view > .detail-summary-box .detail-summary-line{min-height:76px!important;padding:18px 20px!important;border-radius:20px!important;font-size:18px!important;}
+            .grade-view > .detail-summary-box + .subject-study-hero{margin-top:58px!important;}
+            .grade-view > .subject-study-hero{width:100%!important;max-width:none!important;grid-template-columns:1.05fr .95fr!important;gap:30px!important;margin-bottom:0!important;}
+            .grade-view > .subject-study-hero .subject-study-main{padding:44px 40px!important;border-radius:32px!important;}
+            .grade-view > .subject-study-hero .subject-study-main h3{font-size:36px!important;line-height:1.22!important;}
+            .grade-view > .subject-study-hero .subject-study-main p{font-size:18px!important;line-height:1.82!important;}
+            .grade-view > .subject-study-hero .subject-study-side{gap:18px!important;}
+            .grade-view > .subject-study-hero .subject-study-point{min-height:124px!important;padding:26px 24px!important;border-radius:26px!important;}
+            .grade-view > .subject-study-hero .subject-study-point b{font-size:20px!important;margin-bottom:9px!important;}
+            .grade-view > .subject-study-hero .subject-study-point span{font-size:16.5px!important;line-height:1.62!important;}
+            .grade-view > .subject-study-hero .subject-lesson-mode{margin-top:28px!important;gap:12px!important;}
+            .grade-view > .subject-study-hero .subject-lesson-mode span{min-height:42px!important;padding:9px 16px!important;font-size:15.5px!important;}
+            .grade-view > .subject-study-hero + .grade-page-detail-tabs{margin-top:78px!important;}
+            @media(max-width:860px){
+              .grade-view > .detail-summary-box{padding:26px 20px!important;}
+              .grade-view > .detail-summary-box .detail-summary-title{font-size:24px!important;}
+              .grade-view > .detail-summary-box .detail-summary-lines{grid-template-columns:1fr!important;gap:12px!important;}
+              .grade-view > .detail-summary-box .detail-summary-line{min-height:62px!important;font-size:16px!important;}
+              .grade-view > .detail-summary-box + .subject-study-hero{margin-top:42px!important;}
+              .grade-view > .subject-study-hero{grid-template-columns:1fr!important;gap:18px!important;}
+              .grade-view > .subject-study-hero .subject-study-main{padding:30px 24px!important;}
+              .grade-view > .subject-study-hero .subject-study-main h3{font-size:28px!important;}
+              .grade-view > .subject-study-hero .subject-study-main p{font-size:16px!important;}
+              .grade-view > .subject-study-hero .subject-study-point{min-height:96px!important;padding:20px 18px!important;}
+              .grade-view > .subject-study-hero .subject-study-point b{font-size:17px!important;}
+              .grade-view > .subject-study-hero .subject-study-point span{font-size:14.5px!important;}
+              .grade-view > .subject-study-hero + .grade-page-detail-tabs{margin-top:54px!important;}
+            }
+          </style>
           <div class="section-head">
             <span class="eyebrow">학년별</span>
             <h2>${gradeTitle}</h2>
